@@ -8,21 +8,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     //These codes that are repeated are for the color and size and transparency of line edits, lebels and push bottons
-    ui->label->setStyleSheet("background-color: rgba(0, 0, 0, 50%);");
+    ui->label->setStyleSheet("QLabel {""background-color: rgba(0, 0, 0, 127);" "border-radius: 15px;" "border: none;" "}");
     ui->label_2->setFrameShape(QFrame::NoFrame);
     ui->label_2->setAttribute(Qt::WA_NoSystemBackground);
     ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
     ui->label_2->setStyleSheet("color: white;");
-
-    ui->label_3->setFrameShape(QFrame::NoFrame);
-    ui->label_3->setAttribute(Qt::WA_NoSystemBackground);
-    ui->label_3->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_3->setStyleSheet("color: white;");
-
-    ui->label_4->setFrameShape(QFrame::NoFrame);
-    ui->label_4->setAttribute(Qt::WA_NoSystemBackground);
-    ui->label_4->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_4->setStyleSheet("color: white;");
 
     ui->label_5->setFrameShape(QFrame::NoFrame);
     ui->label_5->setAttribute(Qt::WA_NoSystemBackground);
@@ -57,6 +47,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_2->setStyleSheet("font-size: 10px;");
     ui->lineEdit_2->setStyleSheet("color: white;");
     ui->lineEdit->setStyleSheet("color: white;");
+    ui->lineEdit->setPlaceholderText("Username");
+    ui->lineEdit_2->setPlaceholderText("Password");
 
     ui->label_6->stackUnder(ui->label);
     ui->label_10->stackUnder(ui->label);
@@ -87,7 +79,7 @@ void MainWindow::on_pushButton_3_clicked()
     QFile userfile(filename);
 
     if(!(userfile.exists())){
-        //it means that the user doesnt have any account and should register (because there's no file with this user name)
+        //it means that the user doesn't have any account and should register (because there's no file with this user name)
         //so we should show an error to say you dont have any account
         ui->label_7->hide();
         ui->label_8->show();
