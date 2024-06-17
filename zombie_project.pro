@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    registeration.cpp
+    registeration.cpp \
+    userinfo.cpp
 
 HEADERS += \
     mainwindow.h \
-    registeration.h
+    registeration.h \
+    userinfo.h
 
 FORMS += \
     mainwindow.ui \
