@@ -39,36 +39,12 @@ void registeration::designWindow()
                                    ui->lineEdit_4->y()+(ui->lineEdit_4->height()/4),125,20);
     InvalidMobileError->setVisible(false);
 
-    ui->label->setStyleSheet("background-color: rgba(0, 0, 0, 50%);");
+    ui->label->setStyleSheet("QLabel {""background-color: rgba(0, 0, 0, 127);" "border-radius: 15px;" "border: none;" "}");
+
     ui->label_2->setFrameShape(QFrame::NoFrame);
     ui->label_2->setAttribute(Qt::WA_NoSystemBackground);
     ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
     ui->label_2->setStyleSheet("color: white;");
-
-    ui->label_3->setFrameShape(QFrame::NoFrame);
-    ui->label_3->setAttribute(Qt::WA_NoSystemBackground);
-    ui->label_3->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_3->setStyleSheet("color: white;");
-
-    ui->label_4->setFrameShape(QFrame::NoFrame);
-    ui->label_4->setAttribute(Qt::WA_NoSystemBackground);
-    ui->label_4->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_4->setStyleSheet("color: white;");
-
-    ui->label_5->setFrameShape(QFrame::NoFrame);
-    ui->label_5->setAttribute(Qt::WA_NoSystemBackground);
-    ui->label_5->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_5->setStyleSheet("color: white;");
-
-    ui->label_6->setFrameShape(QFrame::NoFrame);
-    ui->label_6->setAttribute(Qt::WA_NoSystemBackground);
-    ui->label_6->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_6->setStyleSheet("color: white;");
-
-    ui->label_7->setFrameShape(QFrame::NoFrame);
-    ui->label_7->setAttribute(Qt::WA_NoSystemBackground);
-    ui->label_7->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_7->setStyleSheet("color: white;");
 
     ui->label_8->setFrameShape(QFrame::NoFrame);
     ui->label_8->setAttribute(Qt::WA_NoSystemBackground);
@@ -84,6 +60,11 @@ void registeration::designWindow()
     ui->lineEdit_4->setStyleSheet("color: white;");
     ui->lineEdit_5->setStyleSheet("color: white;");
     ui->lineEdit_6->setStyleSheet("color: white;");
+    ui->lineEdit->setPlaceholderText("Name");
+    ui->lineEdit_3->setPlaceholderText("Username");
+    ui->lineEdit_4->setPlaceholderText("Mobile");
+    ui->lineEdit_5->setPlaceholderText("Password");
+    ui->lineEdit_6->setPlaceholderText("Email");
 
     ui->pushButton_3->setFlat(true);
     ui->pushButton_3->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
