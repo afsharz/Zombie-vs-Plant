@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/new/prefix1">
-        <file>myimage.png.png</file>
         <file>peashooter transparent.png</file>
         <file>purple hair zombie_transparent.png</file>
         <file>regular zombie_transparent.png</file>
