@@ -6,9 +6,41 @@ registeration::registeration(QWidget *parent)
     , ui(new Ui::registeration)
 {
     ui->setupUi(this);
+    user=new UserInfo(this);
+    designWindow();
+    connect(ui->lineEdit_6,&QLineEdit::textEdited, user, &UserInfo::setAddress);
+    connect(ui->lineEdit_4,&QLineEdit::textEdited, user, &UserInfo::setMobile);
 
+}
+
+registeration::~registeration()
+{
+    delete InvalidEmailError;
+    delete InvalidMobileError;
+    delete ui;
+}
+
+void registeration::designWindow()
+{
     //These codes that are repeated are for the color and size and transparency of line edits, lebels and push bottons
+    InvalidEmailError=new QLabel(this);
+    InvalidEmailError->setText("Invalid Email Address");
+    InvalidEmailError->setStyleSheet("color: red;");
+        InvalidEmailError->setFrameShape(QFrame::NoFrame);
+    InvalidEmailError->setGeometry(ui->lineEdit_6->rect().bottomRight().x()-InvalidEmailError->width()/2,
+                                   ui->lineEdit_6->y()+(ui->lineEdit_6->height()/4),120,20);
+    InvalidEmailError->setVisible(false);
+
+    InvalidMobileError=new QLabel(this);
+    InvalidMobileError->setText("Invalid Mobile Number");
+    InvalidMobileError->setStyleSheet("color: red;");
+    InvalidMobileError->setFrameShape(QFrame::NoFrame);
+    InvalidMobileError->setGeometry(ui->lineEdit_4->rect().bottomRight().x()-InvalidEmailError->width()/2,
+                                   ui->lineEdit_4->y()+(ui->lineEdit_4->height()/4),125,20);
+    InvalidMobileError->setVisible(false);
+
     ui->label->setStyleSheet("QLabel {""background-color: rgba(0, 0, 0, 127);" "border-radius: 15px;" "border: none;" "}");
+
     ui->label_2->setFrameShape(QFrame::NoFrame);
     ui->label_2->setAttribute(Qt::WA_NoSystemBackground);
     ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
@@ -47,10 +79,22 @@ registeration::registeration(QWidget *parent)
     ui->label_15->stackUnder(ui->label);
 }
 
-registeration::~registeration()
+void registeration::showInvalidEmailError(bool IsTrue)
 {
-    delete ui;
+    if(IsTrue)
+    InvalidEmailError->show();
+    else
+        InvalidEmailError->hide();
 }
+
+void registeration::showInvalidMoblieError(bool IsTrue)
+{
+    if(IsTrue)
+        InvalidMobileError->show();
+    else
+        InvalidMobileError->hide();
+}
+
 
 void registeration::on_pushButton_3_clicked()
 {
@@ -60,7 +104,7 @@ void registeration::on_pushButton_3_clicked()
     if(userfile.exists()){
         //if the file existed yet, it means that the uer has an account yet
         ui->label_8->setStyleSheet("color: red;");
-        ui->label_8->setText(tr("There's still an account with this username"));
+        ui->label_8->setText(tr("Username already taken"));
         return;
     }
 
