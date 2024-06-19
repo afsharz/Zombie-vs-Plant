@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/new/prefix1">
-        <file>myimage.png.png</file>
         <file>peashooter transparent.png</file>
         <file>purple hair zombie_transparent.png</file>
         <file>regular zombie_transparent.png</file>
@@ -13,5 +12,6 @@
         <file>jalapino_transparent.png</file>
         <file>leaf hair zombie_transparent.png</file>
         <file>plum mine_transparent.png</file>
+        <file>Plants-vs-Zombies_2.jpg</file>
     </qresource>
 </RCC>
