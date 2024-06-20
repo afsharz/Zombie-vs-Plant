@@ -10,5 +10,9 @@ Zombie::Zombie(int _health,int _FirstMovementDelay,int _MovementDelay,int _Attac
     // setpixmap()
     //setpos->at first
 }
-//move function
-//attack function
+
+void Zombie::Decreasinghealth(int attackpowerplant)
+{
+    health -= attackpowerplant;
+}
+

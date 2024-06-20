@@ -6,6 +6,7 @@ class PurpleHairZombie
 {
 public:
     PurpleHairZombie();
+    void Movement();
 };
 
 #endif // PURPLEHAIRZOMBIE_H

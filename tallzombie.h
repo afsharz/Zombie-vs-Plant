@@ -6,6 +6,7 @@ class TallZombie
 {
 public:
     TallZombie();
+    void Movement();
 };
 
 #endif // TALLZOMBIE_H

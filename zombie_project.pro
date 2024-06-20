@@ -11,7 +11,9 @@ CONFIG += c++17
 SOURCES += \
     astronautzombie.cpp \
     boomerang.cpp \
+    brain.cpp \
     bucketheadzombie.cpp \
+    bullet.cpp \
     jalapeno.cpp \
     leafheadzombie.cpp \
     main.cpp \
@@ -22,6 +24,7 @@ SOURCES += \
     purplehairzombie.cpp \
     registeration.cpp \
     regularzombie.cpp \
+    sun.cpp \
     tallzombie.cpp \
     two_peashooter.cpp \
     userinfo.cpp \
@@ -31,7 +34,9 @@ SOURCES += \
 HEADERS += \
     astronautzombie.h \
     boomerang.h \
+    brain.h \
     bucketheadzombie.h \
+    bullet.h \
     jalapeno.h \
     leafheadzombie.h \
     mainwindow.h \
@@ -41,6 +46,7 @@ HEADERS += \
     purplehairzombie.h \
     registeration.h \
     regularzombie.h \
+    sun.h \
     tallzombie.h \
     two_peashooter.h \
     userinfo.h \
