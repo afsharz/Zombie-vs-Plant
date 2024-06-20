@@ -6,6 +6,7 @@ class BucketHeadZombie
 {
 public:
     BucketHeadZombie();
+    void Movement();
 };
 
 #endif // BUCKETHEADZOMBIE_H

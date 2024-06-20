@@ -6,6 +6,7 @@ class AstronautZombie
 {
 public:
     AstronautZombie();
+    void Movement();
 };
 
 #endif // ASTRONAUTZOMBIE_H

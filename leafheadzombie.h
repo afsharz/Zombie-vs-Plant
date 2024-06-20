@@ -6,6 +6,7 @@ class LeafHeadZombie
 {
 public:
     LeafHeadZombie();
+    void Movement();
 };
 
 #endif // LEAFHEADZOMBIE_H

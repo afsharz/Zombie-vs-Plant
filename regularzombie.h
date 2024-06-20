@@ -6,6 +6,8 @@ class RegularZombie
 {
 public:
     RegularZombie();
+    void Decreasinghealth();
+    void Movement();
 };
 
 #endif // REGULARZOMBIE_H
