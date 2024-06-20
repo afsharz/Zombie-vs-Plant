@@ -18,6 +18,8 @@ SOURCES += \
     mainwindow.cpp \
     peashooter.cpp \
     plant.cpp \
+    plantscene.cpp \
+    plantstore.cpp \
     plummine.cpp \
     purplehairzombie.cpp \
     registeration.cpp \
@@ -37,6 +39,8 @@ HEADERS += \
     mainwindow.h \
     peashooter.h \
     plant.h \
+    plantscene.h \
+    plantstore.h \
     plummine.h \
     purplehairzombie.h \
     registeration.h \
