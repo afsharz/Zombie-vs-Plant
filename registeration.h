@@ -27,7 +27,7 @@ public:
     void showInvalidEmailError(bool IsTrue);
     void showInvalidMoblieError(bool IsTrue);
     void showUnacceptablePwd(bool IsTrue);
-    void showPasswordState(UserInfo::state);
+    void showPasswordState(UserInfo::state state);
     void adjustWidgetPositions(int offset);
 private slots:
     void on_pushButton_3_clicked();
@@ -36,6 +36,8 @@ private:
     UserInfo *user;
     QLabel *InvalidEmailError;
     QLabel *InvalidMobileError;
+    QLabel *PasswordState;
+    QLabel *UnacceptablePass;
     QList<QWidget*> widgetsBelowEmail;
 };
 

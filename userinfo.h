@@ -11,11 +11,16 @@ public:
     UserInfo(registeration *r);
     ~UserInfo();
     enum state{ weak,medium,strong};
+    QString getName();
+    QString getUsername();
+    QString getPassword();
+    QString getEmail();
+    QString getMobile();
 public slots:
     void setName(QString _name);
     void setUsername(QString _username);
     void setMobile(QString _mobile);
-    void serPassword(QString _password);
+    void setPassword(QString _password);
     void setAddress(QString _address);
 
 

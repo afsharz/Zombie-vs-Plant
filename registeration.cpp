@@ -10,24 +10,27 @@ registeration::registeration(QWidget *parent)
     designWindow();
     connect(ui->lineEdit_6,&QLineEdit::textEdited, user, &UserInfo::setAddress);
     connect(ui->lineEdit_4,&QLineEdit::textEdited, user, &UserInfo::setMobile);
-
+    connect(ui->lineEdit_5,&QLineEdit::textEdited, user, &UserInfo::setPassword);
 }
 
 registeration::~registeration()
 {
     delete InvalidEmailError;
     delete InvalidMobileError;
+    delete UnacceptablePass;
+    delete PasswordState;
     delete ui;
 }
 
 void registeration::designWindow()
 {
+    ui->lineEdit_6->setEchoMode(QLineEdit::Normal);
     //These codes that are repeated are for the color and size and transparency of line edits, lebels and push bottons
     InvalidEmailError=new QLabel(this);
     InvalidEmailError->setText("Invalid Email Address");
     InvalidEmailError->setStyleSheet("color: red;");
         InvalidEmailError->setFrameShape(QFrame::NoFrame);
-    InvalidEmailError->setGeometry(ui->lineEdit_6->rect().bottomRight().x()-InvalidEmailError->width()/2,
+    InvalidEmailError->setGeometry(ui->lineEdit_6->x()+ui->lineEdit_6->width()-120,
                                    ui->lineEdit_6->y()+(ui->lineEdit_6->height()/4),120,20);
     InvalidEmailError->setVisible(false);
 
@@ -35,9 +38,25 @@ void registeration::designWindow()
     InvalidMobileError->setText("Invalid Mobile Number");
     InvalidMobileError->setStyleSheet("color: red;");
     InvalidMobileError->setFrameShape(QFrame::NoFrame);
-    InvalidMobileError->setGeometry(ui->lineEdit_4->rect().bottomRight().x()-InvalidEmailError->width()/2,
+    InvalidMobileError->setGeometry(ui->lineEdit_4->x()+ui->lineEdit_4->rect().width()-125,
                                    ui->lineEdit_4->y()+(ui->lineEdit_4->height()/4),125,20);
     InvalidMobileError->setVisible(false);
+
+    //password state label initialize
+    PasswordState=new QLabel(this);
+    PasswordState->setFrameShape(QFrame::NoFrame);
+    PasswordState->setGeometry(ui->lineEdit_5->x()+ui->lineEdit_5->rect().width()-50,ui->lineEdit_5->y()+(ui->lineEdit_5->height())/3,50,20);
+    PasswordState->setStyleSheet("backgound-color: rgba(0,0,0,0);");
+    PasswordState->show();
+    //unacceptabel password
+
+    UnacceptablePass=new QLabel(this);
+    UnacceptablePass->setFrameShape(QFrame::NoFrame);
+     UnacceptablePass->setGeometry(ui->lineEdit_5->x(),ui->lineEdit_5->y()+ui->lineEdit_5->height(),150,20);
+    UnacceptablePass->setStyleSheet("backgound-color: rgba(0,0,0,0);");
+    UnacceptablePass->setText("Unacceptable Password");
+    UnacceptablePass->setStyleSheet("color: red;");
+    UnacceptablePass->hide();
 
     ui->label->setStyleSheet("QLabel {""background-color: rgba(0, 0, 0, 127);" "border-radius: 15px;" "border: none;" "}");
 
@@ -95,6 +114,42 @@ void registeration::showInvalidMoblieError(bool IsTrue)
         InvalidMobileError->hide();
 }
 
+void registeration::showUnacceptablePwd(bool IsTrue)
+{
+    if(IsTrue)
+        UnacceptablePass->show();
+    else
+        UnacceptablePass->hide();
+}
+
+
+
+void registeration::showPasswordState(UserInfo::state state)
+{
+    switch (state)
+    {
+    case UserInfo::weak:
+    {
+        PasswordState->setStyleSheet("color: red;");
+        PasswordState->setText("Weak");
+        break;
+    }
+    case UserInfo::medium:
+    {
+        PasswordState->setStyleSheet("color: orange;");
+        PasswordState->setText("Medium");
+        PasswordState->setFont(QFont("times",10,2,false));
+        break;
+    }
+    case UserInfo::strong:
+    {
+        PasswordState->setStyleSheet("color: green;");
+        PasswordState->setText("Strong");
+        break;
+    }
+    }
+}
+
 
 void registeration::on_pushButton_3_clicked()
 {
@@ -102,7 +157,7 @@ void registeration::on_pushButton_3_clicked()
     QFile userfile(filename);
 
     if(userfile.exists()){
-        //if the file existed yet, it means that the uer has an account yet
+        //if the file existed yet, it means that the user has an account yet
         ui->label_8->setStyleSheet("color: red;");
         ui->label_8->setText(tr("Username already taken"));
         return;
@@ -114,17 +169,11 @@ void registeration::on_pushButton_3_clicked()
     }
     QTextStream out(&userfile);
 
-    QString name = ui->lineEdit->text();
-    QString username = ui->lineEdit_3->text();
-    QString mobile = ui->lineEdit_4->text();
-    QString password = ui->lineEdit_5->text();
-    QString address = ui->lineEdit_6->text();
-
-    QByteArray bytes = QCryptographicHash :: hash(password.toUtf8() , QCryptographicHash :: Md4);
+    QByteArray bytes = QCryptographicHash :: hash(user->getPassword().toUtf8() , QCryptographicHash :: Md4);
     QString digest = QString(bytes.toHex());
 
 
-    out << name << "\n" <<username << "\n" << mobile <<"\n" << digest << "\n" << address << "\n";
+    out << user->getName() << "\n" <<user->getUsername() << "\n" << user->getMobile() <<"\n" << digest << "\n" << user->getEmail() << "\n";
 
     userfile.flush();
     userfile.close();
