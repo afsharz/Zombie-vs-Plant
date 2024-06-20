@@ -1,10 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "plantscene.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
 
     //These codes that are repeated are for the color and size and transparency of line edits, lebels and push bottons
@@ -122,5 +124,11 @@ void MainWindow::on_pushButton_3_clicked()
         ui->label_9->setText(tr("log in successfully!"));
     }
 
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    PlantScene *PSc = new PlantScene;
 }
 
