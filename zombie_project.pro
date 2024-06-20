@@ -10,27 +10,41 @@ CONFIG += c++17
 
 SOURCES += \
     astronautzombie.cpp \
+    boomerang.cpp \
     bucketheadzombie.cpp \
+    jalapeno.cpp \
     leafheadzombie.cpp \
     main.cpp \
     mainwindow.cpp \
+    peashooter.cpp \
+    plant.cpp \
+    plummine.cpp \
     purplehairzombie.cpp \
     registeration.cpp \
     regularzombie.cpp \
     tallzombie.cpp \
+    two_peashooter.cpp \
     userinfo.cpp \
+    walnut.cpp \
     zombie.cpp
 
 HEADERS += \
     astronautzombie.h \
+    boomerang.h \
     bucketheadzombie.h \
+    jalapeno.h \
     leafheadzombie.h \
     mainwindow.h \
+    peashooter.h \
+    plant.h \
+    plummine.h \
     purplehairzombie.h \
     registeration.h \
     regularzombie.h \
     tallzombie.h \
+    two_peashooter.h \
     userinfo.h \
+    walnut.h \
     zombie.h
 
 FORMS += \

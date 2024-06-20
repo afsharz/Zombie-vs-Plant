@@ -1,5 +1,5 @@
 #include "regularzombie.h"
 
 RegularZombie::RegularZombie()
-    :Zombie(500,1,1,25,1)
+    :Zombie(500,1,1,25,1,1)
 {}

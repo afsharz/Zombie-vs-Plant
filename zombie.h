@@ -8,14 +8,16 @@ class Zombie
 {
     Q_OBJECT
 public:
-    Zombie(int h,int fmd,int md,int ap,int tba);
-    virtual ~Zombie()=0;
+    Zombie(int _health,int _FirstMovementDelay,int _MovementDelay,int _AttackPower, int _FirstTimeBwAttack, int _TimeBwAttack);
+    //virtual ~Zombie()=0; //error
+
 private:
     //QPoint *position;
     int health;
-    int attackPower;
-    int timeBwAttack;
-    int firstMovementDelay;
+    int AttackPower;
+    int FirstTimeBwAttack;
+    int TimeBwAttack;
+    int FirstMovementDelay;
     int MovementDelay;
     int price;
 };
