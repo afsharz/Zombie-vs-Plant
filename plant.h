@@ -12,8 +12,7 @@ public:
     void Decreasinghealth(int attackpowerzombie);
     //func health
     //func attack
-
-    ~Plant();
+    //~Plant();
 private :
     int health;
     int FiringRate;

@@ -10,8 +10,8 @@ class Zombie
 public:
     Zombie(int _health,int _FirsfutMovementDelay,int _MovementDelay,int _AttackPower, int _FirstTimeBwAttack, int _TimeBwAttack);
     void Decreasinghealth(int attackpowerplant);
-    virtual void Movement()=0;
-    ~Zombie();
+    //virtual void Movement()=0;
+    //~Zombie();
 
 private:
     //QPoint *position;

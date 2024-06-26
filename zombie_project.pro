@@ -31,7 +31,9 @@ SOURCES += \
     two_peashooter.cpp \
     userinfo.cpp \
     walnut.cpp \
-    zombie.cpp
+    zombie.cpp \
+    zombiescene.cpp \
+    zombiestore.cpp
 
 HEADERS += \
     astronautzombie.h \
@@ -55,7 +57,9 @@ HEADERS += \
     two_peashooter.h \
     userinfo.h \
     walnut.h \
-    zombie.h
+    zombie.h \
+    zombiescene.h \
+    zombiestore.h
 
 FORMS += \
     mainwindow.ui \
