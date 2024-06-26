@@ -130,7 +130,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    //PlantScene *PSc = new PlantScene;
+    PlantScene *PSc = new PlantScene;
     ZombieScene *ZSc = new ZombieScene;
 }
 

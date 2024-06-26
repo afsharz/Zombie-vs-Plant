@@ -8,7 +8,7 @@ PlantStore::PlantStore() {
     boomerang=new QGraphicsPixmapItem;
     plumMine=new QGraphicsPixmapItem;
 
-    two_peashooter->setPixmap(QPixmap(":/new/prefix1/two_peashooter22.jpg"));
+    two_peashooter->setPixmap(QPixmap(":/new/prefix1/two_peashooter.jpg"));
     two_peashooter->setPos(0,-120);
     two_peashooter->setScale(0.1);
 
