@@ -14,6 +14,8 @@ SOURCES += \
     brain.cpp \
     bucketheadzombie.cpp \
     bullet.cpp \
+    card.cpp \
+    home.cpp \
     jalapeno.cpp \
     leafheadzombie.cpp \
     main.cpp \
@@ -41,6 +43,8 @@ HEADERS += \
     brain.h \
     bucketheadzombie.h \
     bullet.h \
+    card.h \
+    home.h \
     jalapeno.h \
     leafheadzombie.h \
     mainwindow.h \
