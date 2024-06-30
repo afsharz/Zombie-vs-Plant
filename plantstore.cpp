@@ -1,12 +1,14 @@
 #include "plantstore.h"
 
-PlantStore::PlantStore() {
-    peashooter=new QGraphicsPixmapItem;
-    two_peashooter=new QGraphicsPixmapItem;
-    walnut=new QGraphicsPixmapItem;
-    jalapeno=new QGraphicsPixmapItem;
-    boomerang=new QGraphicsPixmapItem;
-    plumMine=new QGraphicsPixmapItem;
+PlantStore::PlantStore(QGraphicsScene *scene)
+    :scene(scene)
+{
+    peashooter = new Card(scene, "PeaShooter");
+    two_peashooter = new Card(scene, "TwoPeaShooter");
+    walnut = new Card(scene, "Walnut");
+    jalapeno = new Card(scene, "Jalapeno");
+    boomerang = new Card(scene, "Boomerang");
+    plumMine = new Card(scene, "PlumMine");
 
     two_peashooter->setPixmap(QPixmap(":/new/prefix1/two_peashooter.jpg"));
     two_peashooter->setPos(0,-120);
