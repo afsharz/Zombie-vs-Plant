@@ -7,10 +7,6 @@ Card::Card(QGraphicsScene *scene,QString _Type)
     pre=nullptr;
 }
 
-Card::~Card()
-{
-    delete transparent;
-}
 
 void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
@@ -18,7 +14,20 @@ void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
         dragStartPosition = event->pos();
         QPointF newPos = mapToScene(event->pos() - dragStartPosition);
         transparent=new QGraphicsPixmapItem();
+
+
+        if(Type=="PeaShooter")
         transparent->setPixmap(QPixmap(":/new/prefix1/peashooter transparent.png"));
+        else if(Type=="TwoPeashooter")
+            transparent->setPixmap(QPixmap(":/new/prefix1/two_peashooter_transparent.png"));
+        else if(Type=="Walnut")
+            transparent->setPixmap(QPixmap(":/new/prefix1/walnut_transparent.png"));
+        else if(Type=="PlumMine")
+            transparent->setPixmap(QPixmap(":/new/prefix1/plum mine_transparent.png"));
+        else if(Type=="Jalapeno")
+            transparent->setPixmap(QPixmap(":/new/prefix1/jalapino_transparent.png"));
+        else if(Type=="Boomerang")
+            transparent->setPixmap(QPixmap(":/new/prefix1/boomrang_transparent.png"));
         scene->addItem(transparent);
         transparent->setPos(newPos);
         transparent->setScale(0.1);
@@ -63,5 +72,9 @@ void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             h->dropPlant(Type);
         }
     }
+}
+Card::~Card()
+{
+    delete transparent;
 }
 

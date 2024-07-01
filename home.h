@@ -15,11 +15,11 @@ public:
     void highlight();
     void unhighlight();
     void dropPlant(QString plantType);
-    void setVectorP(QVector<Plant*> plantList);
+    void setVectorP(QVector<Plant*> *plantList);
     // void setVectorZ
 private:
     QPointF position;
-    QVector<Plant*> plantList;
+    QVector<Plant*> *plantList;
 };
 
 #endif // HOME_H
