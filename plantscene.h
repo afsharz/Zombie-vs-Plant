@@ -11,13 +11,11 @@
 #include "plantstore.h"
 #include "zombie.h"
 #include "plant.h"
-#include "home.h"
 #include "wallet.h"
 #include "sun.h"
 
 class PlantScene
 :public QGraphicsView
-
 {
     Q_OBJECT
 public:

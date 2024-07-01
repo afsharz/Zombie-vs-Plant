@@ -5,12 +5,13 @@
 class Wallet : public QGraphicsTextItem
 {
 public:
-    Wallet( int flag , QGraphicsTextItem * parent=0);
+    Wallet( int _flag , QGraphicsTextItem * parent=0);
     void Increasing();
     void Decreasing(int HowMany);
     int Get_Money();
 private :
     int Money;
+    int flag;
 };
 
 #endif // WALLET_H
