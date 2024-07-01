@@ -42,7 +42,7 @@ void PlantScene::initializeGrid()
             home *h = new home(QPointF(startX + col * cellWidth,
                                     startY + row * cellHeight),
                                   cellWidth, cellHeight);
-            h->setVectorP(plants);
+            h->setVectorP(&plants);
             scene->addItem(h);
             homes.push_back(h);
         }

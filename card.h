@@ -15,12 +15,11 @@ protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 private:
+    QString Type;
     QPointF dragStartPosition;
-    const QPointF position;
     QGraphicsPixmapItem *transparent;
     QGraphicsScene *scene;
     home *pre;
-    QString Type;
 };
 
 #endif // CARD_H

@@ -3,8 +3,9 @@
 PlantStore::PlantStore(QGraphicsScene *scene)
     :scene(scene)
 {
+
     peashooter = new Card(scene, "PeaShooter");
-    two_peashooter = new Card(scene, "TwoPeaShooter");
+    two_peashooter = new Card(scene, "TwoPeashooter");
     walnut = new Card(scene, "Walnut");
     jalapeno = new Card(scene, "Jalapeno");
     boomerang = new Card(scene, "Boomerang");
