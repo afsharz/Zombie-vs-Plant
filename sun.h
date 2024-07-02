@@ -6,7 +6,6 @@
 #include <QObject>
 #include "wallet.h"
 
-
 class Sun :public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
@@ -18,8 +17,6 @@ protected:
 private :
     QGraphicsScene *scene;
     Wallet* wallet;
-
-
 };
 
 #endif // SUN_H
