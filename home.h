@@ -2,6 +2,7 @@
 #define HOME_H
 #include <QGraphicsRectItem>
 #include "plant.h"
+#include "zombie.h"
 class home
 :public QGraphicsRectItem,public QObject
 {
@@ -15,11 +16,13 @@ public:
     void highlight();
     void unhighlight();
     void dropPlant(QString plantType);
+    void dropZombie(QString zombieType);
     void setVectorP(QVector<Plant*> *plantList);
-    // void setVectorZ
+    void setVectorZ(QVector<Zombie*> *zombieList);
 private:
     QPointF position;
     QVector<Plant*> *plantList;
+    QVector<Zombie*> *zombieList;
 };
 
 #endif // HOME_H

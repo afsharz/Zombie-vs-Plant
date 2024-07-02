@@ -1,19 +1,21 @@
 #ifndef ZOMBIESTORE_H
 #define ZOMBIESTORE_H
 #include <QGraphicsPixmapItem>
+#include <card.h>
 
 class ZombieStore
 {
 public:
-    ZombieStore();
+    ZombieStore(QGraphicsScene *scene);
 
     //private:
-    QGraphicsPixmapItem *regularzombie;
-    QGraphicsPixmapItem *bucketheadzombie;
-    QGraphicsPixmapItem *leafheadzombie;
-    QGraphicsPixmapItem *tallzombie;
-    QGraphicsPixmapItem *astronautzombie;
-    QGraphicsPixmapItem *purplehairzombie;
+    Card *regularzombie;
+    Card *bucketheadzombie;
+    Card *leafheadzombie;
+    Card *tallzombie;
+    Card *astronautzombie;
+    Card *purplehairzombie;
+    QGraphicsScene *scene;
 };
 
 #endif // ZOMBIESTORE_H

@@ -1,12 +1,12 @@
 #include "zombiestore.h"
 
-ZombieStore::ZombieStore() {
-    regularzombie=new QGraphicsPixmapItem;
-    bucketheadzombie=new QGraphicsPixmapItem;
-    leafheadzombie=new QGraphicsPixmapItem;
-    tallzombie=new QGraphicsPixmapItem;
-    astronautzombie=new QGraphicsPixmapItem;
-    purplehairzombie=new QGraphicsPixmapItem;
+ZombieStore::ZombieStore(QGraphicsScene *scene) : scene(scene){
+    regularzombie=new Card(scene,"regularzombie");
+    bucketheadzombie=new Card(scene,"bucketheadzombie");
+    leafheadzombie=new Card(scene,"leafheadzombie");
+    tallzombie=new Card(scene,"tallzombie");
+    astronautzombie=new Card(scene,"astronautzombie");
+    purplehairzombie=new Card(scene,"purplehairzombie");
 
     regularzombie->setPixmap(QPixmap(":/new/prefix1/regular zombie.jpg"));
     regularzombie->setPos(750,-120);
