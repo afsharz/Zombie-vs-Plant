@@ -5,7 +5,7 @@
 class Boomerang : public Plant
 {
 public:
-    Boomerang();
+    Boomerang(QPointF pos);
 };
 
 #endif // BOOMERANG_H

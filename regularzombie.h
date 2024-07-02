@@ -5,7 +5,7 @@ class RegularZombie
 :public Zombie
 {
 public:
-    RegularZombie();
+    RegularZombie(QPointF pos);
     void Decreasinghealth();
     void Movement();
 };

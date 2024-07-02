@@ -1,8 +1,10 @@
 #include "card.h"
 #include "home.h"
+#include "QRegularExpression"
+#include "QRegularExpressionMatch"
 #define c1r1 QPointF(1200,220)
 Card::Card(QGraphicsScene *scene,QString _Type)
-    :scene (scene),Type(_Type)
+    :Type(_Type),scene (scene)
 {
     pre=nullptr;
 }
@@ -14,8 +16,7 @@ void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
         dragStartPosition = event->pos();
         QPointF newPos = mapToScene(event->pos() - dragStartPosition);
         transparent=new QGraphicsPixmapItem();
-
-
+        transparent->setScale(0.1);
         if(Type=="PeaShooter")
         transparent->setPixmap(QPixmap(":/new/prefix1/peashooter transparent.png"));
         else if(Type=="TwoPeashooter")
@@ -27,7 +28,10 @@ void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
         else if(Type=="Jalapeno")
             transparent->setPixmap(QPixmap(":/new/prefix1/jalapino_transparent.png"));
         else if(Type=="Boomerang")
+        {
+            transparent->setScale(0.25);
             transparent->setPixmap(QPixmap(":/new/prefix1/boomrang_transparent.png"));
+        }
         else if (Type=="regularzombie")
             transparent->setPixmap(QPixmap(":/new/prefix1/regular zombie_transparent.png"));
         else if (Type=="bucketheadzombie")
@@ -42,7 +46,7 @@ void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
             transparent->setPixmap(QPixmap(":/new/prefix1/purple hair zombie_transparent.png"));
         scene->addItem(transparent);
         transparent->setPos(newPos);
-        transparent->setScale(0.1);
+
     }
     //QGraphicsPixmapItem::mousePressEvent(event);
 }
@@ -80,8 +84,15 @@ void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         home* h = dynamic_cast<home*>(item);
         if (h)
         {
+            QRegularExpression *t=new QRegularExpression("zombie");
+            QRegularExpressionMatch *m=new QRegularExpressionMatch;
+            *m=t->match(Type);
+            qDebug()<<m->hasMatch();
+            if(m->hasMatch())
+                h->dropZombie(Type);
+            else
+                h->dropPlant(Type);
             h->unhighlight();
-            h->dropPlant(Type);
         }
     }
 }

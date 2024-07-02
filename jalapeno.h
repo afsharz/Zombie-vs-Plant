@@ -5,7 +5,7 @@
 class Jalapeno : public Plant
 {
 public:
-    Jalapeno();
+    Jalapeno(QPointF pos);
 };
 
 #endif // JALAPENO_H

@@ -82,35 +82,35 @@ void home::dropPlant(QString plantType)
     }
     else if(plantType=="TwoPeashooter")
     {
-        Two_PeaShooter *p=new Two_PeaShooter;
+        Two_PeaShooter *p=new Two_PeaShooter(position);
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
     }
     else if(plantType=="Walnut")
     {
-        Walnut *p=new Walnut;
+        Walnut *p=new Walnut(position);
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
     }
     else if(plantType=="PlumMine")
     {
-        PlumMine *p=new PlumMine;
+        PlumMine *p=new PlumMine(position);
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
     }
     else if(plantType=="Jalapeno")
     {
-        Jalapeno *p= new Jalapeno;
+        Jalapeno *p= new Jalapeno(position);
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
     }
     else if(plantType=="Boomerang")
     {
-        Boomerang *p= new Boomerang;
+        Boomerang *p= new Boomerang(position);
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
@@ -121,7 +121,7 @@ void home::dropZombie(QString zombieType)
 {
      if (zombieType=="regularzombie")
     {
-        RegularZombie *z=new RegularZombie;
+        RegularZombie *z=new RegularZombie(position);
         z->setScale(0.07);
         scene()->addItem(z);
         qDebug()<<position;
@@ -129,7 +129,7 @@ void home::dropZombie(QString zombieType)
     }
     else if (zombieType=="bucketheadzombie")
      {
-         BucketHeadZombie *z=new BucketHeadZombie;
+         BucketHeadZombie *z=new BucketHeadZombie(position);
          z->setScale(0.07);
          scene()->addItem(z);
          qDebug()<<position;
@@ -137,7 +137,7 @@ void home::dropZombie(QString zombieType)
      }
     else if (zombieType=="leafheadzombie")
     {
-        LeafHeadZombie *z=new LeafHeadZombie;
+        LeafHeadZombie *z=new LeafHeadZombie(position);
         z->setScale(0.07);
         scene()->addItem(z);
         qDebug()<<position;
@@ -145,7 +145,7 @@ void home::dropZombie(QString zombieType)
     }
      else if (zombieType=="tallzombie")
      {
-         TallZombie *z=new TallZombie;
+         TallZombie *z=new TallZombie(position);
          z->setScale(0.07);
          scene()->addItem(z);
          qDebug()<<position;
@@ -153,7 +153,7 @@ void home::dropZombie(QString zombieType)
      }
     else if (zombieType=="astronautzombie")
     {
-        AstronautZombie *z=new AstronautZombie;
+        AstronautZombie *z=new AstronautZombie(position);
         z->setScale(0.07);
         scene()->addItem(z);
         qDebug()<<position;
@@ -161,7 +161,7 @@ void home::dropZombie(QString zombieType)
     }
     else if (zombieType=="purplehairzombie")
      {
-         PurpleHairZombie *z=new PurpleHairZombie;
+         PurpleHairZombie *z=new PurpleHairZombie(position);
          z->setScale(0.07);
          scene()->addItem(z);
          qDebug()<<position;

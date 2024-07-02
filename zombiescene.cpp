@@ -12,7 +12,7 @@ ZombieScene::ZombieScene ()
     view->setBackgroundBrush(QColor(0, 0, 0));
     QGraphicsPixmapItem *bg=new QGraphicsPixmapItem(QPixmap::fromImage(image));
     scene->addItem(bg);
-    //initializeGrid();
+    initializeGrid();
     scene->setSceneRect(0,0,1080,502);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -45,7 +45,6 @@ void ZombieScene::initializeGrid()
     qreal cellHeight = 73;
     qreal startX = 125;
     qreal startY = 40;
-
     for (int row = 0; row < ROWS; ++row) {
         for (int col = 0; col < COLS; ++col) {
             home *h = new home(QPointF(startX + col * cellWidth,
