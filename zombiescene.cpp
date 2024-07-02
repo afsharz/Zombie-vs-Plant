@@ -1,6 +1,8 @@
 #include "zombiescene.h"
 #include <QBrush>
 #include "zombiestore.h"
+#define ROWS 6
+#define COLS 12
 ZombieScene::ZombieScene ()
 {
     scene=new QGraphicsScene;
@@ -15,7 +17,7 @@ ZombieScene::ZombieScene ()
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setFixedSize(1090,1000);
-    ZombieStore *p=new ZombieStore;
+    ZombieStore *p=new ZombieStore(scene);
     view->scene()->addItem(p->regularzombie);
     view->scene()->addItem(p->bucketheadzombie);
     view->scene()->addItem(p->leafheadzombie);
@@ -29,7 +31,15 @@ ZombieScene::ZombieScene ()
     view->show();
 }
 
-/*void ZombieScene::initializeGrid()
+
+void ZombieScene::Game()
+{
+    QTimer* timer = new QTimer(this);
+    QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(Brain_Maker()));
+    timer->start(5000);
+}
+
+void ZombieScene::initializeGrid()
 {
     qreal cellWidth = 77;
     qreal cellHeight = 73;
@@ -41,18 +51,11 @@ ZombieScene::ZombieScene ()
             home *h = new home(QPointF(startX + col * cellWidth,
                                        startY + row * cellHeight),
                                cellWidth, cellHeight);
-            h->setVectorP(&plants);
+            h->setVectorZ(&zombies);
             scene->addItem(h);
             homes.push_back(h);
         }
     }
-}*/
-
-void ZombieScene::Game()
-{
-    QTimer* timer = new QTimer(this);
-    QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(Brain_Maker()));
-    timer->start(5000);
 }
 
 void ZombieScene::Brain_Maker()

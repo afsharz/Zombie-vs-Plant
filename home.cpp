@@ -8,6 +8,12 @@
 #include "walnut.h"
 #include "jalapeno.h"
 #include "boomerang.h"
+#include "regularzombie.h"
+#include "tallzombie.h"
+#include "astronautzombie.h"
+#include "leafheadzombie.h"
+#include "bucketheadzombie.h"
+#include "purplehairzombie.h"
 #include <QTimer>
 
 home::home(QPointF pos, qreal w, qreal h)
@@ -72,9 +78,7 @@ void home::dropPlant(QString plantType)
         p->setScale(0.07);
         scene()->addItem(p);
         qDebug()<<position;
-        //p->setPos(position);
         plantList->push_back(p);
-        //p->show();
     }
     else if(plantType=="TwoPeashooter")
     {
@@ -113,9 +117,66 @@ void home::dropPlant(QString plantType)
     }
 }
 
+void home::dropZombie(QString zombieType)
+{
+     if (zombieType=="regularzombie")
+    {
+        RegularZombie *z=new RegularZombie;
+        z->setScale(0.07);
+        scene()->addItem(z);
+        qDebug()<<position;
+        zombieList->push_back(z);
+    }
+    else if (zombieType=="bucketheadzombie")
+     {
+         BucketHeadZombie *z=new BucketHeadZombie;
+         z->setScale(0.07);
+         scene()->addItem(z);
+         qDebug()<<position;
+         zombieList->push_back(z);
+     }
+    else if (zombieType=="leafheadzombie")
+    {
+        LeafHeadZombie *z=new LeafHeadZombie;
+        z->setScale(0.07);
+        scene()->addItem(z);
+        qDebug()<<position;
+        zombieList->push_back(z);
+    }
+     else if (zombieType=="tallzombie")
+     {
+         TallZombie *z=new TallZombie;
+         z->setScale(0.07);
+         scene()->addItem(z);
+         qDebug()<<position;
+         zombieList->push_back(z);
+     }
+    else if (zombieType=="astronautzombie")
+    {
+        AstronautZombie *z=new AstronautZombie;
+        z->setScale(0.07);
+        scene()->addItem(z);
+        qDebug()<<position;
+        zombieList->push_back(z);
+    }
+    else if (zombieType=="purplehairzombie")
+     {
+         PurpleHairZombie *z=new PurpleHairZombie;
+         z->setScale(0.07);
+         scene()->addItem(z);
+         qDebug()<<position;
+         zombieList->push_back(z);
+     }
+}
+
 void home::setVectorP(QVector<Plant *> *_plantList)
 {
     plantList=_plantList;
+}
+
+void home::setVectorZ(QVector<Zombie *> *_zombieList)
+{
+    zombieList=_zombieList;
 }
 
 

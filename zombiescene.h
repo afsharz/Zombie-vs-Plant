@@ -8,7 +8,7 @@
 #include <QBrush>
 #include <QTimer>
 #include "zombie.h"
-//#include "home.h"
+#include "home.h"
 #include "plant.h"
 #include "wallet.h"
 #include "brain.h"
@@ -21,12 +21,13 @@ public:
     ZombieScene();
     //void initializeGrid();
     void Game();
+    void initializeGrid();
     //void mousePressEvent(QGraphicsSceneMouseEvent *event);
 private :
     QGraphicsScene *scene;
     QVector<Zombie*> zombies;
     QVector<Plant*> plants;
-    //QVector<home*> homes;
+    QVector<home*> homes;
     Wallet* wallet;
 public slots :
     void Brain_Maker();

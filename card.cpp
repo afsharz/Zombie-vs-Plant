@@ -28,6 +28,18 @@ void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
             transparent->setPixmap(QPixmap(":/new/prefix1/jalapino_transparent.png"));
         else if(Type=="Boomerang")
             transparent->setPixmap(QPixmap(":/new/prefix1/boomrang_transparent.png"));
+        else if (Type=="regularzombie")
+            transparent->setPixmap(QPixmap(":/new/prefix1/regular zombie_transparent.png"));
+        else if (Type=="bucketheadzombie")
+            transparent->setPixmap(QPixmap(":/new/prefix1/Bucket head zombie_trasparent.png"));
+        else if (Type=="leafheadzombie")
+        transparent->setPixmap(QPixmap(":/new/prefix1/leaf hair zombie_transparent.png"));
+        else if (Type=="tallzombie")
+            transparent->setPixmap(QPixmap(":/new/prefix1/tall zombie_transparent.png"));
+        else if (Type=="astronautzombie")
+        transparent->setPixmap(QPixmap(":/new/prefix1/astronaut zombie_transparent.png"));
+        else if (Type=="purplehairzombie")
+            transparent->setPixmap(QPixmap(":/new/prefix1/purple hair zombie_transparent.png"));
         scene->addItem(transparent);
         transparent->setPos(newPos);
         transparent->setScale(0.1);
