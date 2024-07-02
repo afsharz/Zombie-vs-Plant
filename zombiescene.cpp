@@ -31,14 +31,12 @@ ZombieScene::ZombieScene ()
     view->show();
 }
 
-
 void ZombieScene::Game()
 {
     QTimer* timer = new QTimer(this);
     QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(Brain_Maker()));
     timer->start(5000);
 }
-
 void ZombieScene::initializeGrid()
 {
     qreal cellWidth = 77;
@@ -57,6 +55,7 @@ void ZombieScene::initializeGrid()
     }
 
 }
+
 
 void ZombieScene::Brain_Maker()
 {

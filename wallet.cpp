@@ -11,7 +11,6 @@ Wallet::Wallet( int _flag , QGraphicsTextItem * parent) : QGraphicsTextItem(pare
     setFont(QFont("times" , 16));
 }
 
-
 void Wallet:: Increasing() {
     Money+=25;
     if(flag)
