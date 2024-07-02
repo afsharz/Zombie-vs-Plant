@@ -37,18 +37,13 @@ void ZombieScene::Game()
     timer->start(5000);
 
 }
-
 void ZombieScene::initializeGrid()
 {
     qreal cellWidth = 77;
     qreal cellHeight = 73;
     qreal startX = 125;
-<<<<<<< HEAD
     qreal startY = 33;
 
-=======
-    qreal startY = 40;
->>>>>>> 09739f4 (set picture for zombies and plants)
     for (int row = 0; row < ROWS; ++row) {
         for (int col = 0; col < COLS; ++col) {
             home *h = new home(QPointF(startX + col * cellWidth,
@@ -61,6 +56,7 @@ void ZombieScene::initializeGrid()
     }
 
 }
+
 
 void ZombieScene::Brain_Maker()
 {

@@ -83,10 +83,7 @@ void home::dropPlant(QString plantType)
     else if(plantType=="TwoPeashooter")
     {
         Two_PeaShooter *p=new Two_PeaShooter(position);
-<<<<<<< HEAD
         p->setScale(0.07);
-=======
->>>>>>> 09739f4 (set picture for zombies and plants)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
@@ -94,10 +91,7 @@ void home::dropPlant(QString plantType)
     else if(plantType=="Walnut")
     {
         Walnut *p=new Walnut(position);
-<<<<<<< HEAD
         p->setScale(0.08);
-=======
->>>>>>> 09739f4 (set picture for zombies and plants)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
@@ -105,10 +99,7 @@ void home::dropPlant(QString plantType)
     else if(plantType=="PlumMine")
     {
         PlumMine *p=new PlumMine(position);
-<<<<<<< HEAD
         p->setScale(0.07);
-=======
->>>>>>> 09739f4 (set picture for zombies and plants)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
@@ -116,10 +107,7 @@ void home::dropPlant(QString plantType)
     else if(plantType=="Jalapeno")
     {
         Jalapeno *p= new Jalapeno(position);
-<<<<<<< HEAD
         p->setScale(0.07);
-=======
->>>>>>> 09739f4 (set picture for zombies and plants)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
@@ -127,10 +115,7 @@ void home::dropPlant(QString plantType)
     else if(plantType=="Boomerang")
     {
         Boomerang *p= new Boomerang(position);
-<<<<<<< HEAD
         p->setScale(0.23);
-=======
->>>>>>> 09739f4 (set picture for zombies and plants)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
@@ -142,12 +127,8 @@ void home::dropZombie(QString zombieType)
      if (zombieType=="regularzombie")
     {
         RegularZombie *z=new RegularZombie(position);
-<<<<<<< HEAD
 
         z->setScale(0.075);
-=======
-        z->setScale(0.07);
->>>>>>> 09739f4 (set picture for zombies and plants)
         scene()->addItem(z);
         qDebug()<<position;
         zombieList->push_back(z);
@@ -155,26 +136,17 @@ void home::dropZombie(QString zombieType)
     else if (zombieType=="bucketheadzombie")
      {
          BucketHeadZombie *z=new BucketHeadZombie(position);
-<<<<<<< HEAD
          z->setScale(0.075);
-=======
-         z->setScale(0.07);
->>>>>>> 09739f4 (set picture for zombies and plants)
          scene()->addItem(z);
          qDebug()<<position;
          zombieList->push_back(z);
      }
     else if (zombieType=="leafheadzombie")
     {
-<<<<<<< HEAD
 
         LeafHeadZombie *z=new LeafHeadZombie(position);
 
         z->setScale(0.075);
-=======
-        LeafHeadZombie *z=new LeafHeadZombie(position);
-        z->setScale(0.07);
->>>>>>> 09739f4 (set picture for zombies and plants)
         scene()->addItem(z);
         qDebug()<<position;
         zombieList->push_back(z);
@@ -182,11 +154,7 @@ void home::dropZombie(QString zombieType)
      else if (zombieType=="tallzombie")
      {
          TallZombie *z=new TallZombie(position);
-<<<<<<< HEAD
          z->setScale(0.075);
-=======
-         z->setScale(0.07);
->>>>>>> 09739f4 (set picture for zombies and plants)
          scene()->addItem(z);
          qDebug()<<position;
          zombieList->push_back(z);
@@ -194,12 +162,8 @@ void home::dropZombie(QString zombieType)
     else if (zombieType=="astronautzombie")
     {
         AstronautZombie *z=new AstronautZombie(position);
-<<<<<<< HEAD
 
         z->setScale(0.075);
-=======
-        z->setScale(0.07);
->>>>>>> 09739f4 (set picture for zombies and plants)
         scene()->addItem(z);
         qDebug()<<position;
         zombieList->push_back(z);
