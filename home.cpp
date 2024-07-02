@@ -122,6 +122,7 @@ void home::dropZombie(QString zombieType)
      if (zombieType=="regularzombie")
     {
         RegularZombie *z=new RegularZombie(position);
+
         z->setScale(0.07);
         scene()->addItem(z);
         qDebug()<<position;
@@ -137,7 +138,9 @@ void home::dropZombie(QString zombieType)
      }
     else if (zombieType=="leafheadzombie")
     {
+
         LeafHeadZombie *z=new LeafHeadZombie(position);
+
         z->setScale(0.07);
         scene()->addItem(z);
         qDebug()<<position;
@@ -154,6 +157,7 @@ void home::dropZombie(QString zombieType)
     else if (zombieType=="astronautzombie")
     {
         AstronautZombie *z=new AstronautZombie(position);
+
         z->setScale(0.07);
         scene()->addItem(z);
         qDebug()<<position;
