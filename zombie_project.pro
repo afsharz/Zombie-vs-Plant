@@ -32,6 +32,7 @@ SOURCES += \
     tallzombie.cpp \
     two_peashooter.cpp \
     userinfo.cpp \
+    wallet.cpp \
     walnut.cpp \
     zombie.cpp \
     zombiescene.cpp \
@@ -60,6 +61,7 @@ HEADERS += \
     tallzombie.h \
     two_peashooter.h \
     userinfo.h \
+    wallet.h \
     walnut.h \
     zombie.h \
     zombiescene.h \

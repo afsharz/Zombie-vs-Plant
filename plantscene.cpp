@@ -1,7 +1,4 @@
 #include "plantscene.h"
-#include <QBrush>
-#include <home.h>
-#include "plantstore.h"
 #define ROWS 6
 #define COLS 12
 PlantScene::PlantScene()
@@ -25,16 +22,21 @@ PlantScene::PlantScene()
     view->scene()->addItem(p->jalapeno);
     view->scene()->addItem(p->boomerang);
     view->scene()->addItem(p->plumMine);
+    wallet = new Wallet(1);
+    wallet->setPos(500 , -40);
+    view->scene()->addItem(wallet);
+    Game();
     view->show();
+
 
 }
 
 
 void PlantScene::initializeGrid()
 {
-    qreal cellWidth = 71;
-    qreal cellHeight = 60;
-    qreal startX = 117;
+    qreal cellWidth = 77;
+    qreal cellHeight = 73;
+    qreal startX = 125;
     qreal startY = 40;
 
     for (int row = 0; row < ROWS; ++row) {
@@ -47,4 +49,18 @@ void PlantScene::initializeGrid()
             homes.push_back(h);
         }
     }
+}
+
+void PlantScene::Game()
+{
+    QTimer* timer = new QTimer(this);
+    QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(Sun_Maker()));
+    timer->start(5000);
+}
+
+void PlantScene::Sun_Maker()
+{
+    Sun* sun = new Sun(scene);
+    scene->addItem(sun);
+    sun->show();
 }

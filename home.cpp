@@ -69,6 +69,7 @@ void home::dropPlant(QString plantType)
     if(plantType=="PeaShooter")
     {
         PeaShooter *p=new PeaShooter(position);
+        p->setScale(0.07);
         scene()->addItem(p);
         qDebug()<<position;
         //p->setPos(position);
