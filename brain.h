@@ -1,10 +1,22 @@
 #ifndef BRAIN_H
 #define BRAIN_H
+#include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
+#include <QGraphicsPixmapItem>
+#include <QObject>
+#include "wallet.h"
 
-class Brain
+class Brain :public QObject , public QGraphicsPixmapItem
 {
+    Q_OBJECT
 public:
-    Brain();
+    Brain(QGraphicsScene *scene , Wallet* _wallet);
+    //~Brain();
+protected:
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+private :
+    QGraphicsScene *scene;
+    Wallet* wallet;
 };
 
 #endif // BRAIN_H

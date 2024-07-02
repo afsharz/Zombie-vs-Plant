@@ -45,15 +45,15 @@ void Card::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         QList<QGraphicsItem*> items = scene->items(newPos);
         for (QGraphicsItem* item : items) {
             home* h = dynamic_cast<home*>(item);
-            if (h)
-            {
-                h->highlight();
-                if(pre && pre!=h)
-                {
-                    pre->unhighlight();
-                }
-                pre=h;
-            }
+            //if (h)
+            //{
+                //h->highlight();
+                //if(pre && pre!=h)
+                //{
+                    //pre->unhighlight();
+                //}
+               //pre=h;
+            //}
         }
 
     }

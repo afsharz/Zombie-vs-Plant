@@ -31,7 +31,6 @@ PlantScene::PlantScene()
 
 }
 
-
 void PlantScene::initializeGrid()
 {
     qreal cellWidth = 77;
@@ -60,7 +59,9 @@ void PlantScene::Game()
 
 void PlantScene::Sun_Maker()
 {
-    Sun* sun = new Sun(scene);
+    Sun* sun = new Sun(scene , wallet);
     scene->addItem(sun);
     sun->show();
+    if(sun)
+        QTimer::singleShot(3500, sun, &QObject::deleteLater); // it deletes the sun after 3.5 seconds if player doesn't clicked on it
 }
