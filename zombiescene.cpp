@@ -37,6 +37,7 @@ void ZombieScene::Game()
     timer->start(5000);
 
 }
+
 void ZombieScene::initializeGrid()
 {
     qreal cellWidth = 77;
@@ -56,7 +57,6 @@ void ZombieScene::initializeGrid()
     }
 
 }
-
 
 void ZombieScene::Brain_Maker()
 {
