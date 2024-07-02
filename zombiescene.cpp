@@ -55,6 +55,7 @@ void ZombieScene::initializeGrid()
             homes.push_back(h);
         }
     }
+
 }
 
 void ZombieScene::Brain_Maker()
