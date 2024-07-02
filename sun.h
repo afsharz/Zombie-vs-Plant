@@ -17,6 +17,8 @@ protected:
 private :
     QGraphicsScene *scene;
     Wallet* wallet;
+
+
 };
 
 #endif // SUN_H

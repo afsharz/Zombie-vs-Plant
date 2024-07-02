@@ -12,7 +12,7 @@ ZombieScene::ZombieScene ()
     view->setBackgroundBrush(QColor(0, 0, 0));
     QGraphicsPixmapItem *bg=new QGraphicsPixmapItem(QPixmap::fromImage(image));
     scene->addItem(bg);
-    //initializeGrid();
+    initializeGrid();
     scene->setSceneRect(0,0,1080,502);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -30,13 +30,12 @@ ZombieScene::ZombieScene ()
     Game();
     view->show();
 }
-
-
 void ZombieScene::Game()
 {
     QTimer* timer = new QTimer(this);
     QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(Brain_Maker()));
     timer->start(5000);
+
 }
 
 void ZombieScene::initializeGrid()
@@ -56,6 +55,7 @@ void ZombieScene::initializeGrid()
             homes.push_back(h);
         }
     }
+
 }
 
 void ZombieScene::Brain_Maker()

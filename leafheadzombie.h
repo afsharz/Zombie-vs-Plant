@@ -5,7 +5,7 @@ class LeafHeadZombie
 :public Zombie
 {
 public:
-    LeafHeadZombie();
+    LeafHeadZombie(QPointF pos);
     void Movement();
 };
 

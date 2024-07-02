@@ -5,7 +5,7 @@
 class Two_PeaShooter : public Plant
 {
 public:
-    Two_PeaShooter();
+    Two_PeaShooter(QPointF pos);
 };
 
 #endif // TWO_PEASHOOTER_H

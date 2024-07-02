@@ -5,7 +5,7 @@
 class Walnut : public Plant
 {
 public:
-    Walnut();
+    Walnut(QPointF pos);
 };
 
 #endif // WALNUT_H

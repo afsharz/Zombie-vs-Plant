@@ -5,7 +5,7 @@
 class PlumMine : public Plant
 {
 public:
-    PlumMine();
+    PlumMine(QPointF pos);
 };
 
 #endif // PLUMMINE_H
