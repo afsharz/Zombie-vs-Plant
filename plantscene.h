@@ -16,6 +16,7 @@
 
 class PlantScene
 :public QGraphicsView
+
 {
     Q_OBJECT
 public:

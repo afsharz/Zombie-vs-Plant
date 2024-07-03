@@ -6,6 +6,7 @@
 #include <QObject>
 #include "wallet.h"
 
+
 class Sun :public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT

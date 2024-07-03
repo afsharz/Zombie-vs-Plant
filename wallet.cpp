@@ -1,7 +1,9 @@
 #include "wallet.h"
 #include <QFont>
 
+
 Wallet::Wallet( int _flag , QGraphicsTextItem * parent) : QGraphicsTextItem(parent) , Money(0) , flag(_flag) {
+
     //draw money
     if(flag)
         setPlainText(QString("Suns : ") + QString::number(Money));
