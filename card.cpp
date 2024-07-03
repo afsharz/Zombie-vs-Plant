@@ -4,15 +4,17 @@
 #include "QRegularExpressionMatch"
 #define c1r1 QPointF(1200,220)
 Card::Card(QGraphicsScene *scene,QString _Type)
-    :Type(_Type),scene (scene)
+    :Type(_Type),scene (scene) , IsAccessibale(false)
 {
     pre=nullptr;
 }
 
+QString Card::Get_Type(){return Type;}
+
 
 void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton) {
+    if (event->button() == Qt::LeftButton && this->IsAccessibale) {
         dragStartPosition = event->pos();
         QPointF newPos = mapToScene(event->pos() - dragStartPosition);
         transparent=new QGraphicsPixmapItem();
@@ -52,7 +54,7 @@ void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 void Card::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    if (event->buttons() & Qt::LeftButton) {
+    if (event->buttons() & Qt::LeftButton && this->IsAccessibale) {
         QPointF newPos = mapToScene(event->pos() - dragStartPosition);
         //QPointF newPos = event->scenePos();
         transparent->setPos(newPos);
@@ -77,22 +79,24 @@ void Card::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    delete transparent;
-    QPointF newPos = event->scenePos();
-    QList<QGraphicsItem*> items = scene->items(newPos);
-    for (QGraphicsItem* item : items) {
-        home* h = dynamic_cast<home*>(item);
-        if (h)
-        {
-            QRegularExpression *t=new QRegularExpression("zombie");
-            QRegularExpressionMatch *m=new QRegularExpressionMatch;
-            *m=t->match(Type);
-            qDebug()<<m->hasMatch();
-            if(m->hasMatch())
-                h->dropZombie(Type);
-            else
-                h->dropPlant(Type);
-            h->unhighlight();
+    if(this->IsAccessibale){
+        delete transparent;
+        QPointF newPos = event->scenePos();
+        QList<QGraphicsItem*> items = scene->items(newPos);
+        for (QGraphicsItem* item : items) {
+            home* h = dynamic_cast<home*>(item);
+            if (h)
+            {
+                QRegularExpression *t=new QRegularExpression("zombie");
+                QRegularExpressionMatch *m=new QRegularExpressionMatch;
+                *m=t->match(Type);
+                qDebug()<<m->hasMatch();
+                if(m->hasMatch())
+                    h->dropZombie(Type);
+                else
+                    h->dropPlant(Type);
+                h->unhighlight();
+            }
         }
     }
 }

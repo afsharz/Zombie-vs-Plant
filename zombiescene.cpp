@@ -5,6 +5,8 @@
 #define COLS 12
 ZombieScene::ZombieScene ()
 {
+    wallet = new Wallet(0);
+    wallet->setPos(500 , -40);
     scene=new QGraphicsScene;
     QImage image(":/new/prefix1/field.png");
     //  scene->setBackgroundBrush(QBrush(QImage(":/new/prefix1/field.png")));
@@ -17,15 +19,13 @@ ZombieScene::ZombieScene ()
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setFixedSize(1090,1000);
-    ZombieStore *p=new ZombieStore(scene);
+    ZombieStore *p=new ZombieStore(scene , wallet);
     view->scene()->addItem(p->regularzombie);
     view->scene()->addItem(p->bucketheadzombie);
     view->scene()->addItem(p->leafheadzombie);
     view->scene()->addItem(p->tallzombie);
     view->scene()->addItem(p->astronautzombie);
     view->scene()->addItem(p->purplehairzombie);
-    wallet = new Wallet(0);
-    wallet->setPos(500 , -40);
     view->scene()->addItem(wallet);
     Game();
     view->show();

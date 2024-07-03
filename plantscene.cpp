@@ -3,6 +3,8 @@
 #define COLS 12
 PlantScene::PlantScene()
 {
+    wallet = new Wallet(1);
+    wallet->setPos(500 , -40);
     scene=new QGraphicsScene;
     QImage image(":/new/prefix1/field.png");
     scene->setBackgroundBrush(QBrush(QImage(":/new/prefix1/field.png")));
@@ -15,15 +17,13 @@ PlantScene::PlantScene()
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setFixedSize(1090,1000);
-    PlantStore *p=new PlantStore(scene);
+    PlantStore *p=new PlantStore(scene , wallet);
     view->scene()->addItem(p->two_peashooter);
     view->scene()->addItem(p->peashooter);
     view->scene()->addItem(p->walnut);
     view->scene()->addItem(p->jalapeno);
     view->scene()->addItem(p->boomerang);
     view->scene()->addItem(p->plumMine);
-    wallet = new Wallet(1);
-    wallet->setPos(500 , -40);
     view->scene()->addItem(wallet);
     Game();
     view->show();

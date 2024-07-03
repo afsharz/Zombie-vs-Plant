@@ -8,7 +8,9 @@ class Card
 :public QGraphicsPixmapItem
 {
 public:
+    bool IsAccessibale;
     Card(QGraphicsScene *scene,QString _Type);
+    QString Get_Type();
     ~Card();
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;

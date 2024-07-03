@@ -79,6 +79,7 @@ void home::dropPlant(QString plantType)
         scene()->addItem(p);
         qDebug()<<position;
         plantList->push_back(p);
+        //wallet->Decreasing(50);
     }
     else if(plantType=="TwoPeashooter")
     {
@@ -87,6 +88,7 @@ void home::dropPlant(QString plantType)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
+        //wallet->Decreasing(100);
     }
     else if(plantType=="Walnut")
     {
@@ -95,6 +97,7 @@ void home::dropPlant(QString plantType)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
+        //wallet->Decreasing(100);
     }
     else if(plantType=="PlumMine")
     {
@@ -103,6 +106,7 @@ void home::dropPlant(QString plantType)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
+        //wallet->Decreasing(175);
     }
     else if(plantType=="Jalapeno")
     {
@@ -111,6 +115,7 @@ void home::dropPlant(QString plantType)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
+        //wallet->Decreasing(150);
     }
     else if(plantType=="Boomerang")
     {
@@ -119,6 +124,7 @@ void home::dropPlant(QString plantType)
         scene()->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
+       // wallet->Decreasing(125);
     }
 }
 
