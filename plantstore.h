@@ -2,11 +2,13 @@
 #define PLANTSTORE_H
 #include <QGraphicsPixmapItem>
 #include "card.h"
+#include "wallet.h"
+#include <QVector>
 
 class PlantStore
 {
 public:
-    PlantStore( QGraphicsScene *scene);
+    PlantStore( QGraphicsScene *scene , Wallet* _wallet );
     //void setWallet(/* wallet object*/);
 //private:
     Card *peashooter;
@@ -16,6 +18,7 @@ public:
     Card *jalapeno;
     Card *boomerang;
     QGraphicsScene *scene;
+    Wallet* wallet;
 };
 
 #endif // PLANTSTORE_H
