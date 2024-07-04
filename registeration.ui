@@ -6,23 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
-    <height>631</height>
+    <width>958</width>
+    <height>540</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(68, 75, 66);</string>
+   <string notr="true">
+background-color: rgb(122, 122, 122);</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>20</y>
-     <width>441</width>
-     <height>591</height>
+     <x>0</x>
+     <y>0</y>
+     <width>961</width>
+     <height>541</height>
     </rect>
    </property>
    <property name="font">
@@ -32,7 +33,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">image: url(:/new/prefix1/R.jfif);</string>
    </property>
    <property name="text">
     <string/>
@@ -44,15 +45,15 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>40</y>
+     <x>200</x>
+     <y>17</y>
      <width>161</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>B Compset</family>
      <pointsize>20</pointsize>
      <bold>true</bold>
     </font>
@@ -91,9 +92,9 @@
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>160</y>
-     <width>281</width>
+     <x>210</x>
+     <y>77</y>
+     <width>401</width>
      <height>41</height>
     </rect>
    </property>
@@ -121,9 +122,9 @@
   <widget class="QLineEdit" name="lineEdit_3">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>230</y>
-     <width>281</width>
+     <x>210</x>
+     <y>147</y>
+     <width>401</width>
      <height>41</height>
     </rect>
    </property>
@@ -139,9 +140,9 @@
   <widget class="QLineEdit" name="lineEdit_4">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>300</y>
-     <width>281</width>
+     <x>210</x>
+     <y>217</y>
+     <width>401</width>
      <height>41</height>
     </rect>
    </property>
@@ -160,9 +161,9 @@
   <widget class="QLineEdit" name="lineEdit_5">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>390</y>
-     <width>281</width>
+     <x>210</x>
+     <y>290</y>
+     <width>401</width>
      <height>41</height>
     </rect>
    </property>
@@ -181,112 +182,18 @@
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>120</y>
+     <x>210</x>
+     <y>47</y>
      <width>281</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>B Compset</family>
      <pointsize>11</pointsize>
+     <bold>true</bold>
     </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_9">
-   <property name="geometry">
-    <rect>
-     <x>350</x>
-     <y>520</y>
-     <width>91</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/new/prefix1/peashooter transparent.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>30</y>
-     <width>161</width>
-     <height>171</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/new/prefix1/tall zombie_transparent.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>10</y>
-     <width>51</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/new/prefix1/two_peashooter_transparent.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_13">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>340</y>
-     <width>41</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/new/prefix1/plum mine_transparent.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_12">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>440</y>
-     <width>121</width>
-     <height>161</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/new/prefix1/regular zombie_transparent.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_15">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>40</y>
-     <width>51</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/new/prefix1/jalapino_transparent.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -295,9 +202,9 @@
   <widget class="QLineEdit" name="lineEdit_6">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>460</y>
-     <width>281</width>
+     <x>210</x>
+     <y>360</y>
+     <width>401</width>
      <height>41</height>
     </rect>
    </property>
@@ -316,35 +223,20 @@
     <enum>QLineEdit::Normal</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="label_14">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>240</y>
-     <width>121</width>
-     <height>161</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/new/prefix1/Bucket head zombie_trasparent.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>530</y>
+     <x>540</x>
+     <y>420</y>
      <width>71</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Source Code Pro Medium</family>
+     <family>B Compset</family>
      <pointsize>14</pointsize>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">

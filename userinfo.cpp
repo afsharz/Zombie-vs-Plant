@@ -110,3 +110,7 @@ QString UserInfo::getUsername(){ return username;}
 QString UserInfo::getPassword(){return password;}
 QString UserInfo::getEmail(){return address;}
 QString UserInfo::getMobile(){return mobile;}
+
+void UserInfo::setName(QString _name){name = _name;}
+
+void UserInfo::setUsername(QString _username){username = _username;}

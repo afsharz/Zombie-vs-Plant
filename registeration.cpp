@@ -8,6 +8,8 @@ registeration::registeration(QWidget *parent)
     ui->setupUi(this);
     user=new UserInfo(this);
     designWindow();
+    connect(ui->lineEdit,&QLineEdit::textEdited, user, &UserInfo::setName);
+    connect(ui->lineEdit_3,&QLineEdit::textEdited, user, &UserInfo::setUsername);
     connect(ui->lineEdit_6,&QLineEdit::textEdited, user, &UserInfo::setAddress);
     connect(ui->lineEdit_4,&QLineEdit::textEdited, user, &UserInfo::setMobile);
     connect(ui->lineEdit_5,&QLineEdit::textEdited, user, &UserInfo::setPassword);
@@ -58,12 +60,12 @@ void registeration::designWindow()
     UnacceptablePass->setStyleSheet("color: red;");
     UnacceptablePass->hide();
 
-    ui->label->setStyleSheet("QLabel {""background-color: rgba(0, 0, 0, 127);" "border-radius: 15px;" "border: none;" "}");
+    //ui->label->setStyleSheet("QLabel {""background-color: rgba(0, 0, 0, 127);" "border-radius: 15px;" "border: none;" "}");
 
     ui->label_2->setFrameShape(QFrame::NoFrame);
     ui->label_2->setAttribute(Qt::WA_NoSystemBackground);
     ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
-    ui->label_2->setStyleSheet("color: white;");
+    ui->label_2->setStyleSheet("color: black;");
 
     ui->label_8->setFrameShape(QFrame::NoFrame);
     ui->label_8->setAttribute(Qt::WA_NoSystemBackground);
@@ -87,15 +89,15 @@ void registeration::designWindow()
 
     ui->pushButton_3->setFlat(true);
     ui->pushButton_3->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
-    ui->pushButton_3->setStyleSheet("color: white;");
+    ui->pushButton_3->setStyleSheet("color: black;");
 
-    ui->label_9->stackUnder(ui->label);
-    ui->label_10->stackUnder(ui->label);
-    ui->label_11->stackUnder(ui->label);
-    ui->label_12->stackUnder(ui->label);
-    ui->label_13->stackUnder(ui->label);
-    ui->label_14->stackUnder(ui->label);
-    ui->label_15->stackUnder(ui->label);
+    //ui->label_9->stackUnder(ui->label);
+    //ui->label_10->stackUnder(ui->label);
+    //ui->label_11->stackUnder(ui->label);
+    //ui->label_12->stackUnder(ui->label);
+    //ui->label_13->stackUnder(ui->label);
+    //ui->label_14->stackUnder(ui->label);
+   //ui->label_15->stackUnder(ui->label);
 }
 
 void registeration::showInvalidEmailError(bool IsTrue)
