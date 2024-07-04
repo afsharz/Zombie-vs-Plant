@@ -28,5 +28,18 @@
         <file>Brain.png</file>
         <file>sun.png</file>
         <file>R.jfif</file>
+        <file>pea.png</file>
+        <file>astronaut-zombie-black.jpg</file>
+        <file>boomerang-black.jpg</file>
+        <file>bucket-head-zombie-black.jpg</file>
+        <file>jalapino-black.jpg</file>
+        <file>leaf-hair-zombie-black.jpg</file>
+        <file>pea-shooter-black.jpg</file>
+        <file>purple-hair-zombie-black.jpg</file>
+        <file>regular-zombie-black.jpg</file>
+        <file>tall-zombie-black.jpg</file>
+        <file>walnut-black.jpg</file>
+        <file>plum-mine-black.jpg</file>
+        <file>two_peashooter-black.jpg</file>
     </qresource>
 </RCC>

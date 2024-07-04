@@ -10,10 +10,13 @@ class Plant : public QObject, public QGraphicsPixmapItem
 public:
     Plant(int _health , int _FiringRate , int _AttackPower);
     void Decreasinghealth(int attackpowerzombie);
+    enum Type{boomerang,non_boomerang};
+public slots:
+    void shut();
     //func health
     //func attack
     //~Plant();
-private :
+protected :
     int health;
     int FiringRate;
     int AttackPower;
