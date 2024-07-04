@@ -177,7 +177,7 @@ void home::dropZombie(QString zombieType)
     else if (zombieType=="purplehairzombie")
      {
          PurpleHairZombie *z=new PurpleHairZombie(position);
-         z->setScale(0.075);
+         z->setScale(0.07);
          scene()->addItem(z);
          qDebug()<<position;
          zombieList->push_back(z);

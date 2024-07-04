@@ -6,6 +6,8 @@ class Two_PeaShooter : public Plant
 {
 public:
     Two_PeaShooter(QPointF pos);
+private :
+    QTimer *timer;
 };
 
 #endif // TWO_PEASHOOTER_H
