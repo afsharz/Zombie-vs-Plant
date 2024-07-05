@@ -49,7 +49,7 @@ void ZombieScene::initializeGrid()
         for (int col = 0; col < COLS; ++col) {
             home *h = new home(QPointF(startX + col * cellWidth,
                                        startY + row * cellHeight),
-                               cellWidth, cellHeight);
+                               cellWidth, cellHeight,scene,wallet);
             h->setVectorZ(&zombies);
             scene->addItem(h);
             homes.push_back(h);

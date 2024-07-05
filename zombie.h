@@ -8,8 +8,9 @@ class Zombie
 {
     Q_OBJECT
 public:
-    Zombie(int _health,int _FirsfutMovementDelay,int _MovementDelay,int _AttackPower, int _FirstTimeBwAttack, int _TimeBwAttack);
+    Zombie(QPointF _pos ,int _health,int _FirsfutMovementDelay,int _MovementDelay,int _AttackPower, int _FirstTimeBwAttack, int _TimeBwAttack);
     void Decreasinghealth(int attackpowerplant);
+    void Set_Position(QPointF pos);
     //virtual void Movement()=0;
     //~Zombie();
 
@@ -21,7 +22,7 @@ private:
     int TimeBwAttack;
     int FirstMovementDelay;
     int MovementDelay;
-    int price;
+    QPair<int,int> position;
 };
 
 #endif // ZOMBIE_H

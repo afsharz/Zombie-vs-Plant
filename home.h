@@ -1,14 +1,17 @@
 #ifndef HOME_H
 #define HOME_H
+#include <QObject>
+#include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include "plant.h"
-//#include "wallet.h"
 #include "zombie.h"
+class Wallet;
+
 class home
-:public QGraphicsRectItem,public QObject
+:public QGraphicsRectItem, public QObject
 {
 public:
-    home(QPointF pos, qreal w, qreal h );
+    home(QPointF pos, qreal w, qreal h , QGraphicsScene * _scene , Wallet* _wallet=NULL);
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
     void dragEnterEvent(QGraphicsSceneDragDropEvent *event) override;
@@ -24,7 +27,8 @@ private:
     QPointF position;
     QVector<Plant*> *plantList;
     QVector<Zombie*> *zombieList;
-    //Wallet* wallet;
+    Wallet* wallet;
+    QGraphicsScene *scene;
 };
 
 #endif // HOME_H

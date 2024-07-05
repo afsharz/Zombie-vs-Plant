@@ -1,8 +1,4 @@
 #include "bullet.h"
-#include <QGraphicsScene>
-#include <QGraphicsItem>
-#include "zombie.h"
-#include <QTransform>
 #define length_of_move 5
 bullet::bullet(int _power,Plant:: Type t,QPointF _pos)
     : power(_power)

@@ -2,7 +2,7 @@
 #include "bullet.h"
 #include <QGraphicsScene>
 
-Boomerang::Boomerang(QPointF pos) : Plant(200 , 1 , 30)
+Boomerang::Boomerang(QPointF pos) : Plant(pos , 200 , 1 , 30)
 {
     setPixmap(QPixmap(":/new/prefix1/boomrang_transparent.png"));
     setScale(0.2);

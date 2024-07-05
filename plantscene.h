@@ -31,6 +31,7 @@ private :
     Wallet* wallet;
 public slots :
     void Sun_Maker();
+    void JalapenoHandling();
 };
 
 #endif // PLANTSCENE_H
