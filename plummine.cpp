@@ -36,7 +36,7 @@ PlumMine::PlumMine(QPointF pos  , QGraphicsScene * _scene) : Plant(pos , 0 ,0 , 
 
 void PlumMine::HandlePlumMine()
 {
-    setPixmap(QPixmap(":/new/prefix1/explosion-pixel-art-115633555132uir2zl9fd.png"));
+    setPixmap(QPixmap(":/new/prefix1/Layer 2.png"));
     setScale(0.1);
 }
 
