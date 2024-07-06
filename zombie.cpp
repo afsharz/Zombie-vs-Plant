@@ -92,30 +92,13 @@ int Zombie::get_health(){return health;}
 void Zombie::Movement()
 {
     QPointF currentPos = this->pos();
-    //should check
-    QList<QGraphicsItem *> itemList = collidingItems();
-    for (QGraphicsItem* item : itemList)
-    {
-        if(typeid(*item)==typeid(Walnut))
-        {
-            qDebug()<<"there is a plant in the scnen";
-            qreal distance =currentPos.x()-item->pos().x() ;//QLineF(currentPos, item->pos()).length();
-            if(distance<50 && distance >-50){
-                qDebug()<<"i am close to a plant";
-                timer->stop();
-                attack = new QTimer(this);
-                QObject::connect(attack, &QTimer::timeout, this, [this, item]{ Attack(item); });
-                attack->start(FirstTimeBwAttack*1000);
-            }
-        }
-    }
-    /*QList<QGraphicsItem*> itemList = scene()->items();
+    QList<QGraphicsItem*> itemList = scene()->items();
     for (QGraphicsItem* item : itemList) {
-        if (typeid(*item)==typeid(Plant))
+        Plant* plant = dynamic_cast<Plant*>(item);
+        if (plant)
         {
-            qDebug()<<"there is a plant in the scnen";
             qreal distance =currentPos.x()-item->pos().x() ;//QLineF(currentPos, item->pos()).length();
-            if(distance<50 && distance >-50){
+            if(distance<100){
                 qDebug()<<"i am close to a plant";
                 timer->stop();
                 attack = new QTimer(this);
@@ -124,8 +107,8 @@ void Zombie::Movement()
             }
         }
     }
-*/
-    currentPos.setX(currentPos.x() - 39);
+
+  currentPos.setX(currentPos.x() - 39);
     Set_Position(pos());
     this->setPos(currentPos);
     if(this->pos().x()<=110)

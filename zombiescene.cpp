@@ -30,11 +30,11 @@ ZombieScene::ZombieScene ()
     view->scene()->addItem(wallet);
 
     QPointF position(830 , 180);
-    //Walnut *pp=new Walnut(position);
-    //pp->setScale(0.08);
-    //scene->addItem(pp);
-    //pp->setPos(position);
-    //delete pp;
+    home *h=new home (position ,100,100,nullptr);
+    Walnut *pp=new Walnut(position,h);
+    pp->setScale(0.08);
+    scene->addItem(pp);
+    pp->setPos(position);
     Game();
     view->show();
 }
