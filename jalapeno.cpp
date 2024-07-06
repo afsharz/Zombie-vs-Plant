@@ -10,13 +10,13 @@ Jalapeno::Jalapeno(QPointF pos , QGraphicsScene * _scene) : Plant(pos , 0 ,0 , 3
     redRectangle = new QGraphicsRectItem;
     qreal cellWidth = 77;
     qreal cellHeight = 70;
-    qreal startX=119 , startY = 36 + (this->position.second-1)*70;
+    qreal startX=119 , startY = 36 + (this->position.second-1)*72;
 
     if(pos.y()>=105 && pos.y()<178){
         startY -= 4;
     }
     else if(pos.y()>=398){
-        startY -= 4;
+        startY -= 2;
     }
     redRectangle->setRect(QRectF(startX, startY, 12*cellWidth, cellHeight));
     QColor semiTransparentRed(255, 0, 0, 127);

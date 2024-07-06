@@ -86,27 +86,27 @@ void Wallet:: Decreasing(int HowMany) {
         setPlainText(QString("Suns : ") + QString::number(Money));
         for(auto itr=QVec.begin() ; itr!=QVec.end();itr++){
             if((**itr).Get_Type() == "PeaShooter" && Money < 50){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/pea-shooter-black.jpg"));
             }
             else if((**itr).Get_Type() == "TwoPeashooter" && Money < 100){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/two_peashooter-black.jpg"));
             }
             else if((**itr).Get_Type() == "Walnut" && Money < 100){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/walnut-black.jpg"));
             }
             else if((**itr).Get_Type() == "PlumMine" && Money < 175){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/plum-mine-black.jpg"));
             }
             else if((**itr).Get_Type() == "Jalapeno" && Money < 150){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/jalapino-black.jpg"));
             }
             else if((**itr).Get_Type() == "Boomerang" && Money < 125){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/boomerang-black.jpg"));
             }
         }
@@ -115,27 +115,27 @@ void Wallet:: Decreasing(int HowMany) {
         setPlainText(QString("Brains : ") + QString::number(Money));
         for(auto itr=QVec.begin() ; itr!=QVec.end();itr++){
             if((**itr).Get_Type() == "regularzombie" && Money < 100){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/regular-zombie-black.jpg"));
             }
             else if((**itr).Get_Type() == "bucketheadzombie" && Money < 200){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/bucket-head-zombie-black.jpg"));
             }
             else if((**itr).Get_Type() == "leafheadzombie" && Money < 150){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/leaf-hair-zombie-black.jpg"));
             }
             else if((**itr).Get_Type() == "tallzombie" && Money < 155){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/tall-zombie-black.jpg"));
             }
             else if((**itr).Get_Type() == "astronautzombie" && Money < 200){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/astronaut-zombie-black.jpg"));
             }
             else if((**itr).Get_Type() == "purplehairzombie" && Money < 800){
-                (**itr).IsAccessibale = true;
+                (**itr).IsAccessibale = false;
                 (**itr).setPixmap(QPixmap(":/new/prefix1/purple-hair-zombie-black.jpg"));
             }
         }
