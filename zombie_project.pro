@@ -79,3 +79,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     imagee.qrc \
     pic.qrc
+
+DISTFILES += \
+    pea.png

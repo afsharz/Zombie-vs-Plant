@@ -2,6 +2,7 @@
 #include "qgraphicsscene.h"
 #include <QGraphicsSceneMouseEvent>
 #include <QPen>
+#include <QThread>
 #include "peashooter.h"
 #include "two_peashooter.h"
 #include "plummine.h"
@@ -14,10 +15,11 @@
 #include "leafheadzombie.h"
 #include "bucketheadzombie.h"
 #include "purplehairzombie.h"
+#include "wallet.h"
 #include <QTimer>
 
-home::home(QPointF pos, qreal w, qreal h)
-    : QGraphicsRectItem(pos.x(),pos.y(), w, h),position(pos){
+home::home(QPointF pos, qreal w, qreal h , QGraphicsScene * _scene , Wallet* _wallet)
+    : QGraphicsRectItem(pos.x(),pos.y(), w, h),position(pos),wallet(_wallet) , scene(_scene){
     setPen(QPen(Qt::transparent));
     setBrush(QBrush(Qt::transparent));
     setZValue(1);  /// Ensure it's drawn above the background
@@ -76,55 +78,55 @@ void home::dropPlant(QString plantType)
     {
         PeaShooter *p=new PeaShooter(position);
         p->setScale(0.07);
-        scene()->addItem(p);
+        scene->addItem(p);
         qDebug()<<position;
         plantList->push_back(p);
-        //wallet->Decreasing(50);
+        wallet->Decreasing(50);
     }
     else if(plantType=="TwoPeashooter")
     {
         Two_PeaShooter *p=new Two_PeaShooter(position);
         p->setScale(0.07);
-        scene()->addItem(p);
+        scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
-        //wallet->Decreasing(100);
+        wallet->Decreasing(100);
     }
     else if(plantType=="Walnut")
     {
         Walnut *p=new Walnut(position);
         p->setScale(0.08);
-        scene()->addItem(p);
+        scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
-        //wallet->Decreasing(100);
+        wallet->Decreasing(100);
     }
     else if(plantType=="PlumMine")
     {
-        PlumMine *p=new PlumMine(position);
+        PlumMine *p=new PlumMine(position , scene);
         p->setScale(0.07);
-        scene()->addItem(p);
+        scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
-        //wallet->Decreasing(175);
+        wallet->Decreasing(175);
     }
     else if(plantType=="Jalapeno")
     {
-        Jalapeno *p= new Jalapeno(position);
+        Jalapeno *p= new Jalapeno(position , scene);
         p->setScale(0.07);
-        scene()->addItem(p);
+        scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
-        //wallet->Decreasing(150);
+        wallet->Decreasing(150);
     }
     else if(plantType=="Boomerang")
     {
         Boomerang *p= new Boomerang(position);
         p->setScale(0.23);
-        scene()->addItem(p);
+        scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
-       // wallet->Decreasing(125);
+       wallet->Decreasing(125);
     }
 }
 
@@ -135,17 +137,19 @@ void home::dropZombie(QString zombieType)
         RegularZombie *z=new RegularZombie(position);
 
         z->setScale(0.075);
-        scene()->addItem(z);
+        scene->addItem(z);
         qDebug()<<position;
         zombieList->push_back(z);
+        wallet->Decreasing(100);
     }
     else if (zombieType=="bucketheadzombie")
      {
          BucketHeadZombie *z=new BucketHeadZombie(position);
          z->setScale(0.075);
-         scene()->addItem(z);
+         scene->addItem(z);
          qDebug()<<position;
          zombieList->push_back(z);
+         wallet->Decreasing(200);
      }
     else if (zombieType=="leafheadzombie")
     {
@@ -153,34 +157,38 @@ void home::dropZombie(QString zombieType)
         LeafHeadZombie *z=new LeafHeadZombie(position);
 
         z->setScale(0.075);
-        scene()->addItem(z);
+        scene->addItem(z);
         qDebug()<<position;
         zombieList->push_back(z);
+        wallet->Decreasing(150);
     }
      else if (zombieType=="tallzombie")
      {
          TallZombie *z=new TallZombie(position);
          z->setScale(0.075);
-         scene()->addItem(z);
+         scene->addItem(z);
          qDebug()<<position;
          zombieList->push_back(z);
+         wallet->Decreasing(150);
      }
     else if (zombieType=="astronautzombie")
     {
         AstronautZombie *z=new AstronautZombie(position);
 
         z->setScale(0.075);
-        scene()->addItem(z);
+        scene->addItem(z);
         qDebug()<<position;
         zombieList->push_back(z);
+        wallet->Decreasing(200);
     }
     else if (zombieType=="purplehairzombie")
      {
          PurpleHairZombie *z=new PurpleHairZombie(position);
          z->setScale(0.07);
-         scene()->addItem(z);
+         scene->addItem(z);
          qDebug()<<position;
          zombieList->push_back(z);
+         wallet->Decreasing(800);
      }
 }
 

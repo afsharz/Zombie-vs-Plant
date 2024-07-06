@@ -3,6 +3,10 @@
 #include <QGraphicsPixmapItem>
 #include <QTimer>
 #include <QObject>
+#include <QGraphicsScene>
+#include <QGraphicsItem>
+#include <QTransform>
+#include "zombie.h"
 #include "plant.h"
 
 class bullet

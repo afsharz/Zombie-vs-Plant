@@ -42,7 +42,7 @@ void PlantScene::initializeGrid()
         for (int col = 0; col < COLS; ++col) {
             home *h = new home(QPointF(startX + col * cellWidth,
                                     startY + row * cellHeight),
-                                  cellWidth, cellHeight);
+                                  cellWidth, cellHeight, scene , wallet);
             h->setVectorP(&plants);
             scene->addItem(h);
             homes.push_back(h);
@@ -55,6 +55,7 @@ void PlantScene::Game()
     QTimer* timer = new QTimer(this);
     QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(Sun_Maker()));
     timer->start(5000);
+
 }
 
 void PlantScene::Sun_Maker()
@@ -64,4 +65,9 @@ void PlantScene::Sun_Maker()
     sun->show();
     if(sun)
         QTimer::singleShot(3500, sun, &QObject::deleteLater); // it deletes the sun after 3.5 seconds if player doesn't clicked on it
+}
+
+void PlantScene::JalapenoHandling()
+{
+
 }
