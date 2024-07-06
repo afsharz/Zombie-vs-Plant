@@ -1,7 +1,7 @@
 #include "purplehairzombie.h"
 
-PurpleHairZombie::PurpleHairZombie(QPointF pos)
-    :Zombie(pos,4000,1,1,75,0.5,0.5)
+PurpleHairZombie::PurpleHairZombie(QPointF pos,home *adrs)
+    :Zombie(pos,4000,1,1,75,0.5,0.5,adrs)
 {
     setPixmap(QPixmap(":/new/prefix1/purple hair zombie_transparent.png"));
     setScale(0.1);

@@ -1,8 +1,12 @@
 #include "plant.h"
 #include "bullet.h"
 #include <QGraphicsScene>
-Plant::Plant(QPointF _pos , int _health , int _FiringRate , int _AttackPower) : health(_health) ,
-    FiringRate(_FiringRate) , AttackPower(_AttackPower) {Set_Position(_pos);}
+#include "home.h"
+Plant::Plant(QPointF _pos , int _health , int _FiringRate , int _AttackPower,home *adrs) : health(_health) ,
+    FiringRate(_FiringRate) , AttackPower(_AttackPower) ,HomeAdrs(adrs){
+    adrs->setFlag(true);
+    Set_Position(_pos);
+}
 
 //should check
 void Plant::Decreasinghealth(int attackpowerzombie)
@@ -73,9 +77,19 @@ void Plant::Set_Position(QPointF pos)
 
 int Plant::get_health(){return health;}
 
+
+void Plant::setHomeAdrs(home *adrs)
+{
+    HomeAdrs=adrs;
+}
+
 void Plant::shut()
 {
     bullet *pea=new bullet(AttackPower,Plant::non_boomerang,pos());
     scene()->addItem(pea);
 }
 
+Plant::~Plant()
+{
+    HomeAdrs->setFlag(false);
+}

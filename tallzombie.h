@@ -5,7 +5,7 @@ class TallZombie
 :public Zombie
 {
 public:
-    TallZombie(QPointF pos);
+    TallZombie(QPointF pos,home *adrs);
     void Movement();
 };
 

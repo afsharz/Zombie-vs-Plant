@@ -23,12 +23,15 @@ public:
     void dropZombie(QString zombieType);
     void setVectorP(QVector<Plant*> *plantList);
     void setVectorZ(QVector<Zombie*> *zombieList);
+    void setFlag(bool flag);
 private:
     QPointF position;
     QVector<Plant*> *plantList;
     QVector<Zombie*> *zombieList;
     Wallet* wallet;
     QGraphicsScene *scene;
+    bool IsFull;
+
 };
 
 #endif // HOME_H

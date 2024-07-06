@@ -5,7 +5,7 @@ class BucketHeadZombie
 :public Zombie
 {
 public:
-    BucketHeadZombie(QPointF pos);
+    BucketHeadZombie(QPointF pos,home *adrs);
     void Movement();
 };
 

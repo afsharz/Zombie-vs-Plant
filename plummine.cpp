@@ -1,6 +1,8 @@
 #include "plummine.h"
 
-PlumMine::PlumMine(QPointF pos  , QGraphicsScene * _scene) : Plant(pos , 0 ,0 , 500) , scene(_scene){
+PlumMine::PlumMine(QPointF pos  , QGraphicsScene * _scene,home *adrs) :
+    Plant(pos , 0 ,0 , 500,adrs) , scene(_scene)
+{
     setPixmap(QPixmap(":/new/prefix1/plum mine_transparent.png"));
     setScale(0.07);
     QTimer* changetimer = new QTimer(this);

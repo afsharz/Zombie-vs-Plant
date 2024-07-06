@@ -12,7 +12,7 @@
 class PlumMine : public Plant
 {
 public:
-    PlumMine(QPointF pos , QGraphicsScene * _scene);
+    PlumMine(QPointF pos , QGraphicsScene * _scene,home *adrs);
 private:
     QGraphicsScene * scene;
 public slots:
