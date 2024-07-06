@@ -24,14 +24,23 @@ Jalapeno::Jalapeno(QPointF pos , QGraphicsScene * _scene) : Plant(pos , 0 ,0 , 3
     scene->addItem(redRectangle);
     show();
     QList<QGraphicsItem*> itemList = scene->items();
-
+    //should check
     for (QGraphicsItem* item : itemList) {
 
         if (item->pos().y()>=startY &&  item->pos().y()<=startY+cellHeight ) {
 
             if (typeid(*item)==typeid(Zombie))
             {
-                dynamic_cast<Zombie*>(item)->Decreasinghealth(300);
+                Zombie* zombie = dynamic_cast<Zombie*>(item);
+                if (zombie) {
+                    zombie->Decreasinghealth(300);
+                    if (zombie->get_health() == 0) {
+                        // zombie health is zero, remove it from the scene
+                        scene->removeItem(zombie);
+                        zombie->deleteLater();
+                        delete zombie;
+                    }
+                }
             }
         }
     }

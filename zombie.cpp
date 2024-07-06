@@ -1,4 +1,5 @@
 #include "zombie.h"
+#include "plant.h"
 
 Zombie::Zombie(QPointF _pos ,int _health,int _FirstMovementDelay,int _MovementDelay,int _AttackPower, int _FirstTimeBwAttack, int _TimeBwAttack)
     :health(_health),FirstMovementDelay(_FirstMovementDelay),
@@ -7,13 +8,17 @@ Zombie::Zombie(QPointF _pos ,int _health,int _FirstMovementDelay,int _MovementDe
 // first initialze list for each type of zombie all attributs
 {
     Set_Position(_pos);
-    // setpixmap()
-    //setpos->at first
+    timer = new QTimer(this);
+    QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(Movement()));
+    timer->start(FirstMovementDelay*1000);
 }
-
+//should check
 void Zombie::Decreasinghealth(int attackpowerplant)
 {
-    health -= attackpowerplant;
+    if(health - attackpowerplant < 0)
+        health = 0;
+    else
+        health -= attackpowerplant;
 }
 
 void Zombie::Set_Position(QPointF pos)
@@ -71,6 +76,49 @@ void Zombie::Set_Position(QPointF pos)
     }
     else if(pos.x()>=966 && pos.x()<1043){
         position.first=12;
+    }
+}
+
+int Zombie::get_health(){return health;}
+
+void Zombie::Movement()
+{
+    QPointF currentPos = this->pos();
+    //should check
+    QList<QGraphicsItem*> itemList = scene()->items();
+    for (QGraphicsItem* item : itemList) {
+        if (typeid(*item)==typeid(Plant))
+        {
+            qreal distance = QLineF(currentPos, item->pos()).length();
+            if(distance<50){
+                timer->stop();
+                attack = new QTimer(this);
+                QObject::connect(attack, &QTimer::timeout, this, [this, item]{ Attack(item); });
+                attack->start(FirstTimeBwAttack*1000);
+            }
+        }
+    }
+    currentPos.setX(currentPos.x() - 39);
+    Set_Position(pos());
+    this->setPos(currentPos);
+    if(this->pos().x()<=110){
+        deleteLater();
+        //zombies win
+    }
+}
+
+void Zombie::Attack(QGraphicsItem* item)
+{
+    Plant* plant = dynamic_cast<Plant*>(item);
+    if (plant) {
+        plant->Decreasinghealth(this->AttackPower);
+        if (plant->get_health() == 0) {
+            // Plant health is zero, remove it from the scene
+            scene()->removeItem(plant);
+            plant->deleteLater();
+            delete plant;
+            timer->start();
+        }
     }
 }
 

@@ -34,7 +34,16 @@ void bullet::move()
     {
         if (typeid(*x)==typeid(Zombie))
         {
-            dynamic_cast<Zombie*>(x)->Decreasinghealth(power);
+            Zombie* zombie = dynamic_cast<Zombie*>(x);
+            if (zombie) {
+                zombie->Decreasinghealth(power);
+                if (zombie->get_health() == 0) {
+                    // zombie health is zero, remove it from the scene
+                    scene()->removeItem(zombie);
+                    zombie->deleteLater();
+                    delete zombie;
+                }
+            }
             if (!IsBoomerang)
             {
                 scene()->removeItem(this);
