@@ -15,6 +15,8 @@ Zombie::Zombie(QPointF _pos ,int _health,int _FirstMovementDelay,int _MovementDe
     HomeAdrs->setFlag(true);
     QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(Movement()));
     timer->start(FirstMovementDelay*1000);
+    QTimer freeflagtime;
+    freeflagtime.singleShot(1500,this,SLOT(setBlockFlag()));
 }
 //should check
 void Zombie::Decreasinghealth(int attackpowerplant)
@@ -128,8 +130,10 @@ void Zombie::Movement()
     this->setPos(currentPos);
     if(this->pos().x()<=110)
     {
-        deleteLater();
+        //deleteLater();
         //zombies win
+        delete this;
+
     }
 }
 
@@ -146,6 +150,11 @@ void Zombie::Attack(QGraphicsItem* item)
             timer->start();
         }
     }
+}
+
+void Zombie::setBlockFlag()
+{
+    HomeAdrs->setFlag(false);
 }
 Zombie::~Zombie()
 {

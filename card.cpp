@@ -3,6 +3,7 @@
 #include "QRegularExpression"
 #include "QRegularExpressionMatch"
 #define c1r1 QPointF(1200,220)
+#define HalfOfField 578
 Card::Card(QGraphicsScene *scene,QString _Type)
     :Type(_Type),scene (scene) , IsAccessibale(false)
 {
@@ -90,10 +91,9 @@ void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 QRegularExpression *t=new QRegularExpression("zombie");
                 QRegularExpressionMatch *m=new QRegularExpressionMatch;
                 *m=t->match(Type);
-                qDebug()<<m->hasMatch();
-                if(m->hasMatch())
+                if(m->hasMatch() && newPos.x()>=1000)
                     h->dropZombie(Type);
-                else
+                else if (newPos.x()<= HalfOfField)
                     h->dropPlant(Type);
                 h->unhighlight();
             }

@@ -34,6 +34,7 @@ private:
 public slots :
     void Movement();
     void Attack(QGraphicsItem* item);
+    void setBlockFlag();
 
 };
 
