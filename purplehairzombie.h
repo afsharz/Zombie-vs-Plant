@@ -5,7 +5,7 @@ class PurpleHairZombie
 :public Zombie
 {
 public:
-    PurpleHairZombie(QPointF pos);
+    PurpleHairZombie(QPointF pos,home *adrs);
     void Movement();
 };
 

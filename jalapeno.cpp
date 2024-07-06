@@ -4,7 +4,8 @@
 #include <QBrush>
 #include "home.h"
 
-Jalapeno::Jalapeno(QPointF pos , QGraphicsScene * _scene) : Plant(pos , 0 ,0 , 300) , scene(_scene) {
+Jalapeno::Jalapeno(QPointF pos , QGraphicsScene * _scene,home *adrs) : Plant(pos , 0 ,0 , 300,adrs) , scene(_scene) {
+    //setHomeFlag(true);
     setPixmap(QPixmap(":/new/prefix1/jalapino_transparent.png"));
     setScale(0.07);
     redRectangle = new QGraphicsRectItem;

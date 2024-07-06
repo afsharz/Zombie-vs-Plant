@@ -14,7 +14,7 @@
 class Jalapeno : public Plant
 {
 public:
-    Jalapeno(QPointF pos , QGraphicsScene * _scene);
+    Jalapeno(QPointF pos , QGraphicsScene * _scene,home *adrs);
     QGraphicsRectItem* redRectangle;
 private:
     QGraphicsScene * scene;

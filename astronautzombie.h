@@ -5,7 +5,7 @@ class AstronautZombie
 :public Zombie
 {
 public:
-    AstronautZombie(QPointF pos);
+    AstronautZombie(QPointF pos,home *adrs);
     void Movement();
 };
 

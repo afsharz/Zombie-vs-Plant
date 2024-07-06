@@ -1,14 +1,18 @@
 #include "zombie.h"
+#include "walnut.h"
 #include "plant.h"
+#include "home.h"
 
-Zombie::Zombie(QPointF _pos ,int _health,int _FirstMovementDelay,int _MovementDelay,int _AttackPower, int _FirstTimeBwAttack, int _TimeBwAttack)
+Zombie::Zombie(QPointF _pos ,int _health,int _FirstMovementDelay,int _MovementDelay,
+               int _AttackPower, int _FirstTimeBwAttack, int _TimeBwAttack,home *adrs)
     :health(_health),FirstMovementDelay(_FirstMovementDelay),
     MovementDelay(_MovementDelay),AttackPower(_AttackPower),
-    FirstTimeBwAttack(_FirstTimeBwAttack) , TimeBwAttack(_TimeBwAttack)
+    FirstTimeBwAttack(_FirstTimeBwAttack) , TimeBwAttack(_TimeBwAttack),HomeAdrs(adrs)
 // first initialze list for each type of zombie all attributs
 {
     Set_Position(_pos);
     timer = new QTimer(this);
+    HomeAdrs->setFlag(true);
     QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(Movement()));
     timer->start(FirstMovementDelay*1000);
 }
@@ -81,16 +85,21 @@ void Zombie::Set_Position(QPointF pos)
 
 int Zombie::get_health(){return health;}
 
+
+
 void Zombie::Movement()
 {
     QPointF currentPos = this->pos();
     //should check
-    QList<QGraphicsItem*> itemList = scene()->items();
-    for (QGraphicsItem* item : itemList) {
-        if (typeid(*item)==typeid(Plant))
+    QList<QGraphicsItem *> itemList = collidingItems();
+    for (QGraphicsItem* item : itemList)
+    {
+        if(typeid(*item)==typeid(Walnut))
         {
-            qreal distance = QLineF(currentPos, item->pos()).length();
-            if(distance<50){
+            qDebug()<<"there is a plant in the scnen";
+            qreal distance =currentPos.x()-item->pos().x() ;//QLineF(currentPos, item->pos()).length();
+            if(distance<50 && distance >-50){
+                qDebug()<<"i am close to a plant";
                 timer->stop();
                 attack = new QTimer(this);
                 QObject::connect(attack, &QTimer::timeout, this, [this, item]{ Attack(item); });
@@ -98,10 +107,27 @@ void Zombie::Movement()
             }
         }
     }
+    /*QList<QGraphicsItem*> itemList = scene()->items();
+    for (QGraphicsItem* item : itemList) {
+        if (typeid(*item)==typeid(Plant))
+        {
+            qDebug()<<"there is a plant in the scnen";
+            qreal distance =currentPos.x()-item->pos().x() ;//QLineF(currentPos, item->pos()).length();
+            if(distance<50 && distance >-50){
+                qDebug()<<"i am close to a plant";
+                timer->stop();
+                attack = new QTimer(this);
+                QObject::connect(attack, &QTimer::timeout, this, [this, item]{ Attack(item); });
+                attack->start(FirstTimeBwAttack*1000);
+            }
+        }
+    }
+*/
     currentPos.setX(currentPos.x() - 39);
     Set_Position(pos());
     this->setPos(currentPos);
-    if(this->pos().x()<=110){
+    if(this->pos().x()<=110)
+    {
         deleteLater();
         //zombies win
     }
@@ -120,5 +146,11 @@ void Zombie::Attack(QGraphicsItem* item)
             timer->start();
         }
     }
+}
+Zombie::~Zombie()
+{
+    HomeAdrs->setFlag(false);
+    delete attack;
+    delete timer;
 }
 

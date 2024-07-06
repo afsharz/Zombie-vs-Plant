@@ -5,7 +5,7 @@
 class Boomerang : public Plant
 {
 public:
-    Boomerang(QPointF pos);
+    Boomerang(QPointF pos,home *adrs);
 public slots:
     void shut();
 private :

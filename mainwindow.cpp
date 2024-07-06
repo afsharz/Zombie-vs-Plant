@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "plantscene.h"
 #include "zombiescene.h"
+#include <QThread>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

@@ -1,4 +1,5 @@
 #include "plantscene.h"
+#include "peashooter.h"
 #define ROWS 6
 #define COLS 12
 PlantScene::PlantScene()
@@ -26,6 +27,10 @@ PlantScene::PlantScene()
     view->scene()->addItem(p->plumMine);
     view->scene()->addItem(wallet);
     Game();
+    ///
+    //PeaShooter *jk=new PeaShooter(QPointF(126,37));
+   // delete jk;
+    ///
     view->show();
 
 

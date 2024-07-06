@@ -5,7 +5,7 @@
 class PeaShooter : public Plant
 {
 public:
-    PeaShooter(QPointF pos);
+    PeaShooter(QPointF pos,home *adrs);
 private:
     QTimer *timer;
 };
