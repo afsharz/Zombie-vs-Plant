@@ -4,9 +4,13 @@
 Plant::Plant(QPointF _pos , int _health , int _FiringRate , int _AttackPower) : health(_health) ,
     FiringRate(_FiringRate) , AttackPower(_AttackPower) {Set_Position(_pos);}
 
+//should check
 void Plant::Decreasinghealth(int attackpowerzombie)
 {
-    health -= attackpowerzombie;
+    if(health - attackpowerzombie < 0)
+        health = 0;
+    else
+        health -= attackpowerzombie;
 }
 
 void Plant::Set_Position(QPointF pos)
@@ -66,6 +70,8 @@ void Plant::Set_Position(QPointF pos)
         position.first=12;
     }
 }
+
+int Plant::get_health(){return health;}
 
 void Plant::shut()
 {

@@ -11,6 +11,7 @@ public:
     Plant(QPointF pos , int _health , int _FiringRate , int _AttackPower);
     void Decreasinghealth(int attackpowerzombie);
     void Set_Position(QPointF pos);
+    int get_health();
     enum Type{boomerang,non_boomerang};
 public slots:
     void shut();

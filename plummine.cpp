@@ -17,6 +17,7 @@ PlumMine::PlumMine(QPointF pos  , QGraphicsScene * _scene) : Plant(pos , 0 ,0 , 
     else if(pos.y()>=398){
         startY -= 4;
     }
+    //should check
     QList<QGraphicsItem*> itemList = scene->items();
     for (QGraphicsItem* item : itemList) {
 
@@ -24,7 +25,16 @@ PlumMine::PlumMine(QPointF pos  , QGraphicsScene * _scene) : Plant(pos , 0 ,0 , 
 
             if (typeid(*item)==typeid(Zombie))
             {
-                dynamic_cast<Zombie*>(item)->Decreasinghealth(500);
+                Zombie* zombie = dynamic_cast<Zombie*>(item);
+                if (zombie) {
+                    zombie->Decreasinghealth(500);
+                    if (zombie->get_health() == 0) {
+                        // zombie health is zero, remove it from the scene
+                        scene->removeItem(zombie);
+                        zombie->deleteLater();
+                        delete zombie;
+                    }
+                }
             }
         }
     }
