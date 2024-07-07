@@ -85,6 +85,7 @@ void home::dropPlant(QString plantType)
         scene->addItem(p);
         qDebug()<<position;
         plantList->push_back(p);
+        emit AddedToVec();
         wallet->Decreasing(50);
     }
     else if(plantType=="TwoPeashooter")

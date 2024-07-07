@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,6 +15,7 @@ SOURCES += \
     bucketheadzombie.cpp \
     bullet.cpp \
     card.cpp \
+    client.cpp \
     home.cpp \
     jalapeno.cpp \
     leafheadzombie.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     bucketheadzombie.h \
     bullet.h \
     card.h \
+    client.h \
     home.h \
     jalapeno.h \
     leafheadzombie.h \
