@@ -8,8 +8,9 @@
 class Wallet;
 
 class home
-:public QGraphicsRectItem, public QObject
+:public QObject , public QGraphicsRectItem
 {
+    Q_OBJECT
 public:
     home(QPointF pos, qreal w, qreal h , QGraphicsScene * _scene , Wallet* _wallet=NULL);
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
