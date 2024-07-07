@@ -1,7 +1,6 @@
 #include "zombiescene.h"
 #include <QBrush>
 #include "zombiestore.h"
-#include "walnut.h"
 #define ROWS 6
 #define COLS 12
 ZombieScene::ZombieScene ()
@@ -28,13 +27,6 @@ ZombieScene::ZombieScene ()
     view->scene()->addItem(p->astronautzombie);
     view->scene()->addItem(p->purplehairzombie);
     view->scene()->addItem(wallet);
-
-    QPointF position(830 , 180);
-    home *h=new home (position ,100,100,nullptr);
-    Walnut *pp=new Walnut(position,h);
-    pp->setScale(0.08);
-    scene->addItem(pp);
-    pp->setPos(position);
     Game();
     view->show();
 }

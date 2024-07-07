@@ -6,7 +6,6 @@ class PurpleHairZombie
 {
 public:
     PurpleHairZombie(QPointF pos,home *adrs);
-    void Movement();
 };
 
 #endif // PURPLEHAIRZOMBIE_H
