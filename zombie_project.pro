@@ -28,6 +28,7 @@ SOURCES += \
     purplehairzombie.cpp \
     registeration.cpp \
     regularzombie.cpp \
+    resetpasswordpage.cpp \
     sun.cpp \
     tallzombie.cpp \
     two_peashooter.cpp \
@@ -57,6 +58,7 @@ HEADERS += \
     purplehairzombie.h \
     registeration.h \
     regularzombie.h \
+    resetpasswordpage.h \
     sun.h \
     tallzombie.h \
     two_peashooter.h \
