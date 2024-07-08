@@ -31,7 +31,8 @@ private:
     Wallet* wallet;
     QGraphicsScene *scene;
     bool IsFull;
-
+signals:
+    void AddedToVec();
 };
 
 #endif // HOME_H

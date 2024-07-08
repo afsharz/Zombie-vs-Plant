@@ -51,6 +51,7 @@ void PlantScene::initializeGrid()
             h->setVectorP(&plants);
             scene->addItem(h);
             homes.push_back(h);
+            connect(h, SIGNAL(AddedToVec()), this, SLOT(AddedToVecc()));
         }
     }
 }
@@ -72,7 +73,8 @@ void PlantScene::Sun_Maker()
         QTimer::singleShot(3500, sun, &QObject::deleteLater); // it deletes the sun after 3.5 seconds if player doesn't clicked on it
 }
 
-void PlantScene::JalapenoHandling()
+void PlantScene::AddedToVecc()
 {
-
+    qDebug() << "Im here";
+    emit AddedToVector();
 }
