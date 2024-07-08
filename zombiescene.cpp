@@ -1,7 +1,6 @@
 #include "zombiescene.h"
 #include <QBrush>
 #include "zombiestore.h"
-#include "walnut.h"
 #define ROWS 6
 #define COLS 12
 ZombieScene::ZombieScene ()
@@ -28,13 +27,6 @@ ZombieScene::ZombieScene ()
     view->scene()->addItem(p->astronautzombie);
     view->scene()->addItem(p->purplehairzombie);
     view->scene()->addItem(wallet);
-
-    QPointF position(830 , 180);
-    home *h=new home (position ,100,100,nullptr);
-    Walnut *pp=new Walnut(position,h);
-    pp->setScale(0.08);
-    scene->addItem(pp);
-    pp->setPos(position);
     Game();
     view->show();
 }
@@ -61,6 +53,7 @@ void ZombieScene::initializeGrid()
             h->setVectorZ(&zombies);
             scene->addItem(h);
             homes.push_back(h);
+            connect(h, SIGNAL(AddedToVec()), this, SLOT(AddedToVecc()));
         }
     }
 
@@ -73,4 +66,9 @@ void ZombieScene::Brain_Maker()
     brain->show();
     if(brain)
         QTimer::singleShot(3500, brain, &QObject::deleteLater); // it deletes the brain after 3.5 seconds if player doesn't clicked on it
+}
+
+void ZombieScene::AddedToVecc()
+{
+    emit AddedToVector();
 }

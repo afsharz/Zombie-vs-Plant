@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,19 +15,23 @@ SOURCES += \
     bucketheadzombie.cpp \
     bullet.cpp \
     card.cpp \
+    client.cpp \
     home.cpp \
     jalapeno.cpp \
     leafheadzombie.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp \
     peashooter.cpp \
     plant.cpp \
     plantscene.cpp \
     plantstore.cpp \
+    player.cpp \
     plummine.cpp \
     purplehairzombie.cpp \
     registeration.cpp \
     regularzombie.cpp \
+    resetpasswordpage.cpp \
     sun.cpp \
     tallzombie.cpp \
     two_peashooter.cpp \
@@ -45,18 +49,22 @@ HEADERS += \
     bucketheadzombie.h \
     bullet.h \
     card.h \
+    client.h \
     home.h \
     jalapeno.h \
     leafheadzombie.h \
+    login.h \
     mainwindow.h \
     peashooter.h \
     plant.h \
     plantscene.h \
     plantstore.h \
+    player.h \
     plummine.h \
     purplehairzombie.h \
     registeration.h \
     regularzombie.h \
+    resetpasswordpage.h \
     sun.h \
     tallzombie.h \
     two_peashooter.h \
@@ -68,6 +76,7 @@ HEADERS += \
     zombiestore.h
 
 FORMS += \
+    login.ui \
     mainwindow.ui \
     registeration.ui
 

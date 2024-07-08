@@ -13,8 +13,8 @@ public:
     void Decreasinghealth(int attackpowerzombie);
     void Set_Position(QPointF pos);
     int get_health();
-    enum Type{boomerang,non_boomerang};
     void setHomeAdrs(home *adrs);
+    enum Type{boomerang,non_boomerang};
     //func health
     //func attack
     ~Plant();

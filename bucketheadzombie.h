@@ -6,7 +6,6 @@ class BucketHeadZombie
 {
 public:
     BucketHeadZombie(QPointF pos,home *adrs);
-    void Movement();
 };
 
 #endif // BUCKETHEADZOMBIE_H
