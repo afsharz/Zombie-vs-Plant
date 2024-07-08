@@ -83,7 +83,6 @@ void home::dropPlant(QString plantType)
         p->setHomeAdrs(this);
         p->setScale(0.07);
         scene->addItem(p);
-        qDebug()<<position;
         plantList->push_back(p);
         emit AddedToVec();
         wallet->Decreasing(50);
@@ -96,6 +95,7 @@ void home::dropPlant(QString plantType)
         scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
+        emit AddedToVec();
         wallet->Decreasing(100);
     }
     else if(plantType=="Walnut")
@@ -106,6 +106,7 @@ void home::dropPlant(QString plantType)
         scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
+        emit AddedToVec();
         wallet->Decreasing(100);
     }
     else if(plantType=="PlumMine")
@@ -116,6 +117,7 @@ void home::dropPlant(QString plantType)
         scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
+        emit AddedToVec();
         wallet->Decreasing(175);
     }
     else if(plantType=="Jalapeno")
@@ -126,6 +128,7 @@ void home::dropPlant(QString plantType)
         scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
+        emit AddedToVec();
         wallet->Decreasing(150);
     }
     else if(plantType=="Boomerang")
@@ -136,7 +139,7 @@ void home::dropPlant(QString plantType)
         scene->addItem(p);
         p->setPos(position);
         plantList->push_back(p);
-       wallet->Decreasing(125);
+        wallet->Decreasing(125);
     }
 }
 
@@ -151,6 +154,7 @@ void home::dropZombie(QString zombieType)
         z->setScale(0.075);
         scene->addItem(z);
         zombieList->push_back(z);
+        emit AddedToVec();
         wallet->Decreasing(100);
     }
     else if (zombieType=="bucketheadzombie")
@@ -169,6 +173,7 @@ void home::dropZombie(QString zombieType)
         z->setScale(0.075);
         scene->addItem(z);
         zombieList->push_back(z);
+        emit AddedToVec();
         wallet->Decreasing(150);
     }
      else if (zombieType=="tallzombie")
@@ -186,6 +191,7 @@ void home::dropZombie(QString zombieType)
         z->setScale(0.075);
         scene->addItem(z);
         zombieList->push_back(z);
+        emit AddedToVec();
         wallet->Decreasing(200);
     }
     else if (zombieType=="purplehairzombie")
@@ -194,6 +200,7 @@ void home::dropZombie(QString zombieType)
          z->setScale(0.07);
          scene->addItem(z);
          zombieList->push_back(z);
+         emit AddedToVec();
          wallet->Decreasing(800);
      }
 }
