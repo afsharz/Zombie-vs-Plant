@@ -31,6 +31,9 @@ private :
     Wallet* wallet;
 public slots :
     void Brain_Maker();
+    void AddedToVecc();
+signals :
+    void AddedToVector();
 };
 
 #endif // ZOMBIESCENE_H

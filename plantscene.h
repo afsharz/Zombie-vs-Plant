@@ -31,7 +31,9 @@ private :
     Wallet* wallet;
 public slots :
     void Sun_Maker();
-    void JalapenoHandling();
+    void AddedToVecc();
+signals :
+    void AddedToVector();
 };
 
 #endif // PLANTSCENE_H

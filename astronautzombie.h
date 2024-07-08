@@ -6,7 +6,6 @@ class AstronautZombie
 {
 public:
     AstronautZombie(QPointF pos,home *adrs);
-    void Movement();
 };
 
 #endif // ASTRONAUTZOMBIE_H

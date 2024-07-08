@@ -1,6 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
 #include <QMainWindow>
 #include <QGraphicsPixmapItem>
 #include <QApplication>
@@ -8,13 +7,6 @@
 #include <QGraphicsScene>
 #include <QCryptographicHash>
 #include <QCoreApplication>
-#include <QDialog>
-#include <QDebug>
-#include <QTextStream>
-#include <QFile>
-#include <QString>
-#include "registeration.h"
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -42,6 +34,5 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    registeration *rg;
 };
 #endif // MAINWINDOW_H
