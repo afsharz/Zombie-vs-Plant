@@ -2,6 +2,7 @@
 #include "ui_login.h"
 #include "plantscene.h"
 #include "zombiescene.h"
+#include "resetpasswordpage.h"
 #include <QThread>
 
 LogIn::LogIn(QWidget *parent)
@@ -125,5 +126,13 @@ void LogIn::on_pushButton_5_clicked()
 {
     PlantScene *PSc = new PlantScene;
     ZombieScene *ZSc = new ZombieScene;
+}
+
+
+void LogIn::on_pushButton_2_clicked()
+{
+    ResetPasswordPage *r=new ResetPasswordPage;
+    r->show();
+    this->close();
 }
 
