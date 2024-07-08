@@ -6,6 +6,7 @@ registeration::registeration(QWidget *parent)
     , ui(new Ui::registeration)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Sign Up");
     user=new UserInfo(this);
     designWindow();
     connect(ui->lineEdit,&QLineEdit::textEdited, user, &UserInfo::setName);

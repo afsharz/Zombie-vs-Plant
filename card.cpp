@@ -66,6 +66,7 @@ void Card::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if(this->IsAccessibale){
+        scene->removeItem(transparent);
         delete transparent;
         QPointF newPos = event->scenePos();
         QList<QGraphicsItem*> items = scene->items(newPos);
