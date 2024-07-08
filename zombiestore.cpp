@@ -10,7 +10,7 @@ ZombieStore::ZombieStore(QGraphicsScene *scene , Wallet* _wallet ) : scene(scene
 
     regularzombie->setPixmap(QPixmap(":/new/prefix1/regular-zombie-black.jpg"));
     regularzombie->setPos(750,-120);
-    regularzombie->setScale(0.1);
+ regularzombie->setScale(0.1);
 
     bucketheadzombie->setPixmap(QPixmap(":/new/prefix1/bucket-head-zombie-black.jpg"));
     bucketheadzombie->setPos(750,-225);

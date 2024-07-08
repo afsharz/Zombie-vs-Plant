@@ -60,27 +60,13 @@ void Card::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         //QPointF newPos = event->scenePos();
         transparent->setPos(newPos);
 
-        // Find items under the cursor
-        QList<QGraphicsItem*> items = scene->items(newPos);
-        for (QGraphicsItem* item : items) {
-            home* h = dynamic_cast<home*>(item);
-            //if (h)
-            //{
-                //h->highlight();
-                //if(pre && pre!=h)
-                //{
-                    //pre->unhighlight();
-                //}
-               //pre=h;
-            //}
-        }
-
     }
     QGraphicsPixmapItem::mouseMoveEvent(event);
 }
 void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if(this->IsAccessibale){
+        scene->removeItem(transparent);
         delete transparent;
         QPointF newPos = event->scenePos();
         QList<QGraphicsItem*> items = scene->items(newPos);

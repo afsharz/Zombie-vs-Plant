@@ -1,17 +1,14 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "login.h"
+#include "ui_login.h"
 #include "plantscene.h"
 #include "zombiescene.h"
-#include "resetpasswordpage.h"
 #include <QThread>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+LogIn::LogIn(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::LogIn)
 {
-
     ui->setupUi(this);
-    setWindowTitle("Login");
     //These codes that are repeated are for the color and size and transparency of line edits, lebels and push bottons
     //"background-color: rgba(0, 0, 0, 127);"
     //ui->label->setStyleSheet("QLabel {""border-radius: 15px;" "border: none;" "}");
@@ -56,31 +53,25 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit->setPlaceholderText("Username");
     ui->lineEdit_2->setPlaceholderText("Password");
 
-    //ui->label_6->stackUnder(ui->label);
-    //ui->label_10->stackUnder(ui->label);
-    //ui->label_11->stackUnder(ui->label);
-    //ui->label_12->stackUnder(ui->label);
-    //ui->label_13->stackUnder(ui->label);
-    //ui->label_15->stackUnder(ui->label);
-    //ui->label_3->stackUnder(ui->label);
-
-
+    ui->label->stackUnder(ui->label_8);
+    ui->label->stackUnder(ui->lineEdit);
 
 }
 
-MainWindow::~MainWindow()
+LogIn::~LogIn()
 {
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
+void LogIn::on_pushButton_clicked()
 {
     //to open register page to create an acount
     rg = new registeration(this);
     rg->show();
 }
 
-void MainWindow::on_pushButton_3_clicked()
+
+void LogIn::on_pushButton_3_clicked()
 {
     QString filename = ui->lineEdit->text() + ".txt";
     QFile userfile(filename);
@@ -127,21 +118,12 @@ void MainWindow::on_pushButton_3_clicked()
         ui->label_9->show();
         ui->label_9->setText(tr("log in successfully!"));
     }
-
 }
 
 
-void MainWindow::on_pushButton_4_clicked()
+void LogIn::on_pushButton_5_clicked()
 {
     PlantScene *PSc = new PlantScene;
     ZombieScene *ZSc = new ZombieScene;
-}
-
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    ResetPasswordPage *r=new ResetPasswordPage;
-    r->show();
-    this->close();
 }
 
