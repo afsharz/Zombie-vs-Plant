@@ -3,7 +3,6 @@
 
 PeaShooter::PeaShooter(QPointF pos,home *adrs) : Plant(pos , 200 , 1 , 15,adrs)
 {
-
     setPixmap(QPixmap(":/new/prefix1/peashooter transparent.png"));
     setScale(0.1);
     setPos(pos);
