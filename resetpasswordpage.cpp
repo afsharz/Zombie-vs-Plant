@@ -1,7 +1,8 @@
 #include "resetpasswordpage.h"
 #include <QSizePolicy>
 #include <QFile>
-#include "mainwindow.h"
+#include "login.h"
+
 ResetPasswordPage::ResetPasswordPage(QWidget *parent)
     : QWidget{parent}
 {
@@ -173,8 +174,8 @@ void ResetPasswordPage::checkinfo()
 
 void ResetPasswordPage::BackBtnClicked()
 {
-    MainWindow *mainwindow=new MainWindow;
-    mainwindow->show();
+    LogIn *login=new LogIn;
+    login->show();
     this->close();
 }
 
