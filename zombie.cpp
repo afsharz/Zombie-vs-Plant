@@ -2,6 +2,8 @@
 #include "walnut.h"
 #include "plant.h"
 #include "home.h"
+#include "jalapeno.h"
+#include "plummine.h"
 
 Zombie::Zombie(QPointF _pos ,int _health,int _FirstMovementDelay,int _MovementDelay,
                int _AttackPower, int _FirstTimeBwAttack, int _TimeBwAttack,home *adrs)
@@ -95,7 +97,7 @@ void Zombie::Movement()
     QList<QGraphicsItem*> itemList = scene()->items();
     for (QGraphicsItem* item : itemList) {
         Plant* plant = dynamic_cast<Plant*>(item);
-        if (plant)
+        if (plant && typeid(*item)!=typeid(Jalapeno) && typeid(*item)!=typeid(PlumMine) )
         {
             qreal distanceX = currentPos.x() - item->pos().x();//QLineF(currentPos, item->pos()).length();
             qreal distanceY = qAbs(currentPos.y() - item->pos().y());
@@ -149,7 +151,7 @@ void Zombie::setBlockFlag()
 Zombie::~Zombie()
 {
     HomeAdrs->setFlag(false);
-    delete attack;
-    delete timer;
+    //delete attack;
+    //delete timer;
 }
 
