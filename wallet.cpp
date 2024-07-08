@@ -3,7 +3,7 @@
 
 
 Wallet::Wallet( int _flag , QGraphicsTextItem * parent)
-    : QGraphicsTextItem(parent) , Money(0) , flag(_flag) {
+    : QGraphicsTextItem(parent) , Money(500) , flag(_flag) {
 
     //draw money
     if(flag)

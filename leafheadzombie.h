@@ -6,7 +6,6 @@ class LeafHeadZombie
 {
 public:
     LeafHeadZombie(QPointF pos,home *adrs);
-    void Movement();
 };
 
 #endif // LEAFHEADZOMBIE_H

@@ -6,6 +6,7 @@ class TallZombie
 {
 public:
     TallZombie(QPointF pos,home *adrs);
+public slots :
     void Movement();
 };
 

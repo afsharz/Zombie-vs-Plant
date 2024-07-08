@@ -97,9 +97,9 @@ void Zombie::Movement()
         Plant* plant = dynamic_cast<Plant*>(item);
         if (plant)
         {
-            qreal distance =currentPos.x()-item->pos().x() ;//QLineF(currentPos, item->pos()).length();
-            if(distance<100){
-                qDebug()<<"i am close to a plant";
+            qreal distanceX = currentPos.x() - item->pos().x();//QLineF(currentPos, item->pos()).length();
+            qreal distanceY = qAbs(currentPos.y() - item->pos().y());
+            if(distanceX < 100 && distanceY < 50){
                 timer->stop();
                 attack = new QTimer(this);
                 QObject::connect(attack, &QTimer::timeout, this, [this, item]{ Attack(item); });
@@ -108,9 +108,12 @@ void Zombie::Movement()
         }
     }
 
-  currentPos.setX(currentPos.x() - 39);
+    currentPos.setX(currentPos.x() - 39);
     Set_Position(pos());
     this->setPos(currentPos);
+    if(this->health<=100){
+        this->FirstMovementDelay = MovementDelay;
+    }
     if(this->pos().x()<=110)
     {
         //deleteLater();
@@ -125,11 +128,14 @@ void Zombie::Attack(QGraphicsItem* item)
     Plant* plant = dynamic_cast<Plant*>(item);
     if (plant) {
         plant->Decreasinghealth(this->AttackPower);
+        this->FirstTimeBwAttack = TimeBwAttack;
         if (plant->get_health() == 0) {
             // Plant health is zero, remove it from the scene
             scene()->removeItem(plant);
             plant->deleteLater();
             delete plant;
+            attack->stop();
+            //we should delete plant from vector
             timer->start();
         }
     }
@@ -139,6 +145,7 @@ void Zombie::setBlockFlag()
 {
     HomeAdrs->setFlag(false);
 }
+
 Zombie::~Zombie()
 {
     HomeAdrs->setFlag(false);
