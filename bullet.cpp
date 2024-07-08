@@ -39,14 +39,15 @@ void bullet::move()
                 // zombie health is zero, remove it from the scene
                 scene()->removeItem(zombie);
                 zombie->deleteLater();
-                delete zombie;
+                //delete zombie;
             }
-        }
-        if (!IsBoomerang)
-        {
-            scene()->removeItem(this);
-            delete this;
-        }
+            if (!IsBoomerang)
+            {
+                scene()->removeItem(this);
+                this->deleteLater();
+                return;
+            }
+        }  
     }
 
     if(x()+this->boundingRect().width()>0)
