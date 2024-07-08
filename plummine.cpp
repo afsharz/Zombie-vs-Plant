@@ -24,18 +24,14 @@ PlumMine::PlumMine(QPointF pos  , QGraphicsScene * _scene,home *adrs) :
     for (QGraphicsItem* item : itemList) {
 
         if (item->pos().y()>=startY &&  item->pos().y()<=startY+3*cellHeight && item->pos().x()>=startX &&  item->pos().x()<startX+3*cellWidth) {
-
-            if (typeid(*item)==typeid(Zombie))
-            {
-                Zombie* zombie = dynamic_cast<Zombie*>(item);
-                if (zombie) {
-                    zombie->Decreasinghealth(500);
-                    if (zombie->get_health() == 0) {
-                        // zombie health is zero, remove it from the scene
-                        scene->removeItem(zombie);
-                        zombie->deleteLater();
-                        delete zombie;
-                    }
+            Zombie* zombie = dynamic_cast<Zombie*>(item);
+            if (zombie) {
+                zombie->Decreasinghealth(500);
+                if (zombie->get_health() == 0) {
+                    // zombie health is zero, remove it from the scene
+                    scene->removeItem(zombie);
+                    zombie->deleteLater();
+                    delete zombie;
                 }
             }
         }
