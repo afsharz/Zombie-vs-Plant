@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "plantscene.h"
 #include "zombiescene.h"
+#include "resetpasswordpage.h"
 #include <QThread>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -10,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     ui->setupUi(this);
-
+    setWindowTitle("Login");
     //These codes that are repeated are for the color and size and transparency of line edits, lebels and push bottons
     //"background-color: rgba(0, 0, 0, 127);"
     //ui->label->setStyleSheet("QLabel {""border-radius: 15px;" "border: none;" "}");
@@ -134,5 +135,13 @@ void MainWindow::on_pushButton_4_clicked()
 {
     PlantScene *PSc = new PlantScene;
     ZombieScene *ZSc = new ZombieScene;
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ResetPasswordPage *r=new ResetPasswordPage;
+    r->show();
+    this->close();
 }
 

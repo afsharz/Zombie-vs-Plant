@@ -97,8 +97,10 @@ void Zombie::Movement()
         Plant* plant = dynamic_cast<Plant*>(item);
         if (plant)
         {
-            qreal distance =currentPos.x()-item->pos().x() ;//QLineF(currentPos, item->pos()).length();
-            if(distance<100){
+            qreal distanceX =currentPos.x()-item->pos().x() ;//QLineF(currentPos, item->pos()).length();
+            qreal distanceY=currentPos.y()-item->pos().y();
+
+            if(distanceX<100 && distanceY<10 && distanceY >-10){
                 qDebug()<<"i am close to a plant";
                 timer->stop();
                 attack = new QTimer(this);
