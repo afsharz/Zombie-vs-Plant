@@ -47,6 +47,10 @@ LogIn::LogIn(QWidget *parent)
     ui->pushButton_3->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     ui->pushButton_3->setStyleSheet("color: black;");
 
+    ui->pushButton_4->setFlat(true);
+    ui->pushButton_4->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
+    ui->pushButton_4->setStyleSheet("color: black;");
+
     ui->lineEdit->setStyleSheet("font-size: 10px;");
     ui->lineEdit_2->setStyleSheet("font-size: 10px;");
     ui->lineEdit_2->setStyleSheet("color: white;");
@@ -72,7 +76,7 @@ void LogIn::on_pushButton_clicked()
 }
 
 
-void LogIn::on_pushButton_3_clicked()
+void LogIn::on_pushButton_4_clicked()
 {
     QString filename = ui->lineEdit->text() + ".txt";
     QFile userfile(filename);

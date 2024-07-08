@@ -92,6 +92,10 @@ void registeration::designWindow()
     ui->pushButton_3->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     ui->pushButton_3->setStyleSheet("color: black;");
 
+    ui->pushButton_4->setFlat(true);
+    ui->pushButton_4->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
+    ui->pushButton_4->setStyleSheet("color: black;");
+
     //ui->label_9->stackUnder(ui->label);
     //ui->label_10->stackUnder(ui->label);
     //ui->label_11->stackUnder(ui->label);
@@ -154,7 +158,7 @@ void registeration::showPasswordState(UserInfo::state state)
 }
 
 
-void registeration::on_pushButton_3_clicked()
+void registeration::on_pushButton_4_clicked()
 {
     QString filename = ui->lineEdit_3->text() + ".txt";
     QFile userfile(filename);

@@ -175,10 +175,10 @@
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>260</y>
-     <width>71</width>
-     <height>31</height>
+     <x>920</x>
+     <y>330</y>
+     <width>20</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
@@ -189,7 +189,7 @@
     </font>
    </property>
    <property name="text">
-    <string>log in</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_2">
@@ -283,6 +283,26 @@
    </property>
    <property name="text">
     <string>game</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>260</y>
+     <width>71</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>B Compset</family>
+     <pointsize>14</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>log in</string>
    </property>
   </widget>
  </widget>
