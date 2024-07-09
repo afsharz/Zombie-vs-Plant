@@ -59,3 +59,13 @@ void Client::WritingData()
 {
     // we should write information of the last vector info in json file and send it to server
 }
+
+void Client::zombiewin()
+{
+
+}
+
+void Client::plantwin()
+{
+
+}

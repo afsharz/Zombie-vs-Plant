@@ -90,8 +90,6 @@ void Zombie::Set_Position(QPointF pos)
 
 int Zombie::get_health(){return health;}
 
-void Zombie::setGameTimer(QTimer *_GameTimer){GameTimer=_GameTimer;}
-
 void Zombie::Movement()
 {
     QPointF currentPos = this->pos();
