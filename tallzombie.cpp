@@ -34,6 +34,7 @@ void TallZombie::Movement()
     this->setPos(currentPos);
     if(this->pos().x()<=110)
     {
+        emit ZombieWin();
         //deleteLater();
         //zombies win
         delete this;

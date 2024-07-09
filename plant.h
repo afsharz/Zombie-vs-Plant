@@ -19,7 +19,7 @@ public:
     //func attack
     ~Plant();
 public slots:
-    void shut();
+    virtual void shut();
 
 protected :
     int health;

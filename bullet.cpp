@@ -1,17 +1,20 @@
 #include "bullet.h"
-#include "zombie.h"
+
 #define length_of_move 5
 bullet::bullet(int _power,Plant:: Type t,QPointF _pos)
     : power(_power)
 {
-    switch (t) {
+    switch (t)
+    {
     case Plant::boomerang:
     { IsBoomerang=true;
         break;
     }
     case Plant::non_boomerang:
+    {
         IsBoomerang=false;
         break;
+    }
     }
     setPos(_pos);
     setPixmap(QPixmap(":/new/prefix1/pea.png"));
@@ -35,17 +38,20 @@ void bullet::move()
     {
         Zombie* zombie = dynamic_cast<Zombie*>(x);
         if (zombie) {
-            zombie->Decreasinghealth(power);
-            if (zombie->get_health() == 0) {
-                // zombie health is zero, remove it from the scene
-                scene()->removeItem(zombie);
-                zombie->deleteLater();
-            }
-            if (!IsBoomerang)
-            {
-                scene()->removeItem(this);
-                this->deleteLater();
-                return;
+            if(HaveHit.count(zombie)==0){
+                zombie->Decreasinghealth(power);
+                HaveHit.push_back(zombie);
+                if (zombie->get_health() == 0) {
+                    // zombie health is zero, remove it from the scene
+                    scene()->removeItem(zombie);
+                    zombie->deleteLater();
+                }
+                if (!IsBoomerang)
+                {
+                    scene()->removeItem(this);
+                    this->deleteLater();
+                    return;
+                }
             }
         }  
     }

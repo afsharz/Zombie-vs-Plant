@@ -6,6 +6,7 @@
 #include <QGraphicsView>
 #include <QVector>
 #include <QBrush>
+#include <QLabel>
 #include <QTimer>
 #include "home.h"
 #include "plantstore.h"
@@ -22,6 +23,7 @@ public:
     PlantScene();
     void initializeGrid();
     void Game();
+    void PlantWin();
  //void mousePressEvent(QGraphicsSceneMouseEvent *event);
 private :
     QGraphicsScene *scene;
@@ -30,11 +32,12 @@ private :
     QVector<home*> homes;
     Wallet* wallet;
     QTimer* GameTimer;
+    QLabel* timer;
 public slots :
     void Sun_Maker();
     void AddedToVecc();
-    void PlantWin();
     void ZombieWin();
+    void UpdateTimer();
 signals :
     void AddedToVector();
     void Zombiewin();
