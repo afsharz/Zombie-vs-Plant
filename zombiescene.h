@@ -19,10 +19,10 @@ class ZombieScene
     Q_OBJECT
 public:
     ZombieScene();
-    //void initializeGrid();
     void Game();
     void initializeGrid();
-    //void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    QVector<Zombie*> getZombies();
+    QGraphicsScene* getScene();
 private :
     QGraphicsScene *scene;
     QVector<Zombie*> zombies;
@@ -32,11 +32,11 @@ private :
     QTimer* GameTimer;
 public slots :
     void Brain_Maker();
-    void AddedToVecc();
+    void AddedToVecc(QString type);
     void PlantWin();
     void ZombieWin();
 signals :
-    void AddedToVector();
+    void AddedToVector(QString type);
     void Zombiewin();
     void Plantwin();
 };

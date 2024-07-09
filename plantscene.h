@@ -21,8 +21,9 @@ class PlantScene
 public:
     PlantScene();
     void initializeGrid();
+    QVector<Plant*> getPlants();
+    QGraphicsScene *getScene();
     void Game();
- //void mousePressEvent(QGraphicsSceneMouseEvent *event);
 private :
     QGraphicsScene *scene;
     QVector<Zombie*> zombies;
