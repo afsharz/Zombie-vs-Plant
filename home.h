@@ -20,8 +20,8 @@ public:
     void dropEvent(QGraphicsSceneDragDropEvent *event) override;
     void highlight();
     void unhighlight();
-    void dropPlant(QString plantType);
-    void dropZombie(QString zombieType);
+    void dropPlant(QString plantType,bool IsMyCommand);
+    void dropZombie(QString zombieType,bool IsMyCommand);
     void setVectorP(QVector<Plant*> *plantList);
     void setVectorZ(QVector<Zombie*> *zombieList);
     void setFlag(bool flag);
@@ -35,7 +35,7 @@ private:
 public slots :
     void ZomWin();
 signals:
-    void AddedToVec();
+    void AddedToVec(QString type);
     void zombiewin();
 };
 

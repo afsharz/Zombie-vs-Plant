@@ -16,7 +16,7 @@ public:
 private :
     QString PlayerName;
     QString CompetitorName;
-    bool PlantOrZombie;//0 for zombie and 1 for plant
+    bool IsPlant;//0 for zombie and 1 for plant
     bool WinOrLose;//0 for lose and 1 for win
     QFile* PlayerFile;
 };

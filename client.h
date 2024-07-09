@@ -26,7 +26,7 @@ public slots:
     void WrittenData();
     void ConnectedToServer();
     void DisconnectedFromServer();
-    void WritingData();
+    void WritingData(QString type);
     void zombiewin();
     void plantwin();
     void checkround();

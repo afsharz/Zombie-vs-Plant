@@ -46,6 +46,17 @@ PlantScene::PlantScene()
     view->scene()->addItem(p->plumMine);
     view->scene()->addItem(wallet);
     Game();
+  qreal w = 77;
+    qreal h = 73;
+    QPointF f(800,180);
+    home hh(f,w,h,scene,wallet);
+    RegularZombie *z=new RegularZombie(f,&hh);
+    z->setScale(0.075);
+    scene->addItem(z);
+    ///
+    //PeaShooter *jk=new PeaShooter(QPointF(126,37));
+   // delete jk;
+    ///
     view->show();
 
 
@@ -71,6 +82,13 @@ void PlantScene::initializeGrid()
         }
     }
 }
+
+QVector<Plant *> PlantScene::getPlants()
+{
+    return plants;
+}
+
+QGraphicsScene *PlantScene::getScene(){return scene;}
 
 void PlantScene::Game()
 {

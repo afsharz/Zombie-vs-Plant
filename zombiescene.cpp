@@ -61,12 +61,16 @@ void ZombieScene::initializeGrid()
             h->setVectorZ(&zombies);
             scene->addItem(h);
             homes.push_back(h);
-            connect(h, SIGNAL(AddedToVec()), this, SLOT(AddedToVecc()));
+            connect(h, SIGNAL(AddedToVec(QString)), this, SLOT(AddedToVecc(QString)));
             connect(h,SIGNAL(zombiewin()),this,SLOT(ZombieWin()));
         }
     }
 
 }
+
+QVector<Zombie *> ZombieScene::getZombies() {return zombies;}
+
+QGraphicsScene *ZombieScene::getScene(){return scene;}
 
 void ZombieScene::Brain_Maker()
 {
@@ -77,9 +81,9 @@ void ZombieScene::Brain_Maker()
         QTimer::singleShot(3500, brain, &QObject::deleteLater); // it deletes the brain after 3.5 seconds if player doesn't clicked on it
 }
 
-void ZombieScene::AddedToVecc()
+void ZombieScene::AddedToVecc(QString type)
 {
-    emit AddedToVector();
+    emit AddedToVector(type);
 }
 
 void ZombieScene::PlantWin()

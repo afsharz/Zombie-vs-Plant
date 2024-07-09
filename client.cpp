@@ -2,6 +2,8 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QTimer>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 Client::Client(QString name) {
     // we should make a view with a pushbotton that try to connect to server
@@ -9,14 +11,20 @@ Client::Client(QString name) {
     player = new Player;
     player->set_PlayerName()=name;
     player->setQfile();
+    // to test functions
+    ConnectingToServer();
 }
 
 void Client::ConnectingToServer()
 {
     ClientSocket = new QTcpSocket();
-    ClientSocket->connectToHost("192.168.90.75" , 1025); // first is the address IP and second is our port
+    ClientSocket->connectToHost("127.0.0.1" , 1500); // first is the address IP and second is our port
     connect(ClientSocket , SIGNAL(connected()) , this , SLOT(ConnectedToServer()));
-    connect(ClientSocket , SIGNAL(bytesWritten(qint64)) , this , SLOT(WritingData()));
+    if(ClientSocket->waitForConnected(10000))
+        qDebug()<<"connected to server";
+    else
+        qDebug()<<"could not connect";
+    connect(ClientSocket , SIGNAL(bytesWritten(qint64)) , this , SLOT(WrittenData()));
     connect(ClientSocket , SIGNAL(readyRead()) , this , SLOT(ReadingData()));
     connect(ClientSocket , SIGNAL(disconnected()) , this , SLOT(DisconnectedFromServer()));
 }
@@ -27,17 +35,62 @@ void Client::ReadingData()
     // we also read a boolian that server give us to said if we are plant or zombie and set it in the player
     // we should set the competitor name and roles
     //this if else should be in the scope that client recieve a boolian from server
-    if(player->set_PlantOrZombie()){
-        plantscene = new PlantScene;
-        connect(plantscene,SIGNAL(AddedToVector()),this,SLOT(WritingData()));
-        connect(plantscene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
-        connect(plantscene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
+    qDebug()<<"got a message from server";
+    QByteArray byteArray=ClientSocket->readAll();
+    QJsonObject mess;
+    byteArray.replace("\\n", "\n");
+    byteArray.replace("\\\"", "\"");
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(byteArray);
+    if (!jsonDoc.isNull() && jsonDoc.isObject()) {
+         mess = jsonDoc.object();
+    } else {
+        qWarning() << "Failed to create JSON object from QByteArray";
     }
-    else{
-        zombiescene = new ZombieScene;
-        connect(zombiescene,SIGNAL(AddedToVector()),this,SLOT(WritingData()));
-        connect(zombiescene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
-        connect(zombiescene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
+
+    if(mess["MessageType"].toString()=="role")
+    {
+        if(mess["role"]=="zombie")
+        {
+            player->set_PlantOrZombie()=0;
+            zombiescene = new ZombieScene;
+            connect(zombiescene,SIGNAL(AddedToVector(QString)),this,SLOT(WritingData(QString)));
+            connect(zombiescene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
+            connect(zombiescene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
+        }
+        else
+        {
+            player->set_PlantOrZombie()=1;
+            plantscene = new PlantScene;
+            connect(plantscene,SIGNAL(AddedToVector(QString)),this,SLOT(WritingData(QString)));
+            connect(plantscene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
+            connect(plantscene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
+        }
+    }
+    else if (mess["MessageType"]=="drop")
+    {
+        QPointF position(mess["X"].toInt(),mess["Y"].toInt());
+        if(player->set_PlantOrZombie())///if true :plant
+        {
+            QList<QGraphicsItem*> items= plantscene->getScene()->items(position);
+            for (QGraphicsItem* item : items) {
+                home* h = dynamic_cast<home*>(item);
+                if(h)
+                {
+                    h->dropZombie(mess["type"].toString(),false);
+                }
+            }
+        }
+        else /// zombie
+        {
+            QList<QGraphicsItem*> items= zombiescene->getScene()->items(position);
+            for (QGraphicsItem* item : items) {
+                home* h = dynamic_cast<home*>(item);
+                if(h)
+                {
+                    h->dropPlant(mess["type"].toString(),false);
+                }
+            }
+        }
     }
 }
 
@@ -57,12 +110,29 @@ void Client::ConnectedToServer()
 
 void Client::DisconnectedFromServer()
 {
-    qDebug() << "DisConnection Lost\n";
+    qDebug() << "Connection Lost\n";
 }
 
-void Client::WritingData()
+void Client::WritingData(QString type)
 {
     // we should write information of the last vector info in json file and send it to server
+    QJsonObject mess;
+    mess["MessageType"]="drop";
+    mess["type"]=type;
+    if(player->set_PlantOrZombie())
+    {
+        mess["X"]=plantscene->getPlants().back()->scenePos().x();
+        mess["Y"]=plantscene->getPlants().back()->scenePos().y();
+    }
+    else
+    {
+        mess["X"]=zombiescene->getZombies().back()->scenePos().x();
+        mess["Y"]=zombiescene->getZombies().back()->scenePos().y();
+    }
+
+    QJsonDocument jsonDoc(mess);
+    QByteArray jsonData = jsonDoc.toJson();
+    ClientSocket->write(jsonData);
 }
 
 void Client::zombiewin()

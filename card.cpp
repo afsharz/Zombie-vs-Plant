@@ -78,9 +78,9 @@ void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 QRegularExpressionMatch *m=new QRegularExpressionMatch;
                 *m=t->match(Type);
                 if(m->hasMatch() && newPos.x()>=1000)
-                    h->dropZombie(Type);
+                    h->dropZombie(Type,true);
                 else if (newPos.x()<= HalfOfField)
-                    h->dropPlant(Type);
+                    h->dropPlant(Type,true);
                 h->unhighlight();
             }
         }
