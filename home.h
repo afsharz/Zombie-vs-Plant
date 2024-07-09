@@ -32,8 +32,11 @@ private:
     Wallet* wallet;
     QGraphicsScene *scene;
     bool IsFull;
+public slots :
+    void ZomWin();
 signals:
     void AddedToVec();
+    void zombiewin();
 };
 
 #endif // HOME_H

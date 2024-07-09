@@ -25,10 +25,14 @@ void Client::ReadingData()
     if(player->set_PlantOrZombie()){
         plantscene = new PlantScene;
         connect(plantscene,SIGNAL(AddedToVector()),this,SLOT(WritingData()));
+        connect(plantscene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
+        connect(plantscene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
     }
     else{
         zombiescene = new ZombieScene;
         connect(zombiescene,SIGNAL(AddedToVector()),this,SLOT(WritingData()));
+        connect(zombiescene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
+        connect(zombiescene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
     }
 }
 

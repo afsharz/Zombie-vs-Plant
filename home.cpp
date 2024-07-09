@@ -219,3 +219,8 @@ void home::setFlag(bool flag)
 {
     IsFull=flag;
 }
+
+void home::ZomWin()
+{
+ emit zombiewin();
+}

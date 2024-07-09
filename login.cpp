@@ -129,7 +129,7 @@ void LogIn::on_pushButton_4_clicked()
 void LogIn::on_pushButton_5_clicked()
 {
     PlantScene *PSc = new PlantScene;
-   // ZombieScene *ZSc = new ZombieScene;
+   ZombieScene *ZSc = new ZombieScene;
 }
 
 
