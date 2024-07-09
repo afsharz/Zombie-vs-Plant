@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include "plantscene.h"
 #include "zombiescene.h"
+#include "player.h"
 
 class Client : public QObject
 {
@@ -15,12 +16,14 @@ private :
     QTcpSocket* ClientSocket;
     PlantScene* plantscene;
     ZombieScene* zombiescene;
+    Player* player;
 public slots:
     void ConnectingToServer();
     void ReadingData();
-    void WritingData();
+    void WrittenData();
     void ConnectedToServer();
     void DisconnectedFromServer();
+    void WritingData();
 };
 
 #endif // CLIENT_H

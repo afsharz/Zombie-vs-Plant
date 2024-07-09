@@ -75,6 +75,5 @@ void PlantScene::Sun_Maker()
 
 void PlantScene::AddedToVecc()
 {
-    qDebug() << "Im here";
     emit AddedToVector();
 }

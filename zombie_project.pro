@@ -19,12 +19,14 @@ SOURCES += \
     home.cpp \
     jalapeno.cpp \
     leafheadzombie.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp \
     peashooter.cpp \
     plant.cpp \
     plantscene.cpp \
     plantstore.cpp \
+    player.cpp \
     plummine.cpp \
     purplehairzombie.cpp \
     registeration.cpp \
@@ -50,11 +52,13 @@ HEADERS += \
     home.h \
     jalapeno.h \
     leafheadzombie.h \
+    login.h \
     mainwindow.h \
     peashooter.h \
     plant.h \
     plantscene.h \
     plantstore.h \
+    player.h \
     plummine.h \
     purplehairzombie.h \
     registeration.h \
@@ -70,6 +74,7 @@ HEADERS += \
     zombiestore.h
 
 FORMS += \
+    login.ui \
     mainwindow.ui \
     registeration.ui
 
