@@ -1,13 +1,23 @@
 #include "plantscene.h"
 #include "peashooter.h"
+#include <QGraphicsProxyWidget>
 #include "regularzombie.h"
 #define ROWS 6
 #define COLS 12
 PlantScene::PlantScene()
 {
+    timer = new QLabel("3:30" , this);
+    timer->setStyleSheet("color: white;");
+    QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
+    timer->setFont(fontNum);
+    timer->move(750,-120);
+    timer->setFixedSize(150,30);
+    timer->show();
     GameTimer = new QTimer;
-    QObject::connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
-    GameTimer->start(210000);
+    GameTimer->setInterval(1000);
+    //connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
+    connect(GameTimer , SIGNAL(timeout()) , this , SLOT(UpdateTimer()));
+    GameTimer->start();
 
     wallet = new Wallet(1);
     wallet->setPos(500 , -40);
@@ -36,7 +46,7 @@ PlantScene::PlantScene()
     view->scene()->addItem(p->plumMine);
     view->scene()->addItem(wallet);
     Game();
-    qreal w = 77;
+  qreal w = 77;
     qreal h = 73;
     QPointF f(800,180);
     home hh(f,w,h,scene,wallet);
@@ -110,4 +120,21 @@ void PlantScene::PlantWin()
 void PlantScene::ZombieWin()
 {
     emit Zombiewin();
+}
+
+void PlantScene::UpdateTimer()
+{
+    static int minutes = 3;
+    static int seconds = 30;
+    seconds--;
+    if(seconds<0){
+        minutes--;
+        seconds = 59;
+    }
+    if(minutes < 0 ){
+        PlantWin();
+    }
+    else{
+        timer->setText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));
+    }
 }

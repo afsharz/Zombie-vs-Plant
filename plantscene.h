@@ -6,6 +6,7 @@
 #include <QGraphicsView>
 #include <QVector>
 #include <QBrush>
+#include <QLabel>
 #include <QTimer>
 #include "home.h"
 #include "plantstore.h"
@@ -31,11 +32,12 @@ private :
     QVector<home*> homes;
     Wallet* wallet;
     QTimer* GameTimer;
+    QLabel* timer;
 public slots :
     void Sun_Maker();
     void AddedToVecc();
-    void PlantWin();
     void ZombieWin();
+    void UpdateTimer();
 signals :
     void AddedToVector();
     void Zombiewin();
