@@ -6,17 +6,20 @@
 #include "plantscene.h"
 #include "zombiescene.h"
 #include "player.h"
+#include "gameresult.h"
 
 class Client : public QObject
 {
     Q_OBJECT
 public:
-    Client();
+    Client(QString name);
 private :
     QTcpSocket* ClientSocket;
     PlantScene* plantscene;
     ZombieScene* zombiescene;
     Player* player;
+    GameResult* gamescene;
+    int round=1;
 public slots:
     void ConnectingToServer();
     void ReadingData();
@@ -26,6 +29,7 @@ public slots:
     void WritingData();
     void zombiewin();
     void plantwin();
+    void checkround();
 };
 
 #endif // CLIENT_H
