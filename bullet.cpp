@@ -1,4 +1,5 @@
 #include "bullet.h"
+#include "zombie.h"
 #define length_of_move 5
 bullet::bullet(int _power,Plant:: Type t,QPointF _pos)
     : power(_power)
@@ -29,7 +30,7 @@ bullet::~bullet()
 
 void bullet::move()
 {
-    QList<QGraphicsItem*> list= scene()->items(pos());
+    QList<QGraphicsItem*> list= collidingItems();
     for ( auto x: list)
     {
         Zombie* zombie = dynamic_cast<Zombie*>(x);
@@ -39,7 +40,6 @@ void bullet::move()
                 // zombie health is zero, remove it from the scene
                 scene()->removeItem(zombie);
                 zombie->deleteLater();
-                //delete zombie;
             }
             if (!IsBoomerang)
             {
