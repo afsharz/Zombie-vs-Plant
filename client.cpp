@@ -9,18 +9,46 @@ Client::Client(QString name , QFile* _file,Menu* _menu) : menu(_menu) {
     player = new Player;
     player->set_PlayerName()=name;
     player->setQfile(_file);
+    round=1;
+    //status=new ConnectionStatus;
     ConnectingToServer();
+}
+
+Client::~Client()
+{
+    delete ClientSocket;
+    if(plantscene)
+    delete plantscene;
+    if(zombiescene)
+    delete zombiescene;
+    //if(player)
+    //delete player;
+    if(gamescene)
+    delete gamescene;
+    if(status)
+    delete status;
 }
 
 void Client::ConnectingToServer()
 {
     ClientSocket = new QTcpSocket();
-    ClientSocket->connectToHost("31.7.114.39" , 1500); // first is the address IP and second is our port
+    ClientSocket->connectToHost("127.0.0.1" , 1500); // first is the address IP and second is our port
     connect(ClientSocket , SIGNAL(connected()) , this , SLOT(ConnectedToServer()));
+    //status->show();
     if(ClientSocket->waitForConnected(10000))
+    {
         qDebug()<<"connected to server";
+        delete status;
+    }
     else
-        qDebug()<<"could not connect";
+    {
+        // status->showStatus(false);
+        // qDebug()<<"could not connect";
+        // QTimer *TimeToDeleteClient=new QTimer;
+        // connect(TimeToDeleteClient,&QTimer::timeout,this,&Client::closeClient);
+        // TimeToDeleteClient->start(5000);
+        return;
+    }
     connect(ClientSocket , SIGNAL(bytesWritten(qint64)) , this , SLOT(WrittenData()));
     connect(ClientSocket , SIGNAL(readyRead()) , this , SLOT(ReadingData()));
     connect(ClientSocket , SIGNAL(disconnected()) , this , SLOT(DisconnectedFromServer()));
@@ -34,7 +62,6 @@ void Client::ReadingData()
     //this if else should be in the scope that client recieve a boolian from server
     QByteArray byteArray=ClientSocket->readAll();
     QJsonObject mess;
-    //qDebug()<<byteArray;
     byteArray.replace("\\n", "\n");
     byteArray.replace("\\\"", "\"");
     QJsonDocument jsonDoc = QJsonDocument::fromJson(byteArray);
@@ -173,6 +200,7 @@ void Client::checkround()
 {
     gamescene->deleteLater();
     if(round==1){
+        round++;
         QTextStream out(player->getQFile());
         // Move the cursor to the end of the document
         out.seek(player->getQFile()->size());
@@ -189,6 +217,11 @@ void Client::checkround()
         else
             out << "\n round 1 : Loser ";
         // we should send a message to server that the game has finished
+        QJsonObject mess;
+        mess["MessageType"]="finished";
+        QJsonDocument jsonDoc(mess);
+        QByteArray jsonData = jsonDoc.toJson();
+        ClientSocket->write(jsonData);
     }
     else{
         QTextStream out(player->getQFile());
@@ -206,4 +239,12 @@ void Client::checkround()
         player->getQFile()->close();
         menu->show();
     }
+}
+
+void Client::closeClient()
+{
+    menu->show();
+    delete status;
+    //delete this;
+
 }

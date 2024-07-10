@@ -220,7 +220,7 @@ void home::dropZombie(QString zombieType,bool IsMyCommand)
         }
     }
     else if (zombieType=="purplehairzombie")
-     {
+    {
         PurpleHairZombie *z=new PurpleHairZombie(position,this);
         z->setScale(0.07);
         scene->addItem(z);
@@ -229,7 +229,7 @@ void home::dropZombie(QString zombieType,bool IsMyCommand)
             zombieList->push_back(z);
             wallet->Decreasing(800);
         }
-     }
+    }
     if(IsMyCommand)
         emit AddedToVec(zombieType);
 
@@ -252,5 +252,5 @@ void home::setFlag(bool flag)
 
 void home::ZomWin()
 {
- emit zombiewin();
+    emit zombiewin();
 }
