@@ -32,9 +32,9 @@ PlantScene::PlantScene()
 
     initializeGrid();
     scene->setSceneRect(0,0,1080,502);
-    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setFixedSize(1090,1000);
+    //view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    //view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+   // view->setFixedSize(1090,1000);
     PlantStore *p=new PlantStore(scene , wallet);
     view->scene()->addItem(p->two_peashooter);
     view->scene()->addItem(p->peashooter);

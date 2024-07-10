@@ -65,18 +65,17 @@ void Client::ReadingData()
     }
     else if (mess["MessageType"]=="drop")
     {
+        bool hasDropped=false;
         QPointF position(mess["X"].toInt(),mess["Y"].toInt());
         if(player->set_PlantOrZombie())///if true :plant
         {
             QList<QGraphicsItem*> items= plantscene->getScene()->items(position);
             for (QGraphicsItem* item : items) {
                 home* h = dynamic_cast<home*>(item);
-                if(h)
+                if(h && !hasDropped)
                 {
-                    qDebug()<<mess["type"].toString();
                     h->dropZombie(mess["type"].toString(),false);
-                } else {
-                    qDebug() << "home object is null";
+                    hasDropped=true;
                 }
             }
         }
@@ -85,9 +84,10 @@ void Client::ReadingData()
             QList<QGraphicsItem*> items= zombiescene->getScene()->items(position);
             for (QGraphicsItem* item : items) {
                 home* h = dynamic_cast<home*>(item);
-                if(h)
+                if(h && !hasDropped)
                 {
                     h->dropPlant(mess["type"].toString(),false);
+                    hasDropped=true;
                 }
             }
         }
@@ -127,7 +127,7 @@ void Client::WritingData(QString type)
     else
     {
         mess["X"]=zombiescene->getZombies().back()->pos().x();
-        mess["Y"]=zombiescene->getZombies().back()->pos().y();
+        mess["Y"]=zombiescene->getZombies().back()->pos().y()+10;
     }
 
     QJsonDocument jsonDoc(mess);
