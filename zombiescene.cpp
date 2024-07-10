@@ -1,6 +1,8 @@
 #include "zombiescene.h"
 #include <QBrush>
 #include "zombiestore.h"
+#include <QLabel>
+
 #define ROWS 6
 #define COLS 12
 ZombieScene::ZombieScene ()
@@ -68,7 +70,7 @@ void ZombieScene::initializeGrid()
             h->setVectorZ(&zombies);
             scene->addItem(h);
             homes.push_back(h);
-            connect(h, SIGNAL(AddedToVec(QString)), this, SLOT(AddedToVecc(QString)));
+            connect(h,&home::AddedToVec, this, &ZombieScene::AddedToVecc);
             connect(h,SIGNAL(zombiewin()),this,SLOT(ZombieWin()));
         }
     }

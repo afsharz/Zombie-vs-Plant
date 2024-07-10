@@ -5,6 +5,7 @@
 #include <QGraphicsRectItem>
 #include "plant.h"
 #include "zombie.h"
+
 class Wallet;
 
 class home

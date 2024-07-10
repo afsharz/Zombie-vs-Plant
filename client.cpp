@@ -32,9 +32,9 @@ void Client::ReadingData()
     // we also read a boolian that server give us to said if we are plant or zombie and set it in the player
     // we should set the competitor name and roles
     //this if else should be in the scope that client recieve a boolian from server
-    qDebug()<<"got a message from server";
     QByteArray byteArray=ClientSocket->readAll();
     QJsonObject mess;
+    //qDebug()<<byteArray;
     byteArray.replace("\\n", "\n");
     byteArray.replace("\\\"", "\"");
     QJsonDocument jsonDoc = QJsonDocument::fromJson(byteArray);
@@ -50,7 +50,7 @@ void Client::ReadingData()
         {
             player->set_PlantOrZombie()=0;
             zombiescene = new ZombieScene;
-            connect(zombiescene,SIGNAL(AddedToVector(QString)),this,SLOT(WritingData(QString)));
+            connect(zombiescene,&ZombieScene::AddedToVector,this,&Client::WritingData);
             connect(zombiescene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
             connect(zombiescene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
         }
@@ -58,7 +58,7 @@ void Client::ReadingData()
         {
             player->set_PlantOrZombie()=1;
             plantscene = new PlantScene;
-            connect(plantscene,SIGNAL(AddedToVector(QString)),this,SLOT(WritingData(QString)));
+            connect(plantscene,&PlantScene::AddedToVector,this,&Client::WritingData);
             connect(plantscene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
             connect(plantscene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
         }
@@ -73,7 +73,10 @@ void Client::ReadingData()
                 home* h = dynamic_cast<home*>(item);
                 if(h)
                 {
+                    qDebug()<<mess["type"].toString();
                     h->dropZombie(mess["type"].toString(),false);
+                } else {
+                    qDebug() << "home object is null";
                 }
             }
         }
@@ -118,13 +121,13 @@ void Client::WritingData(QString type)
     mess["type"]=type;
     if(player->set_PlantOrZombie())
     {
-        mess["X"]=plantscene->getPlants().back()->scenePos().x();
-        mess["Y"]=plantscene->getPlants().back()->scenePos().y();
+        mess["X"]=plantscene->getPlants().back()->pos().x();
+        mess["Y"]=plantscene->getPlants().back()->pos().y();
     }
     else
     {
-        mess["X"]=zombiescene->getZombies().back()->scenePos().x();
-        mess["Y"]=zombiescene->getZombies().back()->scenePos().y();
+        mess["X"]=zombiescene->getZombies().back()->pos().x();
+        mess["Y"]=zombiescene->getZombies().back()->pos().y();
     }
 
     QJsonDocument jsonDoc(mess);

@@ -35,12 +35,12 @@ private :
     QLabel* timer;
 public slots :
     void Sun_Maker();
-    void AddedToVecc();
+    void AddedToVecc(QString type);
     void ZombieWin();
     void UpdateTimer();
     void PlantWin();
 signals :
-    void AddedToVector();
+    void AddedToVector(QString type);
     void Zombiewin();
     void Plantwin();
 };
