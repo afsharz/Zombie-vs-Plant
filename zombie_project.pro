@@ -16,6 +16,7 @@ SOURCES += \
     bullet.cpp \
     card.cpp \
     client.cpp \
+    gameresult.cpp \
     home.cpp \
     jalapeno.cpp \
     leafheadzombie.cpp \
@@ -50,6 +51,7 @@ HEADERS += \
     bullet.h \
     card.h \
     client.h \
+    gameresult.h \
     home.h \
     jalapeno.h \
     leafheadzombie.h \
@@ -90,4 +92,5 @@ RESOURCES += \
     pic.qrc
 
 DISTFILES += \
+    IMG_20240709_125814_689.jpg \
     pea.png

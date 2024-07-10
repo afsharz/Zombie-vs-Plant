@@ -2,7 +2,6 @@
 #define REGISTERATION_H
 
 #include <QDialog>
-#include <QDialog>
 #include <QDebug>
 #include <QTextStream>
 #include <QFile>
