@@ -45,17 +45,6 @@ PlantScene::PlantScene()
     view->scene()->addItem(p->plumMine);
     view->scene()->addItem(wallet);
     Game();
-   qreal w = 77;
-    qreal h = 73;
-    QPointF f(800,180);
-    home hh(f,w,h,scene,wallet);
-    RegularZombie *z=new RegularZombie(f,&hh);
-    z->setScale(0.075);
-    scene->addItem(z);
-    ///
-    //PeaShooter *jk=new PeaShooter(QPointF(126,37));
-   // delete jk;
-    ///
     view->show();
 
 
@@ -76,7 +65,7 @@ void PlantScene::initializeGrid()
             h->setVectorP(&plants);
             scene->addItem(h);
             homes.push_back(h);
-            connect(h, SIGNAL(AddedToVec(QString)), this, SLOT(AddedToVecc()));
+            connect(h, &home::AddedToVec, this, &PlantScene::AddedToVecc);
             connect(h,SIGNAL(zombiewin()),this,SLOT(ZombieWin()));
         }
     }
@@ -106,9 +95,9 @@ void PlantScene::Sun_Maker()
         QTimer::singleShot(3500, sun, &QObject::deleteLater); // it deletes the sun after 3.5 seconds if player doesn't clicked on it
 }
 
-void PlantScene::AddedToVecc()
+void PlantScene::AddedToVecc(QString type)
 {
-    emit AddedToVector();
+    emit AddedToVector(type);
 }
 
 void PlantScene::PlantWin()

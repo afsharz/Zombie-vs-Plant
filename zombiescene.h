@@ -12,6 +12,7 @@
 #include "plant.h"
 #include "wallet.h"
 #include "brain.h"
+#include <QLabel>
 
 class ZombieScene
     :public QGraphicsView
@@ -30,6 +31,7 @@ private :
     QVector<home*> homes;
     Wallet* wallet;
     QTimer* GameTimer;
+    QLabel *timer;
 public slots :
     void Brain_Maker();
     void AddedToVecc(QString type);
