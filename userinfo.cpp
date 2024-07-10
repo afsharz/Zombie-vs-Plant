@@ -122,10 +122,9 @@ void UserInfo::set_Name(QString _name){name=_name;}
 void UserInfo::set_Username(QString _username){username=_username;}
 void UserInfo::set_Mobile(QString _mobile){mobile=_mobile;}
 void UserInfo::set_Password(QString _password){password=_password;}
-void UserInfo::set_Address(QString _address){address=_address;;}
+void UserInfo::set_Address(QString _address){address=_address;}
 void UserInfo::set_Qfile()
 {
-    qDebug() << "Im here";
     QString filename = username + "history.txt";
     PlayerFile = new QFile(filename);
 }
