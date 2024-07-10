@@ -5,15 +5,23 @@
 #define COLS 12
 ZombieScene::ZombieScene ()
 {
+    GameTimer = new QTimer;
+    QObject::connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
+    GameTimer->start(210000);
+
     wallet = new Wallet(0);
     wallet->setPos(500 , -40);
+
     scene=new QGraphicsScene;
     QImage image(":/new/prefix1/field.png");
     //  scene->setBackgroundBrush(QBrush(QImage(":/new/prefix1/field.png")));
+
     QGraphicsView * view = new QGraphicsView(scene);
     view->setBackgroundBrush(QColor(0, 0, 0));
+
     QGraphicsPixmapItem *bg=new QGraphicsPixmapItem(QPixmap::fromImage(image));
     scene->addItem(bg);
+
     initializeGrid();
     scene->setSceneRect(0,0,1080,502);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -54,6 +62,7 @@ void ZombieScene::initializeGrid()
             scene->addItem(h);
             homes.push_back(h);
             connect(h, SIGNAL(AddedToVec()), this, SLOT(AddedToVecc()));
+            connect(h,SIGNAL(zombiewin()),this,SLOT(ZombieWin()));
         }
     }
 
@@ -71,4 +80,14 @@ void ZombieScene::Brain_Maker()
 void ZombieScene::AddedToVecc()
 {
     emit AddedToVector();
+}
+
+void ZombieScene::PlantWin()
+{
+    emit Plantwin();
+}
+
+void ZombieScene::ZombieWin()
+{
+    emit Zombiewin();
 }

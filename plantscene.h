@@ -29,11 +29,16 @@ private :
     QVector<Plant*> plants;
     QVector<home*> homes;
     Wallet* wallet;
+    QTimer* GameTimer;
 public slots :
     void Sun_Maker();
     void AddedToVecc();
+    void PlantWin();
+    void ZombieWin();
 signals :
     void AddedToVector();
+    void Zombiewin();
+    void Plantwin();
 };
 
 #endif // PLANTSCENE_H

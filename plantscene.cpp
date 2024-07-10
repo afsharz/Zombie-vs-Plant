@@ -5,15 +5,23 @@
 #define COLS 12
 PlantScene::PlantScene()
 {
+    GameTimer = new QTimer;
+    QObject::connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
+    GameTimer->start(210000);
+
     wallet = new Wallet(1);
     wallet->setPos(500 , -40);
+
     scene=new QGraphicsScene;
     QImage image(":/new/prefix1/field.png");
     scene->setBackgroundBrush(QBrush(QImage(":/new/prefix1/field.png")));
+
     QGraphicsView * view = new QGraphicsView(scene);
     view->setBackgroundBrush(QColor(0, 0, 0));
+
     QGraphicsPixmapItem *bg=new QGraphicsPixmapItem(QPixmap::fromImage(image));
     scene->addItem(bg);
+
     initializeGrid();
     scene->setSceneRect(0,0,1080,502);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -28,14 +36,13 @@ PlantScene::PlantScene()
     view->scene()->addItem(p->plumMine);
     view->scene()->addItem(wallet);
     Game();
-
-    qreal w = 77;
+    /*qreal w = 77;
     qreal h = 73;
     QPointF f(800,180);
     home hh(f,w,h,scene,wallet);
     RegularZombie *z=new RegularZombie(f,&hh);
     z->setScale(0.075);
-    scene->addItem(z);
+    scene->addItem(z);*/
     ///
     //PeaShooter *jk=new PeaShooter(QPointF(126,37));
    // delete jk;
@@ -61,6 +68,7 @@ void PlantScene::initializeGrid()
             scene->addItem(h);
             homes.push_back(h);
             connect(h, SIGNAL(AddedToVec()), this, SLOT(AddedToVecc()));
+            connect(h,SIGNAL(zombiewin()),this,SLOT(ZombieWin()));
         }
     }
 }
@@ -85,4 +93,14 @@ void PlantScene::Sun_Maker()
 void PlantScene::AddedToVecc()
 {
     emit AddedToVector();
+}
+
+void PlantScene::PlantWin()
+{
+    emit Plantwin();
+}
+
+void PlantScene::ZombieWin()
+{
+    emit Zombiewin();
 }

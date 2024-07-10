@@ -24,6 +24,8 @@ public slots:
     void ConnectedToServer();
     void DisconnectedFromServer();
     void WritingData();
+    void zombiewin();
+    void plantwin();
 };
 
 #endif // CLIENT_H

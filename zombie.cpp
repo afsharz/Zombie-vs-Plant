@@ -19,6 +19,7 @@ Zombie::Zombie(QPointF _pos ,int _health,int _FirstMovementDelay,int _MovementDe
     timer->start(FirstMovementDelay*1000);
     QTimer freeflagtime;
     freeflagtime.singleShot(1500,this,SLOT(setBlockFlag()));
+    connect(this,SIGNAL(ZombieWin()),HomeAdrs,SLOT(ZomWin()));
 }
 //should check
 void Zombie::Decreasinghealth(int attackpowerplant)
@@ -89,7 +90,7 @@ void Zombie::Set_Position(QPointF pos)
 
 int Zombie::get_health(){return health;}
 
-
+void Zombie::setGameTimer(QTimer *_GameTimer){GameTimer=_GameTimer;}
 
 void Zombie::Movement()
 {
@@ -118,6 +119,7 @@ void Zombie::Movement()
     }
     if(this->pos().x()<=110)
     {
+        emit ZombieWin();
         //deleteLater();
         //zombies win
         delete this;

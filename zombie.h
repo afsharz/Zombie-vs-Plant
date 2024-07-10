@@ -34,6 +34,8 @@ public slots :
     virtual void Movement();
     void Attack(QGraphicsItem* item);
     void setBlockFlag();
+signals :
+    void ZombieWin();
 
 };
 
