@@ -5,6 +5,8 @@
 #define COLS 12
 PlantScene::PlantScene()
 {
+    setWindowTitle("Plant Side");
+     setWindowIcon(QIcon(QPixmap(":/new/prefix1/picon.png")));
     timer = new QLabel("3:30" , this);
     timer->setStyleSheet("color: white;");
     QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
@@ -65,7 +67,7 @@ void PlantScene::initializeGrid()
             scene->addItem(h);
             homes.push_back(h);
             connect(h, &home::AddedToVec, this, &PlantScene::AddedToVecc);
-            connect(h,SIGNAL(zombiewin()),this,SLOT(ZombieWin()));
+            connect(h,&home::zombiewin,this,&PlantScene::ZombieWin);
         }
     }
 }

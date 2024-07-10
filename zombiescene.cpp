@@ -7,6 +7,8 @@
 #define COLS 12
 ZombieScene::ZombieScene ()
 {
+    setWindowTitle("Zombie Side");
+   setWindowIcon(QIcon(QPixmap(":/new/prefix1/zicon.png")));
     timer = new QLabel("3:30" , this);
     timer->setStyleSheet("color: white;");
     QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
@@ -71,7 +73,7 @@ void ZombieScene::initializeGrid()
             scene->addItem(h);
             homes.push_back(h);
             connect(h,&home::AddedToVec, this, &ZombieScene::AddedToVecc);
-            connect(h,SIGNAL(zombiewin()),this,SLOT(ZombieWin()));
+            connect(h,&home::zombiewin,this,&ZombieScene::ZombieWin);
         }
     }
 

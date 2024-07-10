@@ -19,7 +19,7 @@ Zombie::Zombie(QPointF _pos ,int _health,int _FirstMovementDelay,int _MovementDe
     timer->start(FirstMovementDelay*1000);
     QTimer freeflagtime;
     freeflagtime.singleShot(1500,this,SLOT(setBlockFlag()));
-    connect(this,SIGNAL(ZombieWin()),HomeAdrs,SLOT(ZomWin()));
+    connect(this,&Zombie::ZombieWin,HomeAdrs,&home::ZomWin);
 }
 //should check
 void Zombie::Decreasinghealth(int attackpowerplant)
@@ -93,12 +93,13 @@ int Zombie::get_health(){return health;}
 void Zombie::Movement()
 {
     QPointF currentPos = this->pos();
+
     QList<QGraphicsItem*> itemList = scene()->items();
     for (QGraphicsItem* item : itemList) {
         Plant* plant = dynamic_cast<Plant*>(item);
         if (plant && typeid(*item)!=typeid(Jalapeno) && typeid(*item)!=typeid(PlumMine) )
         {
-            qreal distanceX = currentPos.x() - item->pos().x();//QLineF(currentPos, item->pos()).length();
+            qreal distanceX = currentPos.x() - item->pos().x();
             qreal distanceY = qAbs(currentPos.y() - item->pos().y());
             if(distanceX < 100 && distanceY < 50){
                 timer->stop();

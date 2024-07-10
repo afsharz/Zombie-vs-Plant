@@ -55,6 +55,9 @@ void UserInfo::setPassword(QString _password)
     state->setPattern("\\d+");
     *match=state->match(_password);
     if(match->hasMatch()) count++;
+    state->setPattern("^.{10}");
+    *match=state->match(_password);
+    if(match->hasMatch()) count++;
     switch(count)
     {
     case 0:
@@ -78,6 +81,11 @@ void UserInfo::setPassword(QString _password)
         break;
     }
     case 4:
+    {
+        reg->showPasswordState(strong);
+        break;
+    }
+    case 5:
     {
         reg->showPasswordState(strong);
         break;

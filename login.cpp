@@ -141,7 +141,7 @@ void LogIn::on_pushButton_4_clicked()
 
 void LogIn::on_pushButton_2_clicked()
 {
-    ResetPasswordPage *r=new ResetPasswordPage;
+    ResetPasswordPage *r=new ResetPasswordPage(this);
     r->show();
     this->close();
 }
