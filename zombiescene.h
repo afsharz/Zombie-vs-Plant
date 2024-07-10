@@ -7,6 +7,7 @@
 #include <QVector>
 #include <QBrush>
 #include <QTimer>
+#include <QLabel>
 #include "zombie.h"
 #include "home.h"
 #include "plant.h"

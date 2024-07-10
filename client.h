@@ -3,6 +3,7 @@
 #include <QTcpSocket>
 #include <QHostInfo>
 #include <QMainWindow>
+#include <QFile>
 #include "plantscene.h"
 #include "zombiescene.h"
 #include "player.h"
@@ -12,7 +13,7 @@ class Client : public QObject
 {
     Q_OBJECT
 public:
-    Client(QString name);
+    Client(QString name , QFile* _file );
 private :
     QTcpSocket* ClientSocket;
     PlantScene* plantscene;

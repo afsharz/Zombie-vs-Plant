@@ -13,7 +13,7 @@ public:
     explicit ResetPasswordPage(QWidget *parent = nullptr);
     void newItems();
     void DesignWindow();
-        ~ResetPasswordPage();
+    ~ResetPasswordPage();
 public slots:
         void checkinfo ();
     void BackBtnClicked();

@@ -5,10 +5,10 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
-Client::Client(QString name) {
+Client::Client(QString name , QFile* _file) {
     player = new Player;
     player->set_PlayerName()=name;
-    player->setQfile();
+    player->setQfile(_file);
     ConnectingToServer();
 }
 
@@ -188,8 +188,6 @@ void Client::checkround()
             out << "\n round 1 : Winner ";
         else
             out << "\n round 1 : Loser ";
-        player->getQFile()->flush();
-        player->getQFile()->close();
         // we should send a message to server that the game has finished
     }
     else{
@@ -201,9 +199,9 @@ void Client::checkround()
         else
             out << "\n round 2 : Zombie ";
         if(player->set_WinOrLose())
-            out << "\n round 2 : Winner ";
+            out << "\n round 2 : Winner \n";
         else
-            out << "\n round 2 : Loser ";
+            out << "\n round 2 : Loser \n";
         player->getQFile()->flush();
         player->getQFile()->close();
         // we should make object of menue and delete this client

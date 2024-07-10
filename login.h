@@ -14,6 +14,7 @@
 #include <QFile>
 #include <QString>
 #include "registeration.h"
+#include "userinfo.h"
 
 namespace Ui {
 class LogIn;
@@ -32,14 +33,13 @@ private slots:
 
     void on_pushButton_4_clicked();
 
-    void on_pushButton_5_clicked();
-
     void on_pushButton_2_clicked();
 
 private:
     Ui::LogIn *ui;
     registeration *rg;
     QString username;
+    UserInfo *user;
 };
 
 #endif // LOGIN_H
