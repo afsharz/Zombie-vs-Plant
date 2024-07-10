@@ -84,8 +84,10 @@ void home::dropPlant(QString plantType,bool IsMyCommand)
         p->setScale(0.07);
         scene->addItem(p);
         if(IsMyCommand)
-        plantList->push_back(p);
-        wallet->Decreasing(50);
+        {
+            plantList->push_back(p);
+            wallet->Decreasing(50);
+        }
     }
     else if(plantType=="TwoPeashooter")
     {
@@ -95,8 +97,10 @@ void home::dropPlant(QString plantType,bool IsMyCommand)
         scene->addItem(p);
         p->setPos(position);
         if(IsMyCommand)
-        plantList->push_back(p);
-        wallet->Decreasing(100);
+        {
+            plantList->push_back(p);
+            wallet->Decreasing(100);
+        }
     }
     else if(plantType=="Walnut")
     {
@@ -106,8 +110,10 @@ void home::dropPlant(QString plantType,bool IsMyCommand)
         scene->addItem(p);
         p->setPos(position);
         if(IsMyCommand)
-        plantList->push_back(p);
-        wallet->Decreasing(100);
+        {
+            plantList->push_back(p);
+            wallet->Decreasing(100);
+        }
     }
     else if(plantType=="PlumMine")
     {
@@ -117,8 +123,10 @@ void home::dropPlant(QString plantType,bool IsMyCommand)
         scene->addItem(p);
         p->setPos(position);
         if(IsMyCommand)
-        plantList->push_back(p);
-        wallet->Decreasing(175);
+        {
+            plantList->push_back(p);
+            wallet->Decreasing(175);
+        }
     }
     else if(plantType=="Jalapeno")
     {
@@ -128,8 +136,10 @@ void home::dropPlant(QString plantType,bool IsMyCommand)
         scene->addItem(p);
         p->setPos(position);
         if(IsMyCommand)
-        plantList->push_back(p);
-        wallet->Decreasing(150);
+        {
+            plantList->push_back(p);
+            wallet->Decreasing(150);
+        }
     }
     else if(plantType=="Boomerang")
     {
@@ -139,8 +149,10 @@ void home::dropPlant(QString plantType,bool IsMyCommand)
         scene->addItem(p);
         p->setPos(position);
         if(IsMyCommand)
-        plantList->push_back(p);
-        wallet->Decreasing(125);
+        {
+            plantList->push_back(p);
+            wallet->Decreasing(125);
+        }
     }
     if(IsMyCommand)
         emit AddedToVec(plantType);
@@ -156,8 +168,10 @@ void home::dropZombie(QString zombieType,bool IsMyCommand)
         z->setScale(0.075);
         scene->addItem(z);
         if(IsMyCommand)
-        zombieList->push_back(z);
-        wallet->Decreasing(100);
+        {
+            zombieList->push_back(z);
+            wallet->Decreasing(100);
+        }
     }
     else if (zombieType=="bucketheadzombie")
      {
@@ -165,8 +179,10 @@ void home::dropZombie(QString zombieType,bool IsMyCommand)
         z->setScale(0.075);
         scene->addItem(z);
         if(IsMyCommand)
-        zombieList->push_back(z);
-        wallet->Decreasing(200);
+        {
+            zombieList->push_back(z);
+            wallet->Decreasing(200);
+        }
      }
     else if (zombieType=="leafheadzombie")
     {
@@ -175,8 +191,10 @@ void home::dropZombie(QString zombieType,bool IsMyCommand)
         z->setScale(0.075);
         scene->addItem(z);
         if(IsMyCommand)
-        zombieList->push_back(z);
-        wallet->Decreasing(150);
+        {
+            zombieList->push_back(z);
+            wallet->Decreasing(150);
+        }
     }
      else if (zombieType=="tallzombie")
      {
@@ -184,8 +202,10 @@ void home::dropZombie(QString zombieType,bool IsMyCommand)
         z->setScale(0.075);
         scene->addItem(z);
         if(IsMyCommand)
-        zombieList->push_back(z);
-        wallet->Decreasing(150);
+        {
+            zombieList->push_back(z);
+            wallet->Decreasing(150);
+        }
      }
     else if (zombieType=="astronautzombie")
     {
@@ -194,8 +214,10 @@ void home::dropZombie(QString zombieType,bool IsMyCommand)
         z->setScale(0.075);
         scene->addItem(z);
         if(IsMyCommand)
-        zombieList->push_back(z);
-        wallet->Decreasing(200);
+        {
+            zombieList->push_back(z);
+            wallet->Decreasing(200);
+        }
     }
     else if (zombieType=="purplehairzombie")
      {
@@ -203,8 +225,10 @@ void home::dropZombie(QString zombieType,bool IsMyCommand)
         z->setScale(0.07);
         scene->addItem(z);
         if(IsMyCommand)
-        zombieList->push_back(z);
-        wallet->Decreasing(800);
+        {
+            zombieList->push_back(z);
+            wallet->Decreasing(800);
+        }
      }
     if(IsMyCommand)
         emit AddedToVec(zombieType);
