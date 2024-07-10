@@ -5,10 +5,18 @@
 #define COLS 12
 ZombieScene::ZombieScene ()
 {
+    timer = new QLabel("3:30" , this);
+    timer->setStyleSheet("color: white;");
+    QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
+    timer->setFont(fontNum);
+    timer->move(750,-120);
+    timer->setFixedSize(150,30);
+    timer->show();
     GameTimer = new QTimer;
-    QObject::connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
-    GameTimer->start(210000);
-
+    GameTimer->setInterval(1000);
+    //connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
+    connect(GameTimer , SIGNAL(timeout()) , this , SLOT(UpdateTimer()));
+    GameTimer->start();
     wallet = new Wallet(0);
     wallet->setPos(500 , -40);
 
@@ -94,4 +102,21 @@ void ZombieScene::PlantWin()
 void ZombieScene::ZombieWin()
 {
     emit Zombiewin();
+}
+
+void ZombieScene::UpdateTimer()
+{
+    static int minutes = 3;
+    static int seconds = 30;
+    seconds--;
+    if(seconds<0){
+        minutes--;
+        seconds = 59;
+    }
+    if(minutes < 0 ){
+        //PlantWin();
+    }
+    else{
+        timer->setText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));
+    }
 }

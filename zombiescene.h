@@ -34,6 +34,7 @@ public slots :
     void Brain_Maker();
     void AddedToVecc(QString type);
     void PlantWin();
+    void UpdateTimer();
     void ZombieWin();
 signals :
     void AddedToVector(QString type);
