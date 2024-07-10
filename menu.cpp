@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "client.h"
 #include <QFile>
 
 Menu::Menu(UserInfo* _userinfo) : userinfo(_userinfo) {
@@ -8,6 +9,8 @@ Menu::Menu(UserInfo* _userinfo) : userinfo(_userinfo) {
     connect(EditInfo,&QPushButton::clicked,this,&Menu::editinfo);
     connect(History,&QPushButton::clicked,this,&Menu::history);
     connect(Game,&QPushButton::clicked,this,&Menu::game);
+    connect(Back,&QPushButton::clicked,this,&Menu::back);
+    connect(Save,&QPushButton::clicked,this,&Menu::save);
 }
 
 void Menu::newItems()
@@ -17,8 +20,10 @@ void Menu::newItems()
     EditInfo=new QPushButton(this);
     Game=new QPushButton(this);
     History=new QPushButton(this);
-    showhistory=new QListWidget(this);
-    showhistory->hide();
+    Back=new QPushButton(this);
+    Save=new QPushButton(this);
+    Back->hide();
+    Save->hide();
 }
 
 void Menu::DesignWindow()
@@ -62,20 +67,39 @@ void Menu::DesignWindow()
     Exit->setText("Exit");
     Exit->setFont(QFont("Berlin Sans FB Demi",18,2,false));
     Exit->setStyleSheet("color: black;");
-
+    ///push botton back
+    Back->setFlat(true);
+    Back->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
+    Back->setStyleSheet("color: black;");
+    Back->setGeometry(200,350,70,50);
+    Back->setText("Back");
+    Back->setFont(QFont("Berlin Sans FB Demi",18,2,false));
+    Back->setStyleSheet("color: black;");
+    ///push botton Save
+    Save->setFlat(true);
+    Save->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
+    Save->setStyleSheet("color: black;");
+    Save->setGeometry(165,148,300,50);
+    Save->setText("Save");
+    Save->setFont(QFont("Berlin Sans FB Demi",18,2,false));
+    Save->setStyleSheet("color: black;");
 }
 
 void Menu::game()
 {
-
+    this->close();
+    Client * client;
+    client = new Client(userinfo->getUsername(),userinfo->get_QFile(),this);
 }
 
 void Menu::history()
 {
+    Back->show();
+    showhistory=new QListWidget(this);
     showhistory->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     showhistory->setStyleSheet("color: black;");
     showhistory->setGeometry(30,10,580,460);
-    QFile* file = userinfo->getQFile();
+    QFile* file = userinfo->get_QFile();
     if (!file) {
         qDebug() << "File pointer is null.";
         return;
@@ -105,4 +129,15 @@ void Menu::editinfo()
 void Menu::exit()
 {
     this->close();
+}
+
+void Menu::back()
+{
+    showhistory->hide();
+    showhistory->deleteLater();
+}
+
+void Menu::save()
+{
+
 }

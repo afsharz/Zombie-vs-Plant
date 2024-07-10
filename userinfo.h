@@ -21,8 +21,8 @@ public:
     void set_Mobile(QString _mobile);
     void set_Password(QString _password);
     void set_Address(QString _address);
-    void setQfile();
-    QFile* getQFile();
+    void set_Qfile();
+    QFile* get_QFile();
 public slots:
     void setName(QString _name);
     void setUsername(QString _username);
@@ -39,7 +39,7 @@ private:
     QRegularExpression *vemail;
     QRegularExpression *vmobile;
     QRegularExpression *vpass;
-    QFile* PlayerFile=NULL;
+    QFile* PlayerFile;
 };
 
 #endif // USERINFO_H
