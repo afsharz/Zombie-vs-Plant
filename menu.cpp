@@ -71,7 +71,7 @@ void Menu::DesignWindow()
     Back->setFlat(true);
     Back->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     Back->setStyleSheet("color: black;");
-    Back->setGeometry(200,350,70,50);
+    Back->setGeometry(340,400,300,50);
     Back->setText("Back");
     Back->setFont(QFont("Berlin Sans FB Demi",18,2,false));
     Back->setStyleSheet("color: black;");
@@ -79,7 +79,7 @@ void Menu::DesignWindow()
     Save->setFlat(true);
     Save->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     Save->setStyleSheet("color: black;");
-    Save->setGeometry(165,148,300,50);
+    Save->setGeometry(280,40,300,40);
     Save->setText("Save");
     Save->setFont(QFont("Berlin Sans FB Demi",18,2,false));
     Save->setStyleSheet("color: black;");
@@ -96,6 +96,7 @@ void Menu::history()
 {
     Back->show();
     showhistory=new QListWidget(this);
+    showhistory->stackUnder(Back);
     showhistory->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     showhistory->setStyleSheet("color: black;");
     showhistory->setGeometry(30,10,580,460);
@@ -123,7 +124,31 @@ void Menu::history()
 
 void Menu::editinfo()
 {
-
+    Game->hide();
+    EditInfo->hide();
+    Exit->hide();
+    History->hide();
+    Username=new QLineEdit(this);
+    Username->setPlaceholderText(userinfo->getUsername());
+    Username->setGeometry(170,140,300,40);
+    Username->show();
+    Name=new QLineEdit(this);
+    Name->setPlaceholderText(userinfo->getName());
+    Name->setGeometry(170,80,300,40);
+    Name->show();
+    Mobile=new QLineEdit(this);
+    Mobile->setPlaceholderText(userinfo->getMobile());
+    Mobile->setGeometry(170,260,300,40);
+    Mobile->show();
+    Address=new QLineEdit(this);
+    Address->setPlaceholderText(userinfo->getEmail());
+    Address->setGeometry(170,320,300,40);
+    Address->show();
+    Password=new QLineEdit(this);
+    Password->setPlaceholderText(userinfo->getPassword());
+    Password->setGeometry(170,200,300,40);
+    Password->show();
+    Save->show();
 }
 
 void Menu::exit()
@@ -134,10 +159,70 @@ void Menu::exit()
 void Menu::back()
 {
     showhistory->hide();
+    Back->hide();
     showhistory->deleteLater();
 }
 
 void Menu::save()
 {
+    QString tmp;
+    int flag=0;
+    QString currentText = Username->text();
+    if(!currentText.isEmpty()){
+        tmp = userinfo->getUsername();
+        userinfo->set_Username(currentText);
+        flag++;
+    }
+    currentText = Name->text();
+    if(!currentText.isEmpty()){
+        userinfo->set_Name(currentText);
+    }
+    currentText = Address->text();
+    if(!currentText.isEmpty()){
+        userinfo->set_Address(currentText);
+    }
+    currentText = Password->text();
+    if(!currentText.isEmpty()){
+        userinfo->set_Password(currentText);
+    }
+    currentText = Mobile->text();
+    if(!currentText.isEmpty()){
+        userinfo->set_Mobile(currentText);
+    }
 
+    QString filename = tmp + ".txt";
+    QFile userfile(filename);
+    if(!(userfile.exists())){
+        qDebug() << "File Doesn't Exist";
+        return;
+    }
+    if(!userfile.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        qDebug() << "File cannot be opened.";
+        return;
+    }
+
+    QTextStream out(&userfile);
+    out.seek(0);
+    QByteArray bytes = QCryptographicHash :: hash(userinfo->getPassword().toUtf8() , QCryptographicHash :: Md4);
+    QString digest = QString(bytes.toHex());
+    out << userinfo->getName() << "\n" <<userinfo->getUsername() << "\n" << userinfo->getMobile() <<"\n" << digest << "\n" << userinfo->getEmail() << "\n";
+    userfile.close();
+    Game->show();
+    EditInfo->show();
+    Exit->show();
+    History->show();
+    Username->hide();
+    Name->hide();
+    Address->hide();
+    Mobile->hide();
+    Password->hide();
+    Save->hide();
+    if(flag){
+        if (userfile.rename(userinfo->getUsername()+".txt")) {
+            qDebug() << "File renamed successfully!";
+        } else {
+            qDebug() << "Error renaming the file.";
+        }
+    }
 }

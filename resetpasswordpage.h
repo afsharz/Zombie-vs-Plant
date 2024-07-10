@@ -20,10 +20,6 @@ public slots:
 private :
     QLabel *backgroundLabel;
     QGridLayout *layout;
-    QLabel *lblUsername;
-    QLabel *lblNumber;
-    QLabel *lblPass;
-    QLabel *lblConfirmPass;
     QLabel *lblWrongNum;
     QLabel *errorNumber;
     QLineEdit *ledUsername;

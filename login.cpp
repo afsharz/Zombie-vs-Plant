@@ -128,7 +128,8 @@ void LogIn::on_pushButton_4_clicked()
         user->set_Name(in.readLine());
         user->set_Username(in.readLine());
         user->set_Mobile(in.readLine());
-        user->set_Password(in.readLine());
+        user->set_Password(tmp);
+        in.readLine();
         user->set_Address(in.readLine());
         user->set_Qfile();
         ui->label_9->setText(tr("log in successfully!"));
