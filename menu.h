@@ -20,6 +20,8 @@ private :
     QPushButton *Game;
     QPushButton *History;
     QPushButton *EditInfo;
+    QPushButton* Back;
+    QPushButton* Save;
     QListWidget* showhistory;
     UserInfo* userinfo;
 public slots :
@@ -27,6 +29,8 @@ public slots :
     void history();
     void editinfo();
     void exit();
+    void back();
+    void save();
 
 };
 

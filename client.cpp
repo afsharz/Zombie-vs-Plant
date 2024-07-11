@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
-Client::Client(QString name , QFile* _file) {
+Client::Client(QString name , QFile* _file,Menu* _menu) : menu(_menu) {
     player = new Player;
     player->set_PlayerName()=name;
     player->setQfile(_file);
@@ -15,7 +15,7 @@ Client::Client(QString name , QFile* _file) {
 void Client::ConnectingToServer()
 {
     ClientSocket = new QTcpSocket();
-    ClientSocket->connectToHost("127.0.0.1" , 1500); // first is the address IP and second is our port
+    ClientSocket->connectToHost("31.7.114.39" , 1500); // first is the address IP and second is our port
     connect(ClientSocket , SIGNAL(connected()) , this , SLOT(ConnectedToServer()));
     if(ClientSocket->waitForConnected(10000))
         qDebug()<<"connected to server";
@@ -204,6 +204,6 @@ void Client::checkround()
             out << "\n round 2 : Loser \n";
         player->getQFile()->flush();
         player->getQFile()->close();
-        // we should make object of menue and delete this client
+        menu->show();
     }
 }

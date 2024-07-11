@@ -130,6 +130,7 @@ void LogIn::on_pushButton_4_clicked()
         user->set_Mobile(in.readLine());
         user->set_Password(in.readLine());
         user->set_Address(in.readLine());
+        user->set_Qfile();
         ui->label_9->setText(tr("log in successfully!"));
         Menu* menu = new Menu(user);
         menu->show();
