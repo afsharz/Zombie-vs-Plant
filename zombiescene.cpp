@@ -5,7 +5,7 @@
 
 #define ROWS 6
 #define COLS 12
-ZombieScene::ZombieScene ()
+ZombieScene::ZombieScene (QString CompetitorName)
 {
     scene=new QGraphicsScene;
     QImage image(":/new/prefix1/field.png");
@@ -13,18 +13,8 @@ ZombieScene::ZombieScene ()
     view->setBackgroundBrush(QColor(0, 0, 0));
     view->setWindowTitle("Zombie Side");
     view->setWindowIcon(QIcon(QPixmap(":/new/prefix1/zicon.png")));
-   timer = new QGraphicsTextItem();
-   scene->addItem(timer);
-   timer->setPlainText("3:30");
-   timer->setDefaultTextColor(Qt::blue);
-   QRectF bounds(400,-120, 150, 30);  // Set the desired size
-   timer->setTextWidth(bounds.width());
-   timer->setPos(bounds.topLeft());
-   timer->setZValue(3);
-    QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
-    timer->setFont(fontNum);
-    timer->show();
-
+    setTimer();
+    setCompetitorName(CompetitorName);
     GameTimer = new QTimer;
     GameTimer->setInterval(1000);
     //connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
@@ -86,6 +76,21 @@ QVector<Zombie *> ZombieScene::getZombies() {return zombies;}
 
 QGraphicsScene *ZombieScene::getScene(){return scene;}
 
+void ZombieScene::setTimer()
+{
+    timer = new QGraphicsTextItem();
+    QRectF bounds(400,-120, 150, 30);  // Set the desired size
+    QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
+    scene->addItem(timer);
+    timer->setPlainText("3:30");
+    timer->setDefaultTextColor(Qt::blue);
+    timer->setTextWidth(bounds.width());
+    timer->setPos(bounds.topLeft());
+    timer->setZValue(3);
+    timer->setFont(fontNum);
+    timer->show();
+}
+
 void ZombieScene::Brain_Maker()
 {
     Brain* brain = new Brain(scene , wallet);
@@ -112,19 +117,35 @@ void ZombieScene::ZombieWin()
 
 void ZombieScene::UpdateTimer()
 {
-    static int minutes = 3;
-    static int seconds = 30;
+    static int minutes = 0;
+    static int seconds = 10;
     seconds--;
-    if(minutes==0 && seconds<20)
+    if(minutes==0 && seconds<30)
         timer->setDefaultTextColor(Qt::red);
     if(seconds<0){
         minutes--;
         seconds = 59;
     }
     if(minutes < 0 ){
-        //PlantWin();
+        PlantWin();
     }
     else{
         timer->setPlainText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));
     }
+}
+void ZombieScene::setCompetitorName(QString Name)
+{
+    CompetitorName= new QGraphicsTextItem();
+    QFont fontName("Berlin Sans FB Demi" , 20 ,  false);
+    QRectF bounds(200,-160, 150, 30);  // Set the desired size
+    QString name="Enemy : ";
+    name+=Name;
+    scene->addItem(CompetitorName);
+    CompetitorName->setFont(fontName);
+    CompetitorName->setPlainText(name);
+    CompetitorName->setDefaultTextColor(Qt::yellow);
+    CompetitorName->setTextWidth(bounds.width());
+    CompetitorName->setPos(bounds.topLeft());
+    CompetitorName->setZValue(3);
+    CompetitorName->show();
 }

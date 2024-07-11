@@ -31,6 +31,7 @@ void Menu::newItems()
 
 void Menu::DesignWindow()
 {
+    setWindowTitle("Menu");
     QImage image(":/new/prefix1/Designer (42).jpeg");
     backgroundLabel->setScaledContents(true);
     backgroundLabel->setPixmap(QPixmap::fromImage(image));
