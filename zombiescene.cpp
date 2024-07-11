@@ -17,7 +17,6 @@ ZombieScene::ZombieScene (QString CompetitorName)
     setCompetitorName(CompetitorName);
     GameTimer = new QTimer;
     GameTimer->setInterval(1000);
-    //connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
     connect(GameTimer , SIGNAL(timeout()) , this , SLOT(UpdateTimer()));
     GameTimer->start();
     wallet = new Wallet(0);

@@ -172,7 +172,7 @@ void PlantScene::UpdateTimer()
         seconds = 59;
     }
     if(minutes < 0 ){
-        //PlantWin();
+        PlantWin();
     }
     else{
         timer->setPlainText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));
