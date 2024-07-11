@@ -32,7 +32,7 @@ private :
     QVector<home*> homes;
     Wallet* wallet;
     QTimer* GameTimer;
-    QLabel* timer;
+    QGraphicsTextItem* timer;
 public slots :
     void Sun_Maker();
     void AddedToVecc(QString type);

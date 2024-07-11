@@ -7,15 +7,24 @@
 #define COLS 12
 ZombieScene::ZombieScene ()
 {
-    setWindowTitle("Zombie Side");
-   setWindowIcon(QIcon(QPixmap(":/new/prefix1/zicon.png")));
-    timer = new QLabel("3:30" , this);
-    timer->setStyleSheet("color: white;");
+    scene=new QGraphicsScene;
+    QImage image(":/new/prefix1/field.png");
+    QGraphicsView * view = new QGraphicsView(scene);
+    view->setBackgroundBrush(QColor(0, 0, 0));
+    view->setWindowTitle("Zombie Side");
+    view->setWindowIcon(QIcon(QPixmap(":/new/prefix1/zicon.png")));
+   timer = new QGraphicsTextItem();
+   scene->addItem(timer);
+   timer->setPlainText("3:30");
+   timer->setDefaultTextColor(Qt::blue);
+   QRectF bounds(400,-120, 150, 30);  // Set the desired size
+   timer->setTextWidth(bounds.width());
+   timer->setPos(bounds.topLeft());
+   timer->setZValue(3);
     QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
     timer->setFont(fontNum);
-    timer->move(750,-120);
-    timer->setFixedSize(150,30);
     timer->show();
+
     GameTimer = new QTimer;
     GameTimer->setInterval(1000);
     //connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
@@ -24,20 +33,14 @@ ZombieScene::ZombieScene ()
     wallet = new Wallet(0);
     wallet->setPos(500 , -40);
 
-    scene=new QGraphicsScene;
-    QImage image(":/new/prefix1/field.png");
-
-    QGraphicsView * view = new QGraphicsView(scene);
-    view->setBackgroundBrush(QColor(0, 0, 0));
-
     QGraphicsPixmapItem *bg=new QGraphicsPixmapItem(QPixmap::fromImage(image));
     scene->addItem(bg);
 
     initializeGrid();
     scene->setSceneRect(0,0,1080,502);
-   // view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //view->setFixedSize(1090,1000);
+   view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setFixedSize(1090,1000);
     ZombieStore *p=new ZombieStore(scene , wallet);
     view->scene()->addItem(p->regularzombie);
     view->scene()->addItem(p->bucketheadzombie);
@@ -112,6 +115,8 @@ void ZombieScene::UpdateTimer()
     static int minutes = 3;
     static int seconds = 30;
     seconds--;
+    if(minutes==0 && seconds<20)
+        timer->setDefaultTextColor(Qt::red);
     if(seconds<0){
         minutes--;
         seconds = 59;
@@ -120,6 +125,6 @@ void ZombieScene::UpdateTimer()
         //PlantWin();
     }
     else{
-        timer->setText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));
+        timer->setPlainText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));
     }
 }
