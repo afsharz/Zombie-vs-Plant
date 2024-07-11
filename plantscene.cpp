@@ -11,7 +11,7 @@ PlantScene::PlantScene()
     timer->setStyleSheet("color: white;");
     QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
     timer->setFont(fontNum);
-    timer->move(750,-120);
+    timer->move(100,100);
     timer->setFixedSize(150,30);
     timer->show();
     GameTimer = new QTimer;
