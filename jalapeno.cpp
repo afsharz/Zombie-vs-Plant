@@ -5,7 +5,6 @@
 #include "home.h"
 
 Jalapeno::Jalapeno(QPointF pos , QGraphicsScene * _scene,home *adrs) : Plant(pos , 0 ,0 , 300,adrs) , scene(_scene) {
-    //setHomeFlag(true);
     setPixmap(QPixmap(":/new/prefix1/jalapino_transparent.png"));
     setScale(0.07);
     redRectangle = new QGraphicsRectItem;
@@ -25,7 +24,6 @@ Jalapeno::Jalapeno(QPointF pos , QGraphicsScene * _scene,home *adrs) : Plant(pos
     scene->addItem(redRectangle);
     show();
     QList<QGraphicsItem*> itemList = scene->items();
-    //should check
     for (QGraphicsItem* item : itemList) {
 
         if (item->pos().y()>=startY && item->pos().y()<=startY+cellHeight ) {

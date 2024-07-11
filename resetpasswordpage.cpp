@@ -26,7 +26,6 @@ void ResetPasswordPage::newItems()
     ledUsername=new QLineEdit(this);
     ledNumber=new QLineEdit(this);
     ledPass=new QLineEdit(this);
-    //ledConfirmPass =new QLineEdit(this);
     btnBack=new QPushButton(this);
     btnReset=new QPushButton(this);
     errorNumber=new QLabel(this);
@@ -43,8 +42,6 @@ void ResetPasswordPage::DesignWindow()
     layout->addWidget(ledPass,5,0,1,3);
     layout->addWidget(PasswordState,5,3);
     layout->addWidget(UnacceptablePass,6,0);
-    //layout->addWidget(lblConfirmPass,7,0);
-    //layout->addWidget(ledConfirmPass,8,0,1,3);
     layout->addWidget(errorNumber,9,0,2,2);
     /// set background
     backgroundLabel->setScaledContents(true);
@@ -61,9 +58,6 @@ void ResetPasswordPage::DesignWindow()
     ///new password line edit
     ledPass->setPlaceholderText("Password");
     ledPass->show();
-    /// confirm password line edit
-    //ledConfirmPass->setPlaceholderText("Enter Password");
-    //ledConfirmPass->show();
     /// error message
     errorNumber->setText("incorrect Username or Number");
     errorNumber->setStyleSheet("color: red;");
@@ -78,7 +72,6 @@ void ResetPasswordPage::DesignWindow()
     btnReset->setFont(QFont("Berlin Sans FB Demi",15,2,false));
     btnReset->setStyleSheet("color: white;");
     ///push button back
-
     btnBack->setFlat(true);
     btnBack->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     btnBack->setStyleSheet("color: black;");
@@ -86,7 +79,7 @@ void ResetPasswordPage::DesignWindow()
     btnBack->setText("Back");
     btnBack->setFont(QFont("Berlin Sans FB Demi",15,2,false));
     btnBack->setStyleSheet("color: white;");
-///unacceptable password
+    ///unacceptable password
     UnacceptablePass->setText("must contains 8-24 digits");
    UnacceptablePass->setStyleSheet(("color: red;"));
     UnacceptablePass->setFont(QFont("Berlin Sans FB Demi",10,2,false));
@@ -270,7 +263,6 @@ ResetPasswordPage::~ResetPasswordPage()
 {
     delete backgroundLabel;
     delete layout;
-    //delete lblConfirmPass;
     delete lblWrongNum;
     delete errorNumber;
     delete PasswordState;
@@ -278,7 +270,6 @@ ResetPasswordPage::~ResetPasswordPage()
     delete ledUsername;
     delete ledNumber;
     delete ledPass;
-    //delete ledConfirmPass;
     delete btnBack;
     delete btnReset;
     delete layoutContainer;

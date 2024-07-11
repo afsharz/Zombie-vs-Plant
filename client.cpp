@@ -13,21 +13,6 @@ Client::Client(QString name , QFile* _file,Menu* _menu,QString _IP) : menu(_menu
     ConnectingToServer();
 }
 
-/*Client::~Client()
-{
-    delete ClientSocket;
-    //if(plantscene)
-    //delete plantscene;
-    //if(zombiescene)
-    //delete zombiescene;
-    //if(player)
-    //delete player;
-    if(gamescene)
-    delete gamescene;
-    //if(status)
-    //delete status;
-}*/
-
 void Client::ConnectingToServer()
 {
     ClientSocket = new QTcpSocket();
@@ -132,9 +117,6 @@ void Client::ConnectedToServer()
     QJsonDocument jsonDoc(mess);
     QByteArray jsonData = jsonDoc.toJson();
     ClientSocket->write(jsonData);
-    // we should first recieve other clients name and also send our names
-    // then we should new our game scene ( we should handle if the client is plant or zombie )
-    // we should show our scene
 }
 
 void Client::DisconnectedFromServer()
@@ -151,7 +133,7 @@ void Client::WritingData(QString type)
     if(player->set_PlantOrZombie())
     {
         mess["X"]=plantscene->getPlants().back()->pos().x();
-        mess["Y"]=plantscene->getPlants().back()->pos().y();
+        mess["Y"]=plantscene->getPlants().back()->pos().y()+10;
     }
     else
     {
@@ -166,7 +148,6 @@ void Client::WritingData(QString type)
 
 void Client::zombiewin()
 {
-    //timer->start();
     if(player->set_PlantOrZombie()){
         plantscene->deleteLater();
         player->set_WinOrLose()=0;
@@ -184,7 +165,6 @@ void Client::zombiewin()
 
 void Client::plantwin()
 {
-    //timer->start();
     if(player->set_PlantOrZombie()){
         plantscene->deleteLater();
         player->set_WinOrLose()=1;
@@ -246,9 +226,3 @@ void Client::checkround()
     }
 }
 
-void Client::closeClient()
-{
-    menu->show();
-    //delete this;
-
-}

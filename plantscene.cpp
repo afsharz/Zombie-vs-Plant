@@ -17,7 +17,6 @@ PlantScene::PlantScene(QString CompetitorName)
     GameTimer = new QTimer;
     GameTimer->setInterval(1000);
     setCompetitorName(CompetitorName);
-    //connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
     connect(GameTimer , SIGNAL(timeout()) , this , SLOT(UpdateTimer()));
     GameTimer->start();
 
@@ -122,9 +121,6 @@ void PlantScene::closeWindow()
 
 PlantScene::~PlantScene()
 {
-   // delete zombies;
-    //delete plants;
-    QVector<home*> homes;
     delete wallet;
     delete GameTimer;
     delete timer;
@@ -162,8 +158,8 @@ void PlantScene::ZombieWin()
 
 void PlantScene::UpdateTimer()
 {
-    static int minutes = 0;
-    static int seconds = 10;
+    static int minutes = 3;
+    static int seconds = 30;
     seconds--;
     if(minutes==0 && seconds<30)
         timer->setDefaultTextColor(Qt::red);

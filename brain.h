@@ -11,7 +11,6 @@ class Brain :public QObject , public QGraphicsPixmapItem
     Q_OBJECT
 public:
     Brain(QGraphicsScene *scene , Wallet* _wallet);
-    //~Brain();
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 private :

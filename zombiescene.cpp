@@ -119,8 +119,8 @@ void ZombieScene::ZombieWin()
 
 void ZombieScene::UpdateTimer()
 {
-    static int minutes = 0;
-    static int seconds = 10;
+    static int minutes = 3;
+    static int seconds = 30;
     seconds--;
     if(minutes==0 && seconds<30)
         timer->setDefaultTextColor(Qt::red);
@@ -154,9 +154,6 @@ void ZombieScene::setCompetitorName(QString Name)
 
 ZombieScene::~ZombieScene()
 {
-    // delete zombies;
-    //delete plants;
-    QVector<home*> homes;
     delete wallet;
     delete GameTimer;
     delete timer;

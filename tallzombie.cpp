@@ -7,7 +7,6 @@ TallZombie::TallZombie(QPointF pos,home *adrs)
     setPixmap(QPixmap(":/new/prefix1/tall zombie_transparent.png"));
     setScale(0.1);
     setPos(pos);
-    //setHomeFlag(true);
     show();
 }
 void TallZombie::Movement()
@@ -18,7 +17,7 @@ void TallZombie::Movement()
         Plant* plant = dynamic_cast<Plant*>(item);
         if (plant && typeid(*item)!=typeid(Walnut))
         {
-            qreal distanceX = currentPos.x() - item->pos().x();//QLineF(currentPos, item->pos()).length();
+            qreal distanceX = currentPos.x() - item->pos().x();
             qreal distanceY = qAbs(currentPos.y() - item->pos().y());
             if(distanceX < 100 && distanceY < 50){
                 timer->stop();
@@ -35,8 +34,6 @@ void TallZombie::Movement()
     if(this->pos().x()<=110)
     {
         emit ZombieWin();
-        //deleteLater();
-        //zombies win
         delete this;
 
     }

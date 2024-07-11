@@ -9,8 +9,6 @@ class ZombieStore
 {
 public:
     ZombieStore(QGraphicsScene *scene , Wallet* _wallet );
-
-    //private:
     Card *regularzombie;
     Card *bucketheadzombie;
     Card *leafheadzombie;
