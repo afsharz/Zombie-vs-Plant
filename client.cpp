@@ -133,7 +133,7 @@ void Client::WritingData(QString type)
     if(player->set_PlantOrZombie())
     {
         mess["X"]=plantscene->getPlants().back()->pos().x();
-        mess["Y"]=plantscene->getPlants().back()->pos().y()+10;
+        mess["Y"]=plantscene->getPlants().back()->pos().y()+15;
     }
     else
     {
