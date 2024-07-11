@@ -10,43 +10,36 @@ Client::Client(QString name , QFile* _file,Menu* _menu) : menu(_menu) {
     player->set_PlayerName()=name;
     player->setQfile(_file);
     round=1;
-    //status=new ConnectionStatus;
     ConnectingToServer();
 }
 
-Client::~Client()
+/*Client::~Client()
 {
     delete ClientSocket;
-    if(plantscene)
-    delete plantscene;
-    if(zombiescene)
-    delete zombiescene;
+    //if(plantscene)
+    //delete plantscene;
+    //if(zombiescene)
+    //delete zombiescene;
     //if(player)
     //delete player;
     if(gamescene)
     delete gamescene;
-    if(status)
-    delete status;
-}
+    //if(status)
+    //delete status;
+}*/
 
 void Client::ConnectingToServer()
 {
     ClientSocket = new QTcpSocket();
     ClientSocket->connectToHost("127.0.0.1" , 1500); // first is the address IP and second is our port
     connect(ClientSocket , SIGNAL(connected()) , this , SLOT(ConnectedToServer()));
-    //status->show();
     if(ClientSocket->waitForConnected(10000))
     {
         qDebug()<<"connected to server";
-        delete status;
     }
     else
     {
-        // status->showStatus(false);
-        // qDebug()<<"could not connect";
-        // QTimer *TimeToDeleteClient=new QTimer;
-        // connect(TimeToDeleteClient,&QTimer::timeout,this,&Client::closeClient);
-        // TimeToDeleteClient->start(5000);
+         qDebug()<<"could not connect";
         return;
     }
     connect(ClientSocket , SIGNAL(bytesWritten(qint64)) , this , SLOT(WrittenData()));
@@ -173,7 +166,7 @@ void Client::zombiewin()
         player->set_WinOrLose()=1;
     }
     gamescene = new GameResult("Zombie");
-
+    gamescene->show();
     QTimer* timer = new QTimer;
     QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(checkround()));
     timer->start(5000);
@@ -181,6 +174,7 @@ void Client::zombiewin()
 
 void Client::plantwin()
 {
+    qDebug() << "Im here";
     if(player->set_PlantOrZombie()){
         plantscene->deleteLater();
         player->set_WinOrLose()=1;
@@ -190,7 +184,7 @@ void Client::plantwin()
         player->set_WinOrLose()=0;
     }
     gamescene = new GameResult("Plant");
-
+    gamescene->show();
     QTimer* timer = new QTimer;
     QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(checkround()));
     timer->start(5000);
@@ -244,7 +238,6 @@ void Client::checkround()
 void Client::closeClient()
 {
     menu->show();
-    delete status;
     //delete this;
 
 }

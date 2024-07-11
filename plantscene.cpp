@@ -66,8 +66,8 @@ void PlantScene::initializeGrid()
             h->setVectorP(&plants);
             scene->addItem(h);
             homes.push_back(h);
-            connect(h, &home::AddedToVec, this, &PlantScene::AddedToVecc);
             connect(h,&home::zombiewin,this,&PlantScene::ZombieWin);
+            connect(h, &home::AddedToVec, this, &PlantScene::AddedToVecc);
         }
     }
 }
