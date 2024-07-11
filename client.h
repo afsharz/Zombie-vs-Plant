@@ -14,7 +14,7 @@ class Client : public QObject
 {
     Q_OBJECT
 public:
-    Client(QString name , QFile* _file,Menu* _menu);
+    Client(QString name , QFile* _file,Menu* _menu, QString _IP);
     //~Client();
 private :
     QTcpSocket* ClientSocket;
@@ -24,6 +24,7 @@ private :
     GameResult* gamescene;
     Menu* menu;
     int round;
+    QString IP;
 public slots:
     void ConnectingToServer();
     void ReadingData();

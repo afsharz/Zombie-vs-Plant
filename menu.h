@@ -24,12 +24,14 @@ private :
     QPushButton *EditInfo;
     QPushButton* Back;
     QPushButton* Save;
+    QPushButton* Start;
     QListWidget* showhistory;
     QLineEdit* Username;
     QLineEdit* Name;
     QLineEdit* Mobile;
     QLineEdit* Address;
     QLineEdit* Password;
+    QLineEdit* IP;
     UserInfo* userinfo;
 public slots :
     void game();
@@ -38,6 +40,7 @@ public slots :
     void exit();
     void back();
     void save();
+    void start();
 
 };
 

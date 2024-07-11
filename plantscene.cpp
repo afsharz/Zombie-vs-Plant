@@ -6,7 +6,7 @@
 PlantScene::PlantScene()
 {
     setWindowTitle("Plant Side");
-     setWindowIcon(QIcon(QPixmap(":/new/prefix1/picon.png")));
+    setWindowIcon(QIcon(QPixmap(":/new/prefix1/picon.png")));
     timer = new QLabel("3:30" , this);
     timer->setStyleSheet("color: white;");
     QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);

@@ -11,6 +11,7 @@ Menu::Menu(UserInfo* _userinfo) : userinfo(_userinfo) {
     connect(Game,&QPushButton::clicked,this,&Menu::game);
     connect(Back,&QPushButton::clicked,this,&Menu::back);
     connect(Save,&QPushButton::clicked,this,&Menu::save);
+    connect(Start,&QPushButton::clicked,this,&Menu::start);
 }
 
 void Menu::newItems()
@@ -22,8 +23,10 @@ void Menu::newItems()
     History=new QPushButton(this);
     Back=new QPushButton(this);
     Save=new QPushButton(this);
+    Start=new QPushButton(this);
     Back->hide();
     Save->hide();
+    Start->hide();
 }
 
 void Menu::DesignWindow()
@@ -83,13 +86,27 @@ void Menu::DesignWindow()
     Save->setText("Save");
     Save->setFont(QFont("Berlin Sans FB Demi",18,2,false));
     Save->setStyleSheet("color: black;");
+    ///push botton Save
+    Start->setFlat(true);
+    Start->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
+    Start->setStyleSheet("color: black;");
+    Start->setGeometry(280,95,300,40);
+    Start->setText("Start");
+    Start->setFont(QFont("Berlin Sans FB Demi",18,2,false));
+    Start->setStyleSheet("color: black;");
 }
 
 void Menu::game()
 {
-    this->hide();
-    Client * client1;
-    client1 = new Client(userinfo->getUsername(),userinfo->get_QFile(),this);
+    Start->show();
+    Game->hide();
+    EditInfo->hide();
+    Exit->hide();
+    History->hide();
+    IP=new QLineEdit(this);
+    IP->setPlaceholderText("IP");
+    IP->setGeometry(170,140,300,40);
+    IP->show();
 }
 
 void Menu::history()
@@ -225,4 +242,12 @@ void Menu::save()
             qDebug() << "Error renaming the file.";
         }
     }
+}
+
+void Menu::start()
+{
+    Start->hide();
+    this->hide();
+    Client * client1;
+    client1 = new Client(userinfo->getUsername(),userinfo->get_QFile(),this,IP->text());
 }
