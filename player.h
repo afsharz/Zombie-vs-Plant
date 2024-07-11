@@ -11,7 +11,7 @@ public:
     QString& set_CompetitorName();
     bool& set_PlantOrZombie();
     bool& set_WinOrLose();
-    void setQfile();
+    void setQfile(QFile* _file);
     QFile* getQFile();
 private :
     QString PlayerName;

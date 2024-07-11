@@ -4,12 +4,14 @@
 #include "zombiescene.h"
 #include "resetpasswordpage.h"
 #include "client.h"
+#include "menu.h"
 #include <QThread>
 
 LogIn::LogIn(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LogIn)
 {
+    user=new UserInfo();
     ui->setupUi(this);
     //These codes that are repeated are for the color and size and transparency of line edits, lebels and push bottons
     //"background-color: rgba(0, 0, 0, 127);"
@@ -122,17 +124,17 @@ void LogIn::on_pushButton_4_clicked()
         ui->label_8->hide();
         ui->label_7->hide();
         ui->label_9->show();
+        in.seek(0);
+        user->set_Name(in.readLine());
+        user->set_Username(in.readLine());
+        user->set_Mobile(in.readLine());
+        user->set_Password(in.readLine());
+        user->set_Address(in.readLine());
         ui->label_9->setText(tr("log in successfully!"));
+        Menu* menu = new Menu(user);
+        menu->show();
+        this->close();
     }
-}
-
-
-void LogIn::on_pushButton_5_clicked()
-{
-    //PlantScene *PSc = new PlantScene;
-   //ZombieScene *ZSc = new ZombieScene;
-    Client * client;
-    client = new Client("Yalda");
 }
 
 

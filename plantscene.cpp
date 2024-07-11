@@ -23,7 +23,6 @@ PlantScene::PlantScene()
 
     scene=new QGraphicsScene;
     QImage image(":/new/prefix1/field.png");
-    scene->setBackgroundBrush(QBrush(QImage(":/new/prefix1/field.png")));
 
     QGraphicsView * view = new QGraphicsView(scene);
     view->setBackgroundBrush(QColor(0, 0, 0));
@@ -45,17 +44,6 @@ PlantScene::PlantScene()
     view->scene()->addItem(p->plumMine);
     view->scene()->addItem(wallet);
     Game();
-   qreal w = 77;
-    qreal h = 73;
-    QPointF f(800,180);
-    home hh(f,w,h,scene,wallet);
-    RegularZombie *z=new RegularZombie(f,&hh);
-    z->setScale(0.075);
-    scene->addItem(z);
-    ///
-    //PeaShooter *jk=new PeaShooter(QPointF(126,37));
-   // delete jk;
-    ///
     view->show();
 
 

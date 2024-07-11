@@ -7,6 +7,7 @@
 #include <QVector>
 #include <QBrush>
 #include <QTimer>
+#include <QLabel>
 #include "zombie.h"
 #include "home.h"
 #include "plant.h"
@@ -30,6 +31,7 @@ private :
     QVector<home*> homes;
     Wallet* wallet;
     QTimer* GameTimer;
+    QLabel* timer;
 public slots :
     void Brain_Maker();
     void AddedToVecc(QString type);

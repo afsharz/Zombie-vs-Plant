@@ -11,11 +11,9 @@ bool& Player::set_PlantOrZombie(){return IsPlant;}
 
 bool& Player::set_WinOrLose(){return WinOrLose;}
 
-void Player::setQfile()
+void Player::setQfile(QFile* _file)
 {
-    QString filename = PlayerName + "history.txt";
-    PlayerFile = new QFile(filename);
-
+    PlayerFile = _file;
     if(!PlayerFile->open(QIODevice :: WriteOnly | QIODevice :: Append | QIODevice :: Text)){
         qDebug() << "File cannot be opened.";
         return;

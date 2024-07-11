@@ -23,6 +23,7 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    menu.cpp \
     peashooter.cpp \
     plant.cpp \
     plantscene.cpp \
@@ -57,6 +58,7 @@ HEADERS += \
     leafheadzombie.h \
     login.h \
     mainwindow.h \
+    menu.h \
     peashooter.h \
     plant.h \
     plantscene.h \

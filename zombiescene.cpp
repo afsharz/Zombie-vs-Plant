@@ -22,7 +22,6 @@ ZombieScene::ZombieScene ()
 
     scene=new QGraphicsScene;
     QImage image(":/new/prefix1/field.png");
-    //  scene->setBackgroundBrush(QBrush(QImage(":/new/prefix1/field.png")));
 
     QGraphicsView * view = new QGraphicsView(scene);
     view->setBackgroundBrush(QColor(0, 0, 0));
