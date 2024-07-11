@@ -42,9 +42,10 @@ void Client::ConnectingToServer()
          qDebug()<<"could not connect";
         return;
     }
-    connect(ClientSocket , SIGNAL(bytesWritten(qint64)) , this , SLOT(WrittenData()));
-    connect(ClientSocket , SIGNAL(readyRead()) , this , SLOT(ReadingData()));
-    connect(ClientSocket , SIGNAL(disconnected()) , this , SLOT(DisconnectedFromServer()));
+    connect(ClientSocket,&QTcpSocket::connected,this,&Client::ConnectedToServer);
+    connect(ClientSocket , &QTcpSocket::bytesWritten , this , &Client::WrittenData);
+    connect(ClientSocket , &QTcpSocket::readyRead , this , &Client::ReadingData);
+    connect(ClientSocket , &QTcpSocket::disconnected , this , &Client::DisconnectedFromServer);
 }
 
 void Client::ReadingData()
@@ -66,6 +67,7 @@ void Client::ReadingData()
 
     if(mess["MessageType"].toString()=="role")
     {
+        player->set_CompetitorName()=mess["CompetitorName"].toString();
         if(mess["role"]=="zombie")
         {
             player->set_PlantOrZombie()=0;
@@ -123,6 +125,13 @@ void Client::WrittenData()
 void Client::ConnectedToServer()
 {
     qDebug() << "Connected Successfully\n";
+
+    QJsonObject mess;
+    mess["MessageType"]="Introduce";
+    mess["name"]=this->player->set_PlayerName();
+    QJsonDocument jsonDoc(mess);
+    QByteArray jsonData = jsonDoc.toJson();
+    ClientSocket->write(jsonData);
     // we should first recieve other clients name and also send our names
     // then we should new our game scene ( we should handle if the client is plant or zombie )
     // we should show our scene

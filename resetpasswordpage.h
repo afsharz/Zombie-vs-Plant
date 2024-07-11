@@ -12,13 +12,12 @@ class ResetPasswordPage : public QWidget
     Q_OBJECT
 public:
     explicit ResetPasswordPage(LogIn *PrvPage);
-   // ResetPasswordPage(LogIn *PrvPage);
     void newItems();
     void DesignWindow();
     void showPasswordState(UserInfo::state state);
     void showUnacceptablePwd(bool IsTrue);
     ~ResetPasswordPage();
-    //enum state{weak,medium,strong};
+
 public slots:
     void checkinfo ();
     void BackBtnClicked();
@@ -40,7 +39,6 @@ private :
     QWidget *layoutContainer;
     UserInfo *user;
     QRegularExpression *vpass;
-
     bool isPassValid;
 signals:
 };

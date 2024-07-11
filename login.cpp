@@ -13,6 +13,7 @@ LogIn::LogIn(QWidget *parent)
 {
     user=new UserInfo();
     ui->setupUi(this);
+    this->setWindowTitle("LogIn");
     //These codes that are repeated are for the color and size and transparency of line edits, lebels and push bottons
     //"background-color: rgba(0, 0, 0, 127);"
     //ui->label->setStyleSheet("QLabel {""border-radius: 15px;" "border: none;" "}");
