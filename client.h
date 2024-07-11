@@ -4,6 +4,7 @@
 #include <QHostInfo>
 #include <QMainWindow>
 #include <QFile>
+#include <QTimer>
 #include "plantscene.h"
 #include "zombiescene.h"
 #include "player.h"
@@ -25,6 +26,7 @@ private :
     Menu* menu;
     int round;
     QString IP;
+    QTimer* timer;
 public slots:
     void ConnectingToServer();
     void ReadingData();
