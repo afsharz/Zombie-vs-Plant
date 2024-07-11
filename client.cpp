@@ -183,7 +183,6 @@ void Client::zombiewin()
 
 void Client::plantwin()
 {
-    qDebug() << "Im here";
     if(player->set_PlantOrZombie()){
         plantscene->deleteLater();
         player->set_WinOrLose()=1;
@@ -210,8 +209,8 @@ void Client::checkround()
         out.seek(player->getQFile()->size());
         out << "Competitor name : " << player->set_CompetitorName();
         QDateTime current = QDateTime::currentDateTime();
-        qint64 unixTime = current.toSecsSinceEpoch();
-        out << "\nDate : " << unixTime;
+        QString formattedDate = current.toString("yyyy-MM-dd");
+        out << "\nDate : " << formattedDate;
         if(player->set_PlantOrZombie())
             out << "\n round 1 : Plant ";
         else
