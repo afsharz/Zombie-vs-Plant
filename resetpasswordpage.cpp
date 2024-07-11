@@ -16,12 +16,8 @@ void ResetPasswordPage::newItems()
 {
     backgroundLabel=new QLabel(this);
     layoutContainer=new QWidget(this);
-    layoutContainer->setGeometry(130,90,230,300);
+    layoutContainer->setGeometry(120,140,230,300);
     layout=new QGridLayout(layoutContainer);
-    lblUsername=new QLabel(this);
-    lblNumber=new QLabel(this);
-    lblPass=new QLabel(this);
-    lblConfirmPass=new QLabel(this);
     lblWrongNum=new QLabel(this);
     ledUsername=new QLineEdit(this);
     ledNumber=new QLineEdit(this);
@@ -35,14 +31,9 @@ void ResetPasswordPage::newItems()
 void ResetPasswordPage::DesignWindow()
 {
     setWindowTitle("Reset Password");
-
-    layout->addWidget(lblUsername,0,0);
     layout->addWidget(ledUsername,1,0,1,3);
-    layout->addWidget(lblNumber,2,0);
     layout->addWidget(ledNumber,3,0,1,3);
-    layout->addWidget(lblPass,4,0);
     layout->addWidget(ledPass,5,0,1,3);
-    layout->addWidget(lblConfirmPass,6,0);
     layout->addWidget(ledConfirmPass,7,0,1,3);
     layout->addWidget(errorNumber,8,0,2,2);
     /// set background
@@ -51,37 +42,17 @@ void ResetPasswordPage::DesignWindow()
     backgroundLabel->setGeometry(this->rect());
     backgroundLabel->lower();
     setFixedSize(640,480);
-    ///username label
-    lblUsername->setText("Username");
-    lblUsername->setStyleSheet("color: white;");
-    lblUsername->setFont(QFont("Showcard Gothic",12,2,false));
-    lblUsername->show();
     ///username lineedit
-    ledUsername->setPlaceholderText("Enter Username");
+    ledUsername->setPlaceholderText("Username");
     ledUsername->show();
-    ///phone number label
-    lblNumber->setText("Phone Number");
-    lblNumber->setStyleSheet(("color: white;"));
-        lblNumber->setFont(QFont("Showcard Gothic",12,2,false));
-    lblNumber->show();
     ///phone number line edit
-    ledNumber->setPlaceholderText("Enter phone number");
+    ledNumber->setPlaceholderText("Phone Number");
     ledNumber->show();
-    ///new password label
-    lblPass->setText("New Password");
-    lblPass->setStyleSheet(("color: white;"));
-        lblPass->setFont(QFont("Showcard Gothic",12,2,false));
-    lblPass->show();
     ///new password line edit
-    ledPass->setPlaceholderText("Enter Password");
+    ledPass->setPlaceholderText("Password");
     ledPass->show();
-    ///confirm password label
-    lblConfirmPass->setText("Confirm Password");
-    lblConfirmPass->setStyleSheet(("color: white;"));
-    lblConfirmPass->setFont(QFont("Showcard Gothic",12,2,false));
-    lblConfirmPass->show();
     /// confirm password line edit
-    ledConfirmPass->setPlaceholderText("Enter Password");
+    ledConfirmPass->setPlaceholderText("Repeat Password");
     ledConfirmPass->show();
     /// error message
 
@@ -93,7 +64,7 @@ void ResetPasswordPage::DesignWindow()
     btnReset->setFlat(true);
     btnReset->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     btnReset->setStyleSheet("color: black;");
-    btnReset->setGeometry(200,350,70,50);
+    btnReset->setGeometry(150,270,70,50);
     btnReset->setText("Reset");
     btnReset->setFont(QFont("Berlin Sans FB Demi",15,2,false));
     btnReset->setStyleSheet("color: white;");
@@ -102,7 +73,7 @@ void ResetPasswordPage::DesignWindow()
     btnBack->setFlat(true);
     btnBack->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     btnBack->setStyleSheet("color: black;");
-    btnBack->setGeometry(500,350,70,50);
+    btnBack->setGeometry(250,270,70,50);
     btnBack->setText("Back");
     btnBack->setFont(QFont("Berlin Sans FB Demi",15,2,false));
     btnBack->setStyleSheet("color: white;");

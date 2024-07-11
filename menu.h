@@ -6,6 +6,8 @@
 #include <QPushButton>
 #include <QListWidget>
 #include <QGridLayout>
+#include <QCoreApplication>
+#include <QCryptographicHash>
 #include "userinfo.h"
 class Menu :public QWidget
 {
@@ -23,6 +25,11 @@ private :
     QPushButton* Back;
     QPushButton* Save;
     QListWidget* showhistory;
+    QLineEdit* Username;
+    QLineEdit* Name;
+    QLineEdit* Mobile;
+    QLineEdit* Address;
+    QLineEdit* Password;
     UserInfo* userinfo;
 public slots :
     void game();
