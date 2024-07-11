@@ -174,5 +174,6 @@ void registeration::on_pushButton_4_clicked()
 
     userfile.flush();
     userfile.close();
+    this->close();
 }
 
