@@ -9,7 +9,7 @@ ZombieScene::ZombieScene (QString CompetitorName)
 {
     scene=new QGraphicsScene;
     QImage image(":/new/prefix1/field.png");
-    QGraphicsView * view = new QGraphicsView(scene);
+    view = new QGraphicsView(scene);
     view->setBackgroundBrush(QColor(0, 0, 0));
     view->setWindowTitle("Zombie Side");
     view->setWindowIcon(QIcon(QPixmap(":/new/prefix1/zicon.png")));
@@ -64,8 +64,8 @@ void ZombieScene::initializeGrid()
             h->setVectorZ(&zombies);
             scene->addItem(h);
             homes.push_back(h);
-            connect(h,&home::AddedToVec, this, &ZombieScene::AddedToVecc);
             connect(h,&home::zombiewin,this,&ZombieScene::ZombieWin);
+            connect(h,&home::AddedToVec, this, &ZombieScene::AddedToVecc);
         }
     }
 
@@ -107,12 +107,15 @@ void ZombieScene::AddedToVecc(QString type)
 void ZombieScene::PlantWin()
 {
     emit Plantwin();
+    GameTimer->stop();
 }
 
 void ZombieScene::ZombieWin()
 {
     emit Zombiewin();
+    GameTimer->stop();
 }
+
 
 void ZombieScene::UpdateTimer()
 {
@@ -147,4 +150,17 @@ void ZombieScene::setCompetitorName(QString Name)
     CompetitorName->setPos(bounds.topLeft());
     CompetitorName->setZValue(3);
     CompetitorName->show();
+}
+
+ZombieScene::~ZombieScene()
+{
+    // delete zombies;
+    //delete plants;
+    QVector<home*> homes;
+    delete wallet;
+    delete GameTimer;
+    delete timer;
+    delete CompetitorName;
+    delete view;
+    delete scene;
 }
