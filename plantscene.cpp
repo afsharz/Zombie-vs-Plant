@@ -3,30 +3,20 @@
 #include "regularzombie.h"
 #define ROWS 6
 #define COLS 12
-PlantScene::PlantScene()
+PlantScene::PlantScene(QString CompetitorName)
 {
     scene=new QGraphicsScene;
     QImage image(":/new/prefix1/field.png");
 
-    QGraphicsView * view = new QGraphicsView(scene);
+     view = new QGraphicsView(scene);
     view->setBackgroundBrush(QColor(0, 0, 0));
 
     view->setWindowTitle("Plant Side");
     view->setWindowIcon(QIcon(QPixmap(":/new/prefix1/picon.png")));
-    timer = new QGraphicsTextItem();
-    scene->addItem(timer);
-    QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
-    timer->setFont(fontNum);
-    timer->setPlainText("3:30");
-    timer->setDefaultTextColor(Qt::green);
-    QRectF bounds(400,-120, 150, 30);  // Set the desired size
-    timer->setTextWidth(bounds.width());
-    timer->setPos(bounds.topLeft());
-    timer->setZValue(3);
-    timer->show();
+    setTimer();
     GameTimer = new QTimer;
     GameTimer->setInterval(1000);
-
+    setCompetitorName(CompetitorName);
     //connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
     connect(GameTimer , SIGNAL(timeout()) , this , SLOT(UpdateTimer()));
     GameTimer->start();
@@ -92,6 +82,58 @@ void PlantScene::Game()
 
 }
 
+void PlantScene::setTimer()
+{
+    timer = new QGraphicsTextItem();
+    scene->addItem(timer);
+    QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
+    timer->setFont(fontNum);
+    timer->setPlainText("3:30");
+    timer->setDefaultTextColor(Qt::green);
+    QRectF bounds(400,-120, 150, 30);  // Set the desired size
+    timer->setTextWidth(bounds.width());
+    timer->setPos(bounds.topLeft());
+    timer->setZValue(3);
+    timer->show();
+}
+
+void PlantScene::setCompetitorName(QString Name)
+{
+    CompetitorName= new QGraphicsTextItem();
+    QFont fontName("Berlin Sans FB Demi" , 20 ,  false);
+    QRectF bounds(600,-160, 150, 30);  // Set the desired size
+    QString name="Enemy : ";
+    name+=Name;
+    scene->addItem(CompetitorName);
+    CompetitorName->setFont(fontName);
+    CompetitorName->setPlainText(name);
+    CompetitorName->setDefaultTextColor(Qt::yellow);
+    CompetitorName->setTextWidth(bounds.width());
+    CompetitorName->setPos(bounds.topLeft());
+    CompetitorName->setZValue(3);
+    CompetitorName->show();
+}
+
+void PlantScene::closeWindow()
+{
+    view->close();
+    this->close();
+}
+
+PlantScene::~PlantScene()
+{
+   // delete zombies;
+    //delete plants;
+    QVector<home*> homes;
+    delete wallet;
+    delete GameTimer;
+    delete timer;
+    delete CompetitorName;
+    delete view;
+    delete scene;
+
+}
+
 void PlantScene::Sun_Maker()
 {
     Sun* sun = new Sun(scene , wallet);
@@ -109,20 +151,22 @@ void PlantScene::AddedToVecc(QString type)
 void PlantScene::PlantWin()
 {
     emit Plantwin();
+    GameTimer->stop();
 }
 
 void PlantScene::ZombieWin()
 {
     emit Zombiewin();
+    GameTimer->stop();
 }
 
 void PlantScene::UpdateTimer()
 {
-    static int minutes = 3;
-    static int seconds = 30;
-    if(minutes==0 && seconds<20)
-        timer->setDefaultTextColor(Qt::red);
+    static int minutes = 0;
+    static int seconds = 10;
     seconds--;
+    if(minutes==0 && seconds<30)
+        timer->setDefaultTextColor(Qt::red);
     if(seconds<0){
         minutes--;
         seconds = 59;
