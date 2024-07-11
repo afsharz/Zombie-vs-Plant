@@ -93,26 +93,6 @@ void ResetPasswordPage::DesignWindow()
    UnacceptablePass->hide();
 }
 
-ResetPasswordPage::~ResetPasswordPage()
-{
-    delete backgroundLabel;
-    delete layout;
-    //delete lblConfirmPass;
-    delete lblWrongNum;
-    delete errorNumber;
-    delete PasswordState;
-    delete UnacceptablePass;
-    delete ledUsername;
-    delete ledNumber;
-    delete ledPass;
-    //delete ledConfirmPass;
-    delete btnBack;
-    delete btnReset;
-    delete layoutContainer;
-    delete user;
-    delete vpass;
-}
-
 void ResetPasswordPage::checkinfo()
 {
     if(!isPassValid)
@@ -181,7 +161,7 @@ void ResetPasswordPage::BackBtnClicked()
 {
     PrvPage->show();
     this->close();
-    //this->deleteLater();
+    this->deleteLater();
 }
 
 void ResetPasswordPage::checkSecurity(QString pass)
@@ -249,10 +229,7 @@ void ResetPasswordPage::checkSecurity(QString pass)
 
     delete state;
     delete match;
-
 }
-
-
 
 void ResetPasswordPage::showPasswordState(UserInfo::state state)
 {
@@ -289,3 +266,22 @@ void ResetPasswordPage::showUnacceptablePwd(bool IsTrue)
         UnacceptablePass->hide();
 }
 
+ResetPasswordPage::~ResetPasswordPage()
+{
+    delete backgroundLabel;
+    delete layout;
+    //delete lblConfirmPass;
+    delete lblWrongNum;
+    delete errorNumber;
+    delete PasswordState;
+    delete UnacceptablePass;
+    delete ledUsername;
+    delete ledNumber;
+    delete ledPass;
+    //delete ledConfirmPass;
+    delete btnBack;
+    delete btnReset;
+    delete layoutContainer;
+    delete user;
+    delete vpass;
+}
