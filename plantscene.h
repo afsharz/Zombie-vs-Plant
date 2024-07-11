@@ -38,6 +38,7 @@ public slots :
     void AddedToVecc();
     void ZombieWin();
     void UpdateTimer();
+    void PlantWin();
 signals :
     void AddedToVector();
     void Zombiewin();

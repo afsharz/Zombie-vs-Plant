@@ -3,6 +3,7 @@
 #include "plantscene.h"
 #include "zombiescene.h"
 #include "resetpasswordpage.h"
+#include "client.h"
 #include <QThread>
 
 LogIn::LogIn(QWidget *parent)
@@ -128,8 +129,10 @@ void LogIn::on_pushButton_4_clicked()
 
 void LogIn::on_pushButton_5_clicked()
 {
-    PlantScene *PSc = new PlantScene;
-   ZombieScene *ZSc = new ZombieScene;
+    //PlantScene *PSc = new PlantScene;
+   //ZombieScene *ZSc = new ZombieScene;
+    Client * client;
+    client = new Client("Yalda");
 }
 
 

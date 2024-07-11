@@ -1,6 +1,5 @@
 #include "plantscene.h"
 #include "peashooter.h"
-#include <QGraphicsProxyWidget>
 #include "regularzombie.h"
 #define ROWS 6
 #define COLS 12
@@ -46,7 +45,7 @@ PlantScene::PlantScene()
     view->scene()->addItem(p->plumMine);
     view->scene()->addItem(wallet);
     Game();
-  qreal w = 77;
+   qreal w = 77;
     qreal h = 73;
     QPointF f(800,180);
     home hh(f,w,h,scene,wallet);
@@ -77,7 +76,7 @@ void PlantScene::initializeGrid()
             h->setVectorP(&plants);
             scene->addItem(h);
             homes.push_back(h);
-            connect(h, SIGNAL(AddedToVec()), this, SLOT(AddedToVecc()));
+            connect(h, SIGNAL(AddedToVec(QString)), this, SLOT(AddedToVecc()));
             connect(h,SIGNAL(zombiewin()),this,SLOT(ZombieWin()));
         }
     }
@@ -132,7 +131,7 @@ void PlantScene::UpdateTimer()
         seconds = 59;
     }
     if(minutes < 0 ){
-        PlantWin();
+        //PlantWin();
     }
     else{
         timer->setText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));

@@ -6,12 +6,9 @@
 #include <QJsonDocument>
 
 Client::Client(QString name) {
-    // we should make a view with a pushbotton that try to connect to server
-    //connect(ui->pushButton , SIGNAL(clicked()) , this , SLOT(ConnectingToServer()));
     player = new Player;
     player->set_PlayerName()=name;
     player->setQfile();
-    // to test functions
     ConnectingToServer();
 }
 
@@ -177,6 +174,9 @@ void Client::checkround()
         // Move the cursor to the end of the document
         out.seek(player->getQFile()->size());
         out << "Competitor name : " << player->set_CompetitorName();
+        QDateTime current = QDateTime::currentDateTime();
+        qint64 unixTime = current.toSecsSinceEpoch();
+        out << "\nDate : " << unixTime;
         if(player->set_PlantOrZombie())
             out << "\n round 1 : Plant ";
         else
