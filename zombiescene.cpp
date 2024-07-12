@@ -18,7 +18,6 @@ ZombieScene::ZombieScene ()
     timer->show();
     GameTimer = new QTimer;
     GameTimer->setInterval(1000);
-    //connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
     connect(GameTimer , SIGNAL(timeout()) , this , SLOT(UpdateTimer()));
     GameTimer->start();
     wallet = new Wallet(0);
@@ -117,7 +116,7 @@ void ZombieScene::UpdateTimer()
         seconds = 59;
     }
     if(minutes < 0 ){
-        //PlantWin();
+        PlantWin();
     }
     else{
         timer->setText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));

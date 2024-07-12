@@ -16,7 +16,6 @@ PlantScene::PlantScene()
     timer->show();
     GameTimer = new QTimer;
     GameTimer->setInterval(1000);
-    //connect(GameTimer , SIGNAL(timeout()) , this , SLOT(PlantWin()));
     connect(GameTimer , SIGNAL(timeout()) , this , SLOT(UpdateTimer()));
     GameTimer->start();
 
@@ -34,9 +33,9 @@ PlantScene::PlantScene()
 
     initializeGrid();
     scene->setSceneRect(0,0,1080,502);
-    //view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-   // view->setFixedSize(1090,1000);
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setFixedSize(1090,1000);
     PlantStore *p=new PlantStore(scene , wallet);
     view->scene()->addItem(p->two_peashooter);
     view->scene()->addItem(p->peashooter);
@@ -121,7 +120,7 @@ void PlantScene::UpdateTimer()
         seconds = 59;
     }
     if(minutes < 0 ){
-        //PlantWin();
+        PlantWin();
     }
     else{
         timer->setText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));
