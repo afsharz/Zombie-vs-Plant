@@ -247,6 +247,11 @@ void Menu::save()
 void Menu::start()
 {
     Start->hide();
+    Game->show();
+    EditInfo->show();
+    Exit->show();
+    History->show();
+    IP->hide();
     this->hide();
     Client * client1;
     client1 = new Client(userinfo->getUsername(),userinfo->get_QFile(),this,IP->text());
