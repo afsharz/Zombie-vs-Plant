@@ -167,7 +167,7 @@ void Client::zombiewin()
     }
     gamescene = new GameResult("Zombie");
     gamescene->show();
-    QTimer* timer = new QTimer;
+    timer = new QTimer;
     QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(checkround()));
     timer->start(5000);
 }
@@ -185,13 +185,14 @@ void Client::plantwin()
     }
     gamescene = new GameResult("Plant");
     gamescene->show();
-    QTimer* timer = new QTimer;
+    timer = new QTimer;
     QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(checkround()));
     timer->start(5000);
 }
 
 void Client::checkround()
 {
+    timer->stop();
     gamescene->deleteLater();
     if(round==1){
         round++;
