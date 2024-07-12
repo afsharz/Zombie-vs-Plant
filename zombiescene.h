@@ -20,6 +20,7 @@ class ZombieScene
 {
     Q_OBJECT
 public:
+    QGraphicsView * view;
     ZombieScene(QString CompetitorName);
     void Game();
     void initializeGrid();
@@ -27,6 +28,7 @@ public:
     QGraphicsScene* getScene();
     void setTimer();
     void setCompetitorName(QString CompetitorName);
+    ~ZombieScene();
 private :
     QGraphicsScene *scene;
     QVector<Zombie*> zombies;

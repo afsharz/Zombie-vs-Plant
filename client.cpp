@@ -166,6 +166,7 @@ void Client::WritingData(QString type)
 
 void Client::zombiewin()
 {
+    //timer->start();
     if(player->set_PlantOrZombie()){
         plantscene->deleteLater();
         player->set_WinOrLose()=0;
@@ -183,10 +184,9 @@ void Client::zombiewin()
 
 void Client::plantwin()
 {
+    //timer->start();
     if(player->set_PlantOrZombie()){
-        //plantscene->deleteLater();
-        plantscene->closeWindow();
-        //delete plantscene;
+        plantscene->deleteLater();
         player->set_WinOrLose()=1;
     }
     else{
@@ -202,7 +202,7 @@ void Client::plantwin()
 
 void Client::checkround()
 {
-    timer->stop();
+    delete timer;
     gamescene->deleteLater();
     if(round==1){
         round++;
