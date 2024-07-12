@@ -9,14 +9,13 @@
 #include "player.h"
 #include "gameresult.h"
 #include "menu.h"
-#include "connectionstatus.h"
 
 class Client : public QObject
 {
     Q_OBJECT
 public:
     Client(QString name , QFile* _file,Menu* _menu);
-    ~Client();
+    //~Client();
 private :
     QTcpSocket* ClientSocket;
     PlantScene* plantscene;
@@ -25,7 +24,6 @@ private :
     GameResult* gamescene;
     Menu* menu;
     int round;
-    ConnectionStatus *status;
 public slots:
     void ConnectingToServer();
     void ReadingData();

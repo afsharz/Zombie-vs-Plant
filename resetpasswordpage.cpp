@@ -22,10 +22,6 @@ void ResetPasswordPage::newItems()
     layoutContainer=new QWidget(this);
     layoutContainer->setGeometry(120,140,230,300);
     layout=new QGridLayout(layoutContainer);
-    lblUsername=new QLabel(this);
-    lblNumber=new QLabel(this);
-    lblPass=new QLabel(this);
-    //lblConfirmPass=new QLabel(this);
     lblWrongNum=new QLabel(this);
     ledUsername=new QLineEdit(this);
     ledNumber=new QLineEdit(this);
@@ -42,7 +38,6 @@ void ResetPasswordPage::DesignWindow()
 {
     setWindowTitle("Reset Password");
     ///add items to layout
-    layout->addWidget(lblUsername,0,0);
     layout->addWidget(ledUsername,1,0,1,3);
     layout->addWidget(ledNumber,3,0,1,3);
     layout->addWidget(ledPass,5,0,1,3);
@@ -57,35 +52,15 @@ void ResetPasswordPage::DesignWindow()
     backgroundLabel->setGeometry(this->rect());
     backgroundLabel->lower();
     setFixedSize(640,480);
-    ///username label
-    lblUsername->setText("Username");
-    lblUsername->setStyleSheet("color: white;");
-    lblUsername->setFont(QFont("Berlin Sans FB Demi",12,2,false));
-    lblUsername->show();
     ///username lineedit
     ledUsername->setPlaceholderText("Username");
     ledUsername->show();
-    ///phone number label
-    lblNumber->setText("Phone Number");
-    lblNumber->setStyleSheet(("color: white;"));
-        lblNumber->setFont(QFont("Berlin Sans FB Demi",12,2,false));
-    lblNumber->show();
     ///phone number line edit
     ledNumber->setPlaceholderText("Phone Number");
     ledNumber->show();
-    ///new password label
-    lblPass->setText("New Password");
-    lblPass->setStyleSheet(("color: white;"));
-        lblPass->setFont(QFont("Berlin Sans FB Demi",12,2,false));
-    lblPass->show();
     ///new password line edit
     ledPass->setPlaceholderText("Password");
     ledPass->show();
-    ///confirm password label
-    //lblConfirmPass->setText("Confirm Password");
-    //lblConfirmPass->setStyleSheet(("color: white;"));
-    //lblConfirmPass->setFont(QFont("Showcard Gothic",12,2,false));
-    //lblConfirmPass->show();
     /// confirm password line edit
     //ledConfirmPass->setPlaceholderText("Enter Password");
     //ledConfirmPass->show();
@@ -122,9 +97,6 @@ ResetPasswordPage::~ResetPasswordPage()
 {
     delete backgroundLabel;
     delete layout;
-    delete lblUsername;
-    delete lblNumber;
-    delete lblPass;
     //delete lblConfirmPass;
     delete lblWrongNum;
     delete errorNumber;

@@ -87,10 +87,9 @@ void Menu::DesignWindow()
 
 void Menu::game()
 {
-    this->close();
-    Client * client1,*client2;
+    this->hide();
+    Client * client1;
     client1 = new Client(userinfo->getUsername(),userinfo->get_QFile(),this);
-    client2 = new Client(userinfo->getUsername(),userinfo->get_QFile(),this);
 }
 
 void Menu::history()
@@ -166,7 +165,7 @@ void Menu::back()
 
 void Menu::save()
 {
-    QString tmp;
+    QString tmp=userinfo->getUsername();
     int flag=0;
     QString currentText = Username->text();
     if(!currentText.isEmpty()){
