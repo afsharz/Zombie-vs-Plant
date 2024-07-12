@@ -17,8 +17,8 @@ bullet::bullet(int _power,Plant:: Type t,QPointF _pos)
     }
     }
     setPos(_pos);
-    setPixmap(QPixmap(":/new/prefix1/pea.png"));
-    setScale(0.07);
+    setPixmap(QPixmap(":/new/prefix1/pea.jpg.png"));
+    setScale(0.2);
     timer=new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
     timer->start(30);
