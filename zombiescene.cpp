@@ -5,17 +5,16 @@
 
 #define ROWS 6
 #define COLS 12
-ZombieScene::ZombieScene ()
+ZombieScene::ZombieScene (QString CompetitorName)
 {
-    setWindowTitle("Zombie Side");
-   setWindowIcon(QIcon(QPixmap(":/new/prefix1/zicon.png")));
-    timer = new QLabel("3:30" , this);
-    timer->setStyleSheet("color: white;");
-    QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
-    timer->setFont(fontNum);
-    timer->move(750,-120);
-    timer->setFixedSize(150,30);
-    timer->show();
+    scene=new QGraphicsScene;
+    QImage image(":/new/prefix1/field.png");
+    QGraphicsView * view = new QGraphicsView(scene);
+    view->setBackgroundBrush(QColor(0, 0, 0));
+    view->setWindowTitle("Zombie Side");
+    view->setWindowIcon(QIcon(QPixmap(":/new/prefix1/zicon.png")));
+    setTimer();
+    setCompetitorName(CompetitorName);
     GameTimer = new QTimer;
     GameTimer->setInterval(1000);
     connect(GameTimer , SIGNAL(timeout()) , this , SLOT(UpdateTimer()));
@@ -23,20 +22,14 @@ ZombieScene::ZombieScene ()
     wallet = new Wallet(0);
     wallet->setPos(500 , -40);
 
-    scene=new QGraphicsScene;
-    QImage image(":/new/prefix1/field.png");
-
-    QGraphicsView * view = new QGraphicsView(scene);
-    view->setBackgroundBrush(QColor(0, 0, 0));
-
     QGraphicsPixmapItem *bg=new QGraphicsPixmapItem(QPixmap::fromImage(image));
     scene->addItem(bg);
 
     initializeGrid();
     scene->setSceneRect(0,0,1080,502);
-   // view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //view->setFixedSize(1090,1000);
+   view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setFixedSize(1090,1000);
     ZombieStore *p=new ZombieStore(scene , wallet);
     view->scene()->addItem(p->regularzombie);
     view->scene()->addItem(p->bucketheadzombie);
@@ -82,6 +75,21 @@ QVector<Zombie *> ZombieScene::getZombies() {return zombies;}
 
 QGraphicsScene *ZombieScene::getScene(){return scene;}
 
+void ZombieScene::setTimer()
+{
+    timer = new QGraphicsTextItem();
+    QRectF bounds(400,-120, 150, 30);  // Set the desired size
+    QFont fontNum("Berlin Sans FB Demi" , 20 ,  false);
+    scene->addItem(timer);
+    timer->setPlainText("3:30");
+    timer->setDefaultTextColor(Qt::blue);
+    timer->setTextWidth(bounds.width());
+    timer->setPos(bounds.topLeft());
+    timer->setZValue(3);
+    timer->setFont(fontNum);
+    timer->show();
+}
+
 void ZombieScene::Brain_Maker()
 {
     Brain* brain = new Brain(scene , wallet);
@@ -108,9 +116,11 @@ void ZombieScene::ZombieWin()
 
 void ZombieScene::UpdateTimer()
 {
-    static int minutes = 3;
-    static int seconds = 30;
+    static int minutes = 0;
+    static int seconds = 10;
     seconds--;
+    if(minutes==0 && seconds<30)
+        timer->setDefaultTextColor(Qt::red);
     if(seconds<0){
         minutes--;
         seconds = 59;
@@ -119,6 +129,22 @@ void ZombieScene::UpdateTimer()
         PlantWin();
     }
     else{
-        timer->setText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));
+        timer->setPlainText(QString::number(minutes) + ":" + QString::number(seconds).rightJustified(2,'0'));
     }
+}
+void ZombieScene::setCompetitorName(QString Name)
+{
+    CompetitorName= new QGraphicsTextItem();
+    QFont fontName("Berlin Sans FB Demi" , 20 ,  false);
+    QRectF bounds(200,-160, 150, 30);  // Set the desired size
+    QString name="Enemy : ";
+    name+=Name;
+    scene->addItem(CompetitorName);
+    CompetitorName->setFont(fontName);
+    CompetitorName->setPlainText(name);
+    CompetitorName->setDefaultTextColor(Qt::yellow);
+    CompetitorName->setTextWidth(bounds.width());
+    CompetitorName->setPos(bounds.topLeft());
+    CompetitorName->setZValue(3);
+    CompetitorName->show();
 }

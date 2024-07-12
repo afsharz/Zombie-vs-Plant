@@ -71,7 +71,7 @@ void Client::ReadingData()
         if(mess["role"]=="zombie")
         {
             player->set_PlantOrZombie()=0;
-            zombiescene = new ZombieScene;
+            zombiescene = new ZombieScene(player->set_CompetitorName());
             connect(zombiescene,&ZombieScene::AddedToVector,this,&Client::WritingData);
             connect(zombiescene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
             connect(zombiescene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
@@ -79,7 +79,7 @@ void Client::ReadingData()
         else
         {
             player->set_PlantOrZombie()=1;
-            plantscene = new PlantScene;
+            plantscene = new PlantScene(player->set_CompetitorName());
             connect(plantscene,&PlantScene::AddedToVector,this,&Client::WritingData);
             connect(plantscene,SIGNAL(Plantwin()),this,SLOT(plantwin()));
             connect(plantscene,SIGNAL(Zombiewin()),this,SLOT(zombiewin()));
@@ -177,15 +177,16 @@ void Client::zombiewin()
     gamescene = new GameResult("Zombie");
     gamescene->show();
     timer = new QTimer;
-    QObject::connect(timer , SIGNAL(timeout()) , this , SLOT(checkround()));
+    QObject::connect(timer , &QTimer::timeout , this ,&Client::checkround);
     timer->start(5000);
 }
 
 void Client::plantwin()
 {
-    qDebug() << "Im here";
     if(player->set_PlantOrZombie()){
-        plantscene->deleteLater();
+        //plantscene->deleteLater();
+        plantscene->closeWindow();
+        //delete plantscene;
         player->set_WinOrLose()=1;
     }
     else{
@@ -210,8 +211,8 @@ void Client::checkround()
         out.seek(player->getQFile()->size());
         out << "Competitor name : " << player->set_CompetitorName();
         QDateTime current = QDateTime::currentDateTime();
-        qint64 unixTime = current.toSecsSinceEpoch();
-        out << "\nDate : " << unixTime;
+        QString formattedDate = current.toString("yyyy-MM-dd");
+        out << "\nDate : " << formattedDate;
         if(player->set_PlantOrZombie())
             out << "\n round 1 : Plant ";
         else

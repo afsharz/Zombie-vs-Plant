@@ -20,11 +20,13 @@ class ZombieScene
 {
     Q_OBJECT
 public:
-    ZombieScene();
+    ZombieScene(QString CompetitorName);
     void Game();
     void initializeGrid();
     QVector<Zombie*> getZombies();
     QGraphicsScene* getScene();
+    void setTimer();
+    void setCompetitorName(QString CompetitorName);
 private :
     QGraphicsScene *scene;
     QVector<Zombie*> zombies;
@@ -32,7 +34,8 @@ private :
     QVector<home*> homes;
     Wallet* wallet;
     QTimer* GameTimer;
-    QLabel *timer;
+    QGraphicsTextItem *timer;
+    QGraphicsTextItem* CompetitorName;
 public slots :
     void Brain_Maker();
     void AddedToVecc(QString type);

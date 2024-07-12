@@ -20,19 +20,26 @@ class PlantScene
 {
     Q_OBJECT
 public:
-    PlantScene();
+        QGraphicsView * view;
+    PlantScene(QString CompetitorName);
     void initializeGrid();
     QVector<Plant*> getPlants();
     QGraphicsScene *getScene();
     void Game();
+    void setTimer();
+    void setCompetitorName(QString CompetitorName);
+    void closeWindow();
+    ~PlantScene();
 private :
+
     QGraphicsScene *scene;
     QVector<Zombie*> zombies;
     QVector<Plant*> plants;
     QVector<home*> homes;
     Wallet* wallet;
     QTimer* GameTimer;
-    QLabel* timer;
+    QGraphicsTextItem* timer;
+    QGraphicsTextItem* CompetitorName;
 public slots :
     void Sun_Maker();
     void AddedToVecc(QString type);
