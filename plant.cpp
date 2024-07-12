@@ -8,7 +8,6 @@ Plant::Plant(QPointF _pos , int _health , int _FiringRate , int _AttackPower,hom
     Set_Position(_pos);
 }
 
-//should check
 void Plant::Decreasinghealth(int attackpowerzombie)
 {
     if(health - attackpowerzombie < 0)

@@ -15,7 +15,6 @@ public:
     Menu(UserInfo* _userinfo);
     void newItems();
     void DesignWindow();
-    //~Menu();
 private :
     QLabel *backgroundLabel;
     QPushButton *Exit;

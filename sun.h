@@ -11,7 +11,6 @@ class Sun :public QObject , public QGraphicsPixmapItem
     Q_OBJECT
 public:
     Sun(QGraphicsScene *scene , Wallet* _wallet);
-    //~Sun();
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 private :

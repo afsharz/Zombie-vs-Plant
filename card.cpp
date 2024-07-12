@@ -51,13 +51,11 @@ void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
         transparent->setPos(newPos);
 
     }
-    //QGraphicsPixmapItem::mousePressEvent(event);
 }
 void Card::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->buttons() & Qt::LeftButton && this->IsAccessibale) {
         QPointF newPos = mapToScene(event->pos() - dragStartPosition);
-        //QPointF newPos = event->scenePos();
         transparent->setPos(newPos);
 
     }
@@ -86,8 +84,5 @@ void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         }
     }
 }
-Card::~Card()
-{
-    //delete transparent;
-}
+Card::~Card(){}
 

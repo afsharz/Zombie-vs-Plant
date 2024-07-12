@@ -21,7 +21,6 @@ Zombie::Zombie(QPointF _pos ,int _health,int _FirstMovementDelay,int _MovementDe
     freeflagtime.singleShot(1500,this,SLOT(setBlockFlag()));
     connect(this,&Zombie::ZombieWin,HomeAdrs,&home::ZomWin);
 }
-//should check
 void Zombie::Decreasinghealth(int attackpowerplant)
 {
     if(health - attackpowerplant < 0)
@@ -152,7 +151,5 @@ void Zombie::setBlockFlag()
 Zombie::~Zombie()
 {
     HomeAdrs->setFlag(false);
-    //delete attack;
-    //delete timer;
 }
 

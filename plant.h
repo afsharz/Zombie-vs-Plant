@@ -15,8 +15,6 @@ public:
     int get_health();
     void setHomeAdrs(home *adrs);
     enum Type{boomerang,non_boomerang};
-    //func health
-    //func attack
     ~Plant();
 public slots:
     virtual void shut();

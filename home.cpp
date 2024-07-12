@@ -33,7 +33,6 @@ void home::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
     qDebug()<<"i know there is a hover enter event";
     highlight();
-    //QGraphicsRectItem::hoverEnterEvent(event);
 }
 
 void home::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
@@ -58,8 +57,6 @@ void home::dropEvent(QGraphicsSceneDragDropEvent *event)
 {
     hide();
     event->accept();
-    //PeaShooter test;
-    //test.setPos(event->scenePos());
 }
 
 void home::highlight()

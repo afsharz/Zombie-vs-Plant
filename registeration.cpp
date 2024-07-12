@@ -61,8 +61,6 @@ void registeration::designWindow()
     UnacceptablePass->setStyleSheet("color: red;");
     UnacceptablePass->hide();
 
-    //ui->label->setStyleSheet("QLabel {""background-color: rgba(0, 0, 0, 127);" "border-radius: 15px;" "border: none;" "}");
-
     ui->label_2->setFrameShape(QFrame::NoFrame);
     ui->label_2->setAttribute(Qt::WA_NoSystemBackground);
     ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
@@ -95,14 +93,6 @@ void registeration::designWindow()
     ui->pushButton_4->setFlat(true);
     ui->pushButton_4->setStyleSheet("QPushButton { background-color: transparent; border: 0px; }");
     ui->pushButton_4->setStyleSheet("color: black;");
-
-    //ui->label_9->stackUnder(ui->label);
-    //ui->label_10->stackUnder(ui->label);
-    //ui->label_11->stackUnder(ui->label);
-    //ui->label_12->stackUnder(ui->label);
-    //ui->label_13->stackUnder(ui->label);
-    //ui->label_14->stackUnder(ui->label);
-   //ui->label_15->stackUnder(ui->label);
 }
 
 void registeration::showInvalidEmailError(bool IsTrue)

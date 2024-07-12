@@ -15,8 +15,6 @@ LogIn::LogIn(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("LogIn");
     //These codes that are repeated are for the color and size and transparency of line edits, lebels and push bottons
-    //"background-color: rgba(0, 0, 0, 127);"
-    //ui->label->setStyleSheet("QLabel {""border-radius: 15px;" "border: none;" "}");
     ui->label_2->setFrameShape(QFrame::NoFrame);
     ui->label_2->setAttribute(Qt::WA_NoSystemBackground);
     ui->label_2->setAttribute(Qt::WA_TranslucentBackground);
@@ -121,7 +119,7 @@ void LogIn::on_pushButton_4_clicked()
         ui->label_7->setText(tr("password is incorrect"));
     }
     else{
-        //log in successfuly and close the window after 5 second and open game window
+        //log in successfuly
         ui->label_8->hide();
         ui->label_7->hide();
         ui->label_9->show();

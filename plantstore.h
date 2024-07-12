@@ -9,8 +9,6 @@ class PlantStore
 {
 public:
     PlantStore( QGraphicsScene *scene , Wallet* _wallet );
-    //void setWallet(/* wallet object*/);
-//private:
     Card *peashooter;
     Card *two_peashooter;
     Card *walnut;

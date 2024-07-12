@@ -4,7 +4,6 @@
 
 Boomerang::Boomerang(QPointF pos,home *adrs) : Plant(pos , 200 , 1 , 30,adrs)
 {
-    //setHomeFlag(true);
     setPixmap(QPixmap(":/new/prefix1/boomrang_transparent.png"));
     setScale(0.2);
     setPos(pos);

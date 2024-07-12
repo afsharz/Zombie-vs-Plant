@@ -20,7 +20,6 @@ void Sun::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
         wallet->Increasing();
-        //this->hide();
         this->deleteLater();
     }
 
