@@ -88,6 +88,6 @@ void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 Card::~Card()
 {
-    delete transparent;
+    //delete transparent;
 }
 
