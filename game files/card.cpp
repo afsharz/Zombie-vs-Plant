@@ -1,0 +1,88 @@
+#include "card.h"
+#include "home.h"
+#include "QRegularExpression"
+#include "QRegularExpressionMatch"
+#define c1r1 QPointF(1200,220)
+#define HalfOfField 578
+Card::Card(QGraphicsScene *scene,QString _Type)
+    :Type(_Type),scene (scene) , IsAccessibale(false)
+{
+    pre=nullptr;
+}
+
+QString Card::Get_Type(){return Type;}
+
+
+void Card::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton && this->IsAccessibale) {
+        dragStartPosition = event->pos();
+        QPointF newPos = mapToScene(event->pos() - dragStartPosition);
+        transparent=new QGraphicsPixmapItem();
+        transparent->setScale(0.1);
+        if(Type=="PeaShooter")
+        transparent->setPixmap(QPixmap(":/new/prefix1/peashooter transparent.png"));
+        else if(Type=="TwoPeashooter")
+            transparent->setPixmap(QPixmap(":/new/prefix1/two_peashooter_transparent.png"));
+        else if(Type=="Walnut")
+            transparent->setPixmap(QPixmap(":/new/prefix1/walnut_transparent.png"));
+        else if(Type=="PlumMine")
+            transparent->setPixmap(QPixmap(":/new/prefix1/plum mine_transparent.png"));
+        else if(Type=="Jalapeno")
+            transparent->setPixmap(QPixmap(":/new/prefix1/jalapino_transparent.png"));
+        else if(Type=="Boomerang")
+        {
+            transparent->setScale(0.25);
+            transparent->setPixmap(QPixmap(":/new/prefix1/boomrang_transparent.png"));
+        }
+        else if (Type=="regularzombie")
+            transparent->setPixmap(QPixmap(":/new/prefix1/regular zombie_transparent.png"));
+        else if (Type=="bucketheadzombie")
+            transparent->setPixmap(QPixmap(":/new/prefix1/Bucket head zombie_trasparent.png"));
+        else if (Type=="leafheadzombie")
+        transparent->setPixmap(QPixmap(":/new/prefix1/leaf hair zombie_transparent.png"));
+        else if (Type=="tallzombie")
+            transparent->setPixmap(QPixmap(":/new/prefix1/tall zombie_transparent.png"));
+        else if (Type=="astronautzombie")
+        transparent->setPixmap(QPixmap(":/new/prefix1/astronaut zombie_transparent.png"));
+        else if (Type=="purplehairzombie")
+            transparent->setPixmap(QPixmap(":/new/prefix1/purple hair zombie_transparent.png"));
+        scene->addItem(transparent);
+        transparent->setPos(newPos);
+
+    }
+}
+void Card::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+    if (event->buttons() & Qt::LeftButton && this->IsAccessibale) {
+        QPointF newPos = mapToScene(event->pos() - dragStartPosition);
+        transparent->setPos(newPos);
+
+    }
+    QGraphicsPixmapItem::mouseMoveEvent(event);
+}
+void Card::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    if(this->IsAccessibale){
+        scene->removeItem(transparent);
+        delete transparent;
+        QPointF newPos = event->scenePos();
+        QList<QGraphicsItem*> items = scene->items(newPos);
+        for (QGraphicsItem* item : items) {
+            home* h = dynamic_cast<home*>(item);
+            if (h)
+            {
+                QRegularExpression *t=new QRegularExpression("zombie");
+                QRegularExpressionMatch *m=new QRegularExpressionMatch;
+                *m=t->match(Type);
+                if(m->hasMatch() && newPos.x()>=1000)
+                    h->dropZombie(Type,true);
+                else if (newPos.x()<= HalfOfField)
+                    h->dropPlant(Type,true);
+                h->unhighlight();
+            }
+        }
+    }
+}
+Card::~Card(){}
+
